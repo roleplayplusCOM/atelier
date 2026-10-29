@@ -17,7 +17,6 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
-import { open as openInBrowser } from "@tauri-apps/plugin-shell";
 import { open as openDialog } from "@tauri-apps/plugin-dialog";
 import {
   ContextMenu,
@@ -45,10 +44,6 @@ import { listMyPacks, type Pack } from "@/lib/sync/api-client";
 import { clonePackToLocal } from "@/lib/sync/clone";
 import i18n from "@/lib/i18n";
 import { formatRelativeTime } from "@/lib/format";
-
-/** The marketplace lives on the Roleplay+ site, under the active UI language. */
-const MARKETPLACE_URL = (lang: string) =>
-  `https://roleplayplus.com/${lang.startsWith("de") ? "de" : "en"}/atelier/marketplace`;
 
 const MARKET_TILES = [
   { Icon: Shirt, from: "#ff8a1f", to: "#f4456b", key: "clothing" },
@@ -279,11 +274,7 @@ export function LauncherScreen() {
           ))}
         </div>
 
-        <button
-          type="button"
-          onClick={() => void openInBrowser(MARKETPLACE_URL(i18n.language)).catch(() => {})}
-          className="group animate-fade-in-up animation-delay-400 relative mt-4 flex w-full items-center gap-8 overflow-hidden rounded-[22px] bg-card p-6 text-left shadow-[var(--shadow-s)] transition-[transform,box-shadow] duration-300 [transition-timing-function:var(--ease)] hover:-translate-y-1 hover:shadow-[var(--shadow-m)]"
-        >
+        <div className="group animate-fade-in-up animation-delay-400 relative mt-4 flex w-full items-center gap-8 overflow-hidden rounded-[22px] bg-card p-6 text-left shadow-[var(--shadow-s)]">
           <span aria-hidden className="pointer-events-none absolute -right-10 -top-24 h-56 w-72 rounded-full bg-[#ff8a1f]/20 blur-3xl" />
           <span aria-hidden className="pointer-events-none absolute -bottom-24 right-40 h-48 w-64 rounded-full bg-[#9b6bff]/15 blur-3xl" />
           <div className="relative min-w-0 flex-1">
@@ -295,16 +286,15 @@ export function LauncherScreen() {
               {t("marketplace.title")}
             </h3>
             <p className="mt-1.5 max-w-lg text-sm leading-relaxed text-grey">{t("marketplace.text")}</p>
-            <span className="grad mt-4 inline-flex items-center gap-1.5 text-sm font-semibold">
-              {t("marketplace.cta")}
-              <ArrowRight className="h-4 w-4 text-brand transition-transform duration-300 group-hover:translate-x-1" />
+            <span className="mt-4 inline-flex items-center rounded-full bg-[image:var(--grad)] px-3.5 py-1 text-xs font-semibold text-white">
+              {t("marketplace.soon")}
             </span>
           </div>
           <div className="relative hidden shrink-0 items-center gap-3 md:flex">
             {MARKET_TILES.map(({ Icon, from, to, key }, i) => (
               <div
                 key={key}
-                className="flex h-28 w-24 flex-col items-center justify-end gap-2 rounded-[20px] pb-3 text-white shadow-[var(--shadow-m)] transition-transform duration-500 [transition-timing-function:var(--ease)] group-hover:-translate-y-1.5"
+                className="flex h-28 w-24 flex-col items-center justify-end gap-2 rounded-[20px] pb-3 text-white shadow-[var(--shadow-m)] transition-transform duration-500 [transition-timing-function:var(--ease)]"
                 style={{
                   background: `linear-gradient(150deg, ${from}, ${to})`,
                   transform: `translateY(${i === 1 ? -8 : 6}px) rotate(${(i - 1) * 4}deg)`,
@@ -315,7 +305,7 @@ export function LauncherScreen() {
               </div>
             ))}
           </div>
-        </button>
+        </div>
 
         {apiReady && (
           <>
