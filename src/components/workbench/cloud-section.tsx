@@ -80,17 +80,17 @@ function RosterStack() {
                 key={u.discordId}
                 src={u.avatar}
                 alt={u.username}
-                className="h-7 w-7 rounded-full border border-[#101010] object-cover"
+                className="h-7 w-7 rounded-full border border-background object-cover"
               />
             ) : (
               <CircleUser
                 key={u.discordId}
-                className="h-7 w-7 rounded-full border border-[#101010] bg-[#1a1a1a] text-white/40"
+                className="h-7 w-7 rounded-full border border-background bg-card text-faint"
               />
             ),
           )}
           {extra > 0 && (
-            <span className="flex h-7 min-w-7 items-center justify-center rounded-full border border-[#101010] bg-white/10 px-1 text-[10px] font-semibold text-white/70">
+            <span className="flex h-7 min-w-7 items-center justify-center rounded-full border border-background bg-fill-2 px-1 text-[10px] font-semibold text-grey">
               +{extra}
             </span>
           )}
@@ -169,17 +169,17 @@ function CloudLinkDialog() {
 
   return (
     <Dialog open={open} onOpenChange={(o) => !busy && setOpen(o)}>
-      <DialogContent className="liquid-glass border-white/15 sm:max-w-md">
+      <DialogContent className="liquid-glass border-line sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-white">{t("cloud.linkTitle")}</DialogTitle>
-          <DialogDescription className="text-white/50">
+          <DialogTitle className="text-foreground">{t("cloud.linkTitle")}</DialogTitle>
+          <DialogDescription className="text-grey">
             {t("cloud.linkDescription")}
           </DialogDescription>
         </DialogHeader>
 
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <Label htmlFor="cloud-pack-name" className="text-white/70">
+            <Label htmlFor="cloud-pack-name" className="text-grey">
               {t("cloud.createNewPack")}
             </Label>
             <div className="flex gap-2">
@@ -188,7 +188,7 @@ function CloudLinkDialog() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder={t("cloud.packNamePlaceholder")}
-                className="border-white/15 bg-white/5 text-white"
+                className="border-line bg-fill text-foreground"
                 onKeyDown={(e) => {
                   if (e.key === "Enter") void createAndLink();
                 }}
@@ -204,22 +204,22 @@ function CloudLinkDialog() {
           </div>
 
           <div className="flex items-center gap-3">
-            <Separator className="flex-1 bg-white/8" />
-            <span className="text-[10px] font-semibold uppercase tracking-wider text-white/30">
+            <Separator className="flex-1 bg-fill" />
+            <span className="text-[10px] font-semibold uppercase tracking-wider text-faint">
               {t("cloud.orExistingPack")}
             </span>
-            <Separator className="flex-1 bg-white/8" />
+            <Separator className="flex-1 bg-fill" />
           </div>
 
-          <div className="max-h-64 overflow-y-auto rounded-[10px] border border-white/8">
+          <div className="max-h-64 overflow-y-auto rounded-[14px] border border-line">
             {packs === null ? (
               <div className="flex flex-col gap-2 p-3">
                 {[0, 1, 2].map((i) => (
-                  <div key={i} className="h-9 animate-pulse rounded-[8px] bg-white/5" />
+                  <div key={i} className="h-9 animate-pulse rounded-[8px] bg-fill" />
                 ))}
               </div>
             ) : packs.length === 0 ? (
-              <p className="px-3 py-6 text-center text-xs text-white/35">
+              <p className="px-3 py-6 text-center text-xs text-faint">
                 {t("cloud.noPacksFound")}
               </p>
             ) : (
@@ -229,16 +229,16 @@ function CloudLinkDialog() {
                   type="button"
                   disabled={busy}
                   onClick={() => void linkExisting(pack)}
-                  className="flex w-full items-center gap-2 border-b border-white/5 px-3 py-2 text-left transition-colors last:border-b-0 hover:bg-white/5 disabled:opacity-50"
+                  className="flex w-full items-center gap-2 border-b border-line px-3 py-2 text-left transition-colors last:border-b-0 hover:bg-fill disabled:opacity-50"
                 >
-                  <Cloud className="h-3.5 w-3.5 shrink-0 text-[#7289DA]" />
-                  <span className="min-w-0 flex-1 truncate text-sm text-white/85">
+                  <Cloud className="h-3.5 w-3.5 shrink-0 text-brand" />
+                  <span className="min-w-0 flex-1 truncate text-sm text-foreground">
                     {pack.name}
                   </span>
-                  <span className="shrink-0 font-mono text-[10px] text-white/40">
+                  <span className="shrink-0 font-mono text-[10px] text-faint">
                     {t("cloud.rev", { revision: pack.headRevision })}
                   </span>
-                  <span className="shrink-0 text-[10px] text-white/30">
+                  <span className="shrink-0 text-[10px] text-faint">
                     {formatRelativeTime(pack.updatedAt)}
                   </span>
                 </button>
@@ -285,16 +285,16 @@ function SyncProgressDialog() {
   return (
     <Dialog open>
       <DialogContent
-        className="liquid-glass border-white/15 sm:max-w-sm"
+        className="liquid-glass border-line sm:max-w-sm"
         showCloseButton={false}
       >
         <DialogHeader>
-          <DialogTitle className="text-white">
+          <DialogTitle className="text-foreground">
             {operation === "push"
               ? t("cloud.uploading")
               : t("cloud.loadingLatest")}
           </DialogTitle>
-          <DialogDescription className="text-white/50">
+          <DialogDescription className="text-grey">
             {t("cloud.pleaseWait")}
           </DialogDescription>
         </DialogHeader>
@@ -309,30 +309,30 @@ function SyncProgressDialog() {
                   {done ? (
                     <Check className="h-3.5 w-3.5 text-emerald-400" />
                   ) : active ? (
-                    <Loader2 className="h-3.5 w-3.5 animate-spin text-[#7289DA]" />
+                    <Loader2 className="h-3.5 w-3.5 animate-spin text-brand" />
                   ) : (
-                    <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-faint" />
                   )}
                   <span
                     className={cn(
-                      "text-white/40",
-                      active && "font-medium text-white",
-                      done && "text-white/60",
+                      "text-faint",
+                      active && "font-medium text-foreground",
+                      done && "text-grey",
                     )}
                   >
                     {t(phase.labelKey)}
                   </span>
                   {active && progress && progress.total > 1 && (
-                    <span className="ml-auto font-mono text-[10px] text-white/35">
+                    <span className="ml-auto font-mono text-[10px] text-faint">
                       {Math.min(progress.current + 1, progress.total)}/{progress.total}
                     </span>
                   )}
                 </div>
                 {active && (
                   <>
-                    <Progress value={percent} className="h-1.5 bg-white/10" />
+                    <Progress value={percent} className="h-1.5 bg-fill-2" />
                     {progress?.label && (
-                      <p className="truncate text-[10px] text-white/35">
+                      <p className="truncate text-[10px] text-faint">
                         {progress.label}
                       </p>
                     )}
@@ -360,12 +360,12 @@ function ConflictDialog() {
 
   return (
     <Dialog open={headRevision !== null} onOpenChange={(o) => !o && dismiss()}>
-      <DialogContent className="liquid-glass border-white/15 sm:max-w-md">
+      <DialogContent className="liquid-glass border-line sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-white">
+          <DialogTitle className="text-foreground">
             {t("cloud.conflictTitle")}
           </DialogTitle>
-          <DialogDescription className="text-white/50">
+          <DialogDescription className="text-grey">
             {t("cloud.conflictDescription", { revision: headRevision })}
           </DialogDescription>
         </DialogHeader>
@@ -410,10 +410,10 @@ function PullConfirmDialog() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="liquid-glass border-white/15 sm:max-w-sm">
+      <DialogContent className="liquid-glass border-line sm:max-w-sm">
         <DialogHeader>
-          <DialogTitle className="text-white">{t("cloud.pullConfirmTitle")}</DialogTitle>
-          <DialogDescription className="text-white/50">
+          <DialogTitle className="text-foreground">{t("cloud.pullConfirmTitle")}</DialogTitle>
+          <DialogDescription className="text-grey">
             {t("cloud.pullConfirmDescription")}
           </DialogDescription>
         </DialogHeader>
@@ -457,7 +457,7 @@ function ServerBuildAction() {
           <Button
             variant="ghost"
             size="sm"
-            className="h-7 gap-1.5 px-2 text-xs text-white/55 hover:bg-white/10 hover:text-white"
+            className="h-7 gap-1.5 px-2 text-xs text-grey hover:bg-fill-2 hover:text-foreground"
             onClick={() => void requestServerBuild()}
           >
             <Server className="h-3.5 w-3.5" />
@@ -474,8 +474,8 @@ function ServerBuildAction() {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <div className="flex h-7 cursor-default items-center gap-1.5 rounded-full bg-white/5 px-2.5 text-xs text-white/55">
-          <Loader2 className="h-3 w-3 animate-spin text-[#7289DA]" />
+        <div className="flex h-7 cursor-default items-center gap-1.5 rounded-full bg-fill px-2.5 text-xs text-grey">
+          <Loader2 className="h-3 w-3 animate-spin text-brand" />
           {t("cloud.serverBuildRunning")}
         </div>
       </TooltipTrigger>
@@ -514,7 +514,7 @@ function LinkedControls() {
     <>
       <Tooltip>
         <TooltipTrigger asChild>
-          <div className="flex h-7 cursor-default items-center gap-1.5 rounded-full bg-white/5 px-2.5">
+          <div className="flex h-7 cursor-default items-center gap-1.5 rounded-full bg-fill px-2.5">
             {active || (pending > 0 && status !== "error") ? (
               <Loader2 className="h-3.5 w-3.5 animate-spin text-amber-300" />
             ) : (
@@ -525,9 +525,9 @@ function LinkedControls() {
                 )}
               />
             )}
-            <span className="text-[10px] font-medium text-white/65">{label}</span>
+            <span className="text-[10px] font-medium text-grey">{label}</span>
             {version !== null && (
-              <span className="font-mono text-[9px] text-white/30">v{version}</span>
+              <span className="font-mono text-[9px] text-faint">v{version}</span>
             )}
           </div>
         </TooltipTrigger>

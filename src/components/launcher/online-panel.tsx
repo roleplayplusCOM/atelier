@@ -15,7 +15,7 @@ const REFRESH_MS = 15_000;
 function UserRow({ user, isSelf }: { user: PresenceUser; isSelf: boolean }) {
   const { t } = useTranslation("launcher");
   return (
-    <div className="flex items-start gap-3 rounded-[10px] px-3 py-2.5 transition-colors hover:bg-white/5">
+    <div className="flex items-start gap-3 rounded-[14px] px-3 py-2.5 transition-colors hover:bg-fill">
       <div className="relative shrink-0">
         {user.avatar ? (
           <img
@@ -24,26 +24,26 @@ function UserRow({ user, isSelf }: { user: PresenceUser; isSelf: boolean }) {
             className="h-8 w-8 rounded-full object-cover"
           />
         ) : (
-          <CircleUser className="h-8 w-8 text-white/40" />
+          <CircleUser className="h-8 w-8 text-faint" />
         )}
-        <span className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-[#101010] bg-emerald-400" />
+        <span className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-background bg-emerald-400" />
       </div>
       <div className="min-w-0 flex-1">
-        <p className="truncate text-sm font-medium text-white/85">
+        <p className="truncate text-sm font-medium text-foreground">
           {user.username}
           {isSelf && (
-            <span className="ml-1.5 text-xs font-normal text-white/35">
+            <span className="ml-1.5 text-xs font-normal text-faint">
               {t("online.you")}
             </span>
           )}
         </p>
         {user.project ? (
-          <p className="mt-0.5 flex items-center gap-1 truncate text-xs text-[#7289DA]">
+          <p className="mt-0.5 flex items-center gap-1 truncate text-xs text-brand">
             <Folder className="h-3 w-3 shrink-0" />
             <span className="truncate">{user.project.name}</span>
           </p>
         ) : (
-          <p className="mt-0.5 text-xs text-white/35">{t("online.inLauncher")}</p>
+          <p className="mt-0.5 text-xs text-faint">{t("online.inLauncher")}</p>
         )}
       </div>
     </div>
@@ -79,11 +79,11 @@ export function OnlinePanel() {
 
   return (
     <div className="liquid-glass flex h-full max-h-full flex-col rounded-2xl">
-      <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-        <Users className="h-4 w-4 text-[#7289DA]" />
-        <h2 className="text-sm font-semibold text-white">{t("online.title")}</h2>
+      <div className="flex items-center gap-2 border-b border-line px-4 py-3">
+        <Users className="h-4 w-4 text-brand" />
+        <h2 className="text-sm font-semibold text-foreground">{t("online.title")}</h2>
         {users !== null && (
-          <span className="ml-auto rounded-full bg-[#5865F2]/20 px-2 py-0.5 text-xs font-medium text-[#7289DA]">
+          <span className="ml-auto rounded-full bg-brand/20 px-2 py-0.5 text-xs font-medium text-brand">
             {users.length}
           </span>
         )}
@@ -94,19 +94,19 @@ export function OnlinePanel() {
           <div className="flex flex-col gap-2 p-2">
             {[0, 1, 2].map((i) => (
               <div key={i} className="flex animate-pulse items-center gap-3 px-2 py-1.5">
-                <div className="h-8 w-8 rounded-full bg-white/10" />
+                <div className="h-8 w-8 rounded-full bg-fill-2" />
                 <div className="flex-1 space-y-1.5">
-                  <div className="h-2.5 w-24 rounded bg-white/10" />
-                  <div className="h-2 w-16 rounded bg-white/5" />
+                  <div className="h-2.5 w-24 rounded bg-fill-2" />
+                  <div className="h-2 w-16 rounded bg-fill" />
                 </div>
               </div>
             ))}
           </div>
         ) : users.length === 0 ? (
           <div className="flex flex-col items-center justify-center px-4 py-10 text-center">
-            <Users className="h-7 w-7 text-white/20" />
-            <p className="mt-3 text-sm text-white/50">{t("online.nobodyOnline")}</p>
-            <p className="mt-1 text-xs text-white/30">{t("online.nobodyHint")}</p>
+            <Users className="h-7 w-7 text-faint" />
+            <p className="mt-3 text-sm text-grey">{t("online.nobodyOnline")}</p>
+            <p className="mt-1 text-xs text-faint">{t("online.nobodyHint")}</p>
           </div>
         ) : (
           users.map((u) => (

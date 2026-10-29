@@ -35,19 +35,19 @@ export function TattooHeader() {
   const canRedo = useStore(useProjectStore.temporal, (s) => s.futureStates.length > 0);
 
   const iconButton =
-    "h-7 w-7 rounded-[8px] text-white/55 hover:bg-white/10 hover:text-white";
+    "h-7 w-7 rounded-[8px] text-grey hover:bg-fill-2 hover:text-foreground";
 
   const canBuild =
     (project?.drawables.length ?? 0) > 0 || (project?.tattoos.length ?? 0) > 0;
 
   return (
-    <div className="flex h-11 shrink-0 items-center gap-2 border-b border-white/8 px-3">
+    <div className="flex h-11 shrink-0 items-center gap-2 border-b border-line px-3">
       <ProjectName />
-      <span className="rounded-full bg-[#5865F2]/15 px-2 py-0.5 text-[10px] font-medium text-[#7289DA]">
+      <span className="rounded-full bg-brand/15 px-2 py-0.5 text-[10px] font-medium text-brand">
         {t("header.badge")}
       </span>
 
-      <div className="mx-1 h-5 w-px bg-white/10" />
+      <div className="mx-1 h-5 w-px bg-fill-2" />
 
       <Tooltip>
         <TooltipTrigger asChild>
@@ -82,7 +82,7 @@ export function TattooHeader() {
 
       <div className="ml-auto flex items-center gap-2">
         <CloudSection />
-        <div className="h-5 w-px bg-white/10" />
+        <div className="h-5 w-px bg-fill-2" />
         <SaveIndicator />
         <Tooltip>
           <TooltipTrigger asChild>

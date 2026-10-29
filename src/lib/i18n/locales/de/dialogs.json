@@ -3,7 +3,7 @@
     "title": "Neues Projekt",
     "description": "Erstellt einen Projektordner mit pack.atelier und assets/.",
     "nameLabel": "Projektname",
-    "namePlaceholder": "z. B. Feelgood Summer Pack",
+    "namePlaceholder": "z. B. Summer Pack",
     "locationLabel": "Speicherort",
     "locationPlaceholder": "Noch kein Ordner gewählt…",
     "browse": "Durchsuchen",

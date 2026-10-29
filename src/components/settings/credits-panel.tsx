@@ -95,7 +95,7 @@ const PEOPLE: Person[] = [
 ];
 
 /** feelgood's own community Discord — distinct from the third-party credits above. */
-const FEELGOOD_DISCORD_URL = "https://discord.gg/Y8kkKyShZx";
+const ROLEPLAYPLUS_DISCORD_URL = "https://discord.gg/roleplayplus";
 
 const LINK_META: Record<
   LinkKind,
@@ -113,12 +113,12 @@ const LINK_META: Record<
   },
   github: {
     label: "GitHub",
-    hover: "hover:text-white hover:border-white/40",
+    hover: "hover:text-foreground hover:border-line",
     icon: (c) => <GitHubMark className={c} />,
   },
   discord: {
     label: "Discord",
-    hover: "hover:text-[#7289DA] hover:border-[#5865F2]/40",
+    hover: "hover:text-brand hover:border-brand/40",
     icon: (c) => <DiscordMark className={c} />,
   },
 };
@@ -133,7 +133,7 @@ function LinkChip({ kind, url }: CreditLink) {
       title={`${meta.label} · ${url}`}
       aria-label={t("credits.openLink", { label: meta.label })}
       className={cn(
-        "glass-border-subtle flex h-7 w-7 items-center justify-center rounded-full text-white/50 transition-colors hover:bg-white/10",
+        "glass-border-subtle flex h-7 w-7 items-center justify-center rounded-full text-grey transition-colors hover:bg-fill-2",
         meta.hover,
       )}
     >
@@ -156,14 +156,14 @@ export function CreditsPanel({ className }: { className?: string }) {
       )}
     >
       <div className="flex items-center gap-2">
-        <Heart className="h-4 w-4 text-[#7289DA]" />
-        <h2 className="text-sm font-semibold text-white">{t("credits.title")}</h2>
+        <Heart className="h-4 w-4 text-brand" />
+        <h2 className="text-sm font-semibold text-foreground">{t("credits.title")}</h2>
       </div>
-      <p className="text-xs leading-relaxed text-white/45">
+      <p className="text-xs leading-relaxed text-faint">
         <Trans
           t={t}
           i18nKey="credits.intro"
-          components={{ hl: <span className="text-white/65" /> }}
+          components={{ hl: <span className="text-grey" /> }}
         />
       </p>
 
@@ -171,8 +171,8 @@ export function CreditsPanel({ className }: { className?: string }) {
         {PEOPLE.map((person) => (
           <div key={person.name} className="flex flex-col gap-1.5">
             <div>
-              <p className="text-sm font-medium text-white/85">{person.name}</p>
-              <p className="text-xs text-white/40">{t(person.roleKey)}</p>
+              <p className="text-sm font-medium text-foreground">{person.name}</p>
+              <p className="text-xs text-faint">{t(person.roleKey)}</p>
             </div>
             <div className="flex flex-wrap gap-1.5">
               {person.links.map((link) => (
@@ -185,12 +185,12 @@ export function CreditsPanel({ className }: { className?: string }) {
 
       <button
         type="button"
-        onClick={() => void openInBrowser(FEELGOOD_DISCORD_URL).catch(() => {})}
-        title={`Discord · ${FEELGOOD_DISCORD_URL}`}
-        className="glass-border-subtle mt-0.5 flex w-full items-center justify-center gap-2 rounded-full px-3 py-2 text-xs font-medium text-white/55 transition-colors hover:border-[#5865F2]/40 hover:bg-[#5865F2]/15 hover:text-[#7289DA]"
+        onClick={() => void openInBrowser(ROLEPLAYPLUS_DISCORD_URL).catch(() => {})}
+        title={`Discord · ${ROLEPLAYPLUS_DISCORD_URL}`}
+        className="glass-border-subtle mt-0.5 flex w-full items-center justify-center gap-2 rounded-full px-3 py-2 text-xs font-medium text-grey transition-colors hover:border-brand/40 hover:bg-brand/15 hover:text-brand"
       >
         <DiscordMark className="h-3.5 w-3.5" />
-        {t("credits.joinFeelgood")}
+        {t("credits.joinRoleplayPlus")}
       </button>
     </div>
   );

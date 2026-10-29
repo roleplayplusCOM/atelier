@@ -8,9 +8,9 @@ const Toaster = ({ ...props }: ToasterProps) => {
       className="toaster group"
       toastOptions={{
         classNames: {
-          toast: "!bg-[#141414] !border-white/12 !text-white !rounded-[10px] !font-sans",
+          toast: "!bg-card !border-0 !shadow-[var(--shadow-m)] !text-foreground !rounded-[16px] !font-sans",
           description: "!text-white/60",
-          actionButton: "!bg-[#5865F2] !text-white",
+          actionButton: "!bg-brand !text-white",
         },
       }}
       {...props}

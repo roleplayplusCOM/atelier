@@ -12,18 +12,14 @@
   "app": {
     "windows": [
       {
-        "title": "atelier by feelgood",
+        "title": "atelier by Roleplay+",
         "width": 1440,
         "height": 900,
         "minWidth": 1200,
         "minHeight": 760,
         "center": true,
         "decorations": false,
-        "transparent": true,
-        "windowEffects": {
-          "effects": ["acrylic", "tabbed", "mica", "blur"],
-          "color": "#0b0b0b66"
-        }
+        "transparent": true
       }
     ],
     "security": {

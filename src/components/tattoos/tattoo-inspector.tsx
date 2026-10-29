@@ -65,14 +65,14 @@ const DEFAULT_PLACEMENT: TattooPlacement = {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <Label className="text-xs text-white/55">{label}</Label>
+      <Label className="text-xs text-grey">{label}</Label>
       {children}
     </div>
   );
 }
 
-const triggerClass = "h-8 border-white/10 bg-white/5 text-xs text-white";
-const inputClass = "h-8 border-white/10 bg-white/5 text-xs text-white";
+const triggerClass = "h-8 border-line bg-fill text-xs text-foreground";
+const inputClass = "h-8 border-line bg-fill text-xs text-foreground";
 
 function SingleInspector({ tattoo }: { tattoo: ProjectTattoo }) {
   const { t } = useTranslation("tattoos");
@@ -192,7 +192,7 @@ function SingleInspector({ tattoo }: { tattoo: ProjectTattoo }) {
       {/* Draw order within zone */}
       <Field label={t("inspector.drawOrder")}>
         <div className="flex items-center gap-2">
-          <span className="font-mono text-xs text-white/45">
+          <span className="font-mono text-xs text-faint">
             {indexInZone + 1} / {zoneBucket.length}
           </span>
           <div className="ml-auto flex gap-1">
@@ -218,10 +218,10 @@ function SingleInspector({ tattoo }: { tattoo: ProjectTattoo }) {
         </div>
       </Field>
 
-      <Separator className="bg-white/8" />
+      <Separator className="bg-fill" />
 
       {/* Shop section */}
-      <p className="text-[10px] font-semibold uppercase tracking-wider text-white/35">
+      <p className="text-[10px] font-semibold uppercase tracking-wider text-faint">
         {t("inspector.shopSection")}
       </p>
       <Field label={t("inspector.cost")}>
@@ -261,27 +261,27 @@ function SingleInspector({ tattoo }: { tattoo: ProjectTattoo }) {
         </Select>
       </Field>
 
-      <Separator className="bg-white/8" />
+      <Separator className="bg-fill" />
 
       {/* Derived build identity (read-only) */}
-      <div className="rounded-[8px] bg-white/[0.03] p-2.5">
-        <p className="text-[10px] font-semibold uppercase tracking-wider text-white/35">
+      <div className="rounded-[8px] bg-fill p-2.5">
+        <p className="text-[10px] font-semibold uppercase tracking-wider text-faint">
           {t("inspector.buildSection")}
         </p>
-        <dl className="mt-1.5 space-y-1 font-mono text-[10px] text-white/45">
+        <dl className="mt-1.5 space-y-1 font-mono text-[10px] text-faint">
           <div className="flex justify-between gap-2">
-            <dt className="text-white/30">YTD</dt>
+            <dt className="text-faint">YTD</dt>
             <dd className="truncate">{build?.ytdFileName}.ytd</dd>
           </div>
           {build?.nameMale && (
             <div className="flex justify-between gap-2">
-              <dt className="text-white/30">M</dt>
+              <dt className="text-faint">M</dt>
               <dd className="truncate">{build.nameMale}</dd>
             </div>
           )}
           {build?.nameFemale && (
             <div className="flex justify-between gap-2">
-              <dt className="text-white/30">F</dt>
+              <dt className="text-faint">F</dt>
               <dd className="truncate">{build.nameFemale}</dd>
             </div>
           )}
@@ -291,7 +291,7 @@ function SingleInspector({ tattoo }: { tattoo: ProjectTattoo }) {
       {/* Experimental placement */}
       <PlacementBlock tattoo={tattoo} onChange={(placement) => patch({ placement })} />
 
-      <Separator className="bg-white/8" />
+      <Separator className="bg-fill" />
 
       <Button
         variant="outline"
@@ -323,13 +323,13 @@ function PlacementBlock({
 
   return (
     <Collapsible>
-      <CollapsibleTrigger className="flex w-full items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-white/35 hover:text-white/55">
+      <CollapsibleTrigger className="flex w-full items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-faint hover:text-grey">
         <ChevronDown className="h-3 w-3" />
         {t("inspector.placementSection")}
       </CollapsibleTrigger>
       <CollapsibleContent className="pt-2">
-        <div className="flex items-center justify-between gap-2 rounded-[8px] bg-white/[0.03] px-2.5 py-2">
-          <span className="text-xs text-white/55">{t("inspector.placementEnable")}</span>
+        <div className="flex items-center justify-between gap-2 rounded-[8px] bg-fill px-2.5 py-2">
+          <span className="text-xs text-grey">{t("inspector.placementEnable")}</span>
           <Switch
             checked={p !== null}
             onCheckedChange={(on) => onChange(on ? DEFAULT_PLACEMENT : null)}
@@ -378,7 +378,7 @@ function MultiInspector({ ids }: { ids: string[] }) {
 
   return (
     <div className="flex flex-col gap-4 p-4">
-      <p className="text-sm text-white/70">{t("inspector.multi", { count: ids.length })}</p>
+      <p className="text-sm text-grey">{t("inspector.multi", { count: ids.length })}</p>
 
       <Field label={t("inspector.zone")}>
         <Select onValueChange={(v) => patchAll({ zone: v as ProjectTattoo["zone"] })}>
@@ -423,7 +423,7 @@ function MultiInspector({ ids }: { ids: string[] }) {
         </Select>
       </Field>
 
-      <Separator className="bg-white/8" />
+      <Separator className="bg-fill" />
 
       <Button
         variant="outline"
@@ -456,8 +456,8 @@ export function TattooInspector() {
 
   return (
     <div className="flex h-full flex-col">
-      <div className="flex h-10 shrink-0 items-center border-b border-white/8 px-4">
-        <span className="text-xs font-semibold uppercase tracking-wider text-white/50">
+      <div className="flex h-10 shrink-0 items-center border-b border-line px-4">
+        <span className="text-xs font-semibold uppercase tracking-wider text-grey">
           {t("inspector.title")}
         </span>
       </div>
@@ -471,7 +471,7 @@ export function TattooInspector() {
             <div className="h-24 w-16 opacity-40">
               <ZoneFigure activeZone={null} />
             </div>
-            <p className="mt-3 text-xs text-white/40">{t("inspector.noSelection")}</p>
+            <p className="mt-3 text-xs text-faint">{t("inspector.noSelection")}</p>
           </div>
         )}
       </ScrollArea>

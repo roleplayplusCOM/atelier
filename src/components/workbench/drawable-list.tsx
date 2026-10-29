@@ -166,10 +166,10 @@ function DrawableRow({
       onClick={onClick}
       onContextMenu={onContextMenuCapture}
       className={cn(
-        "flex cursor-default items-center gap-2 border-b border-white/5 px-2 text-sm transition-colors",
+        "flex cursor-default items-center gap-2 border-b border-line px-2 text-sm transition-colors",
         selected
-          ? "bg-[#5865F2]/15 hover:bg-[#5865F2]/20"
-          : "hover:bg-white/5",
+          ? "bg-brand/15 hover:bg-brand/20"
+          : "hover:bg-fill",
         isDragging && "z-10 opacity-70",
       )}
     >
@@ -179,9 +179,9 @@ function DrawableRow({
         {...listeners}
         tabIndex={-1}
         className={cn(
-          "flex h-6 w-5 shrink-0 items-center justify-center rounded text-white/25",
+          "flex h-6 w-5 shrink-0 items-center justify-center rounded text-faint",
           canReorder
-            ? "cursor-grab hover:text-white/60 active:cursor-grabbing"
+            ? "cursor-grab hover:text-grey active:cursor-grabbing"
             : "cursor-default opacity-30",
         )}
         title={
@@ -194,7 +194,7 @@ function DrawableRow({
         <GripVertical className="h-3.5 w-3.5" />
       </button>
 
-      <span className="w-9 shrink-0 font-mono text-xs text-[#7289DA]">
+      <span className="w-9 shrink-0 font-mono text-xs text-brand">
         {String(derivedId).padStart(3, "0")}
       </span>
 
@@ -209,11 +209,11 @@ function DrawableRow({
             if (e.key === "Escape") onCommitEdit(drawable.label);
           }}
           onClick={(e) => e.stopPropagation()}
-          className="h-7 flex-1 border-white/15 bg-white/5 text-sm text-white"
+          className="h-7 flex-1 border-line bg-fill text-sm text-foreground"
         />
       ) : (
         <span
-          className="min-w-0 flex-1 truncate text-white/85"
+          className="min-w-0 flex-1 truncate text-foreground"
           onDoubleClick={(e) => {
             e.stopPropagation();
             onStartEdit();
@@ -227,7 +227,7 @@ function DrawableRow({
       {previewed && (
         <Tooltip>
           <TooltipTrigger asChild>
-            <Eye className="h-3.5 w-3.5 shrink-0 text-[#7289DA]" />
+            <Eye className="h-3.5 w-3.5 shrink-0 text-brand" />
           </TooltipTrigger>
           <TooltipContent side="bottom">
             {t("drawableList.renderedInPreview")}
@@ -254,7 +254,7 @@ function DrawableRow({
         className={cn(
           "h-5 shrink-0 px-1.5 text-[10px]",
           drawable.mode === "addon"
-            ? "border-[#5865F2]/40 text-[#7289DA]"
+            ? "border-brand/40 text-brand"
             : "border-amber-500/40 text-amber-300",
         )}
       >
@@ -271,7 +271,7 @@ function DrawableRow({
             className={cn(
               "shrink-0 rounded-full px-1.5 py-0.5 font-mono text-[10px]",
               drawable.textures.length > 0
-                ? "bg-white/10 text-white/60"
+                ? "bg-fill-2 text-grey"
                 : "bg-amber-500/15 text-amber-300",
             )}
           >
@@ -319,13 +319,13 @@ function EmptyState({ onAdd }: { onAdd: () => void }) {
   const { t } = useTranslation("workbench");
   return (
     <div className="flex h-full flex-col items-center justify-center px-6 text-center">
-      <div className="glass-border-subtle flex h-14 w-14 items-center justify-center rounded-[10px]">
-        <Shirt className="h-6 w-6 text-white/30" />
+      <div className="glass-border-subtle flex h-14 w-14 items-center justify-center rounded-[14px]">
+        <Shirt className="h-6 w-6 text-faint" />
       </div>
-      <p className="mt-4 text-sm font-medium text-white/60">
+      <p className="mt-4 text-sm font-medium text-grey">
         {t("drawableList.emptyTitle")}
       </p>
-      <p className="mt-1 max-w-64 text-xs text-white/35">
+      <p className="mt-1 max-w-64 text-xs text-faint">
         {t("drawableList.emptyDescription")}
       </p>
       <Button size="sm" variant="outline" className="mt-4" onClick={onAdd}>
@@ -603,20 +603,20 @@ export function DrawableList() {
   return (
     <div className="flex h-full flex-col">
       {/* Toolbar: search + add */}
-      <div className="flex h-10 shrink-0 items-center gap-2 border-b border-white/8 px-3">
-        <span className="text-xs font-semibold uppercase tracking-wider text-white/50">
+      <div className="flex h-10 shrink-0 items-center gap-2 border-b border-line px-3">
+        <span className="text-xs font-semibold uppercase tracking-wider text-grey">
           {slotLabel}
         </span>
-        <span className="font-mono text-[10px] text-white/30">
+        <span className="font-mono text-[10px] text-faint">
           {filtered.length}
         </span>
         <div className="relative ml-auto w-48">
-          <Search className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-white/30" />
+          <Search className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-faint" />
           <Input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder={t("drawableList.searchPlaceholder")}
-            className="h-7 border-white/10 bg-white/5 pl-8 text-xs text-white"
+            className="h-7 border-line bg-fill pl-8 text-xs text-foreground"
           />
         </div>
         <Button

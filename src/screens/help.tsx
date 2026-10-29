@@ -46,7 +46,7 @@ export function HelpScreen() {
   return (
     <DocNavContext.Provider value={nav}>
       <div className="screen-fade-in flex h-full">
-        <aside className="hidden w-60 shrink-0 overflow-y-auto border-r border-white/10 px-4 py-8 lg:block">
+        <aside className="hidden w-60 shrink-0 overflow-y-auto border-r border-line px-4 py-8 lg:block">
           <HelpSidebar activeSlug={slug} scrollRoot={scrollRef} />
         </aside>
         <div

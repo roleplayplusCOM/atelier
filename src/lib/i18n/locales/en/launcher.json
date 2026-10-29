@@ -45,5 +45,14 @@
     "inLauncher": "In the launcher",
     "nobodyOnline": "Nobody online",
     "nobodyHint": "Teammates show up here as soon as they open atelier."
+  },
+  "marketplace": {
+    "eyebrow": "atelier Marketplace",
+    "title": "Made by creators. Free for everyone.",
+    "text": "Clothing, tattoos and animations from verified creators. Browse freely and import with one click into atelier.",
+    "cta": "Open the marketplace",
+    "clothing": "Clothing",
+    "tattoos": "Tattoos",
+    "animations": "Animations"
   }
 }

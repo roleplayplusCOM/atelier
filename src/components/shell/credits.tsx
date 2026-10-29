@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 const PATREON_URL = "https://patreon.com/grzybeek";
 const KOFI_URL = "https://ko-fi.com/grzybeek";
 /** feelgood's own community Discord — shown in the footer next to grzybeek's links. */
-const FEELGOOD_DISCORD_URL = "https://discord.gg/Y8kkKyShZx";
+const ROLEPLAYPLUS_DISCORD_URL = "https://discord.gg/roleplayplus";
 
 export function PatreonMark({ className }: { className?: string }) {
   return (
@@ -73,7 +73,7 @@ function SupportLink({
       onClick={() => void openInBrowser(url).catch(() => {})}
       title={url}
       className={cn(
-        "glass-border-subtle flex h-7 items-center gap-1.5 rounded-full px-3 text-xs font-medium text-white/55 transition-colors hover:bg-white/10",
+        "glass-border-subtle flex h-7 items-center gap-1.5 rounded-full px-3 text-xs font-medium text-grey transition-colors hover:bg-fill-2",
         hoverClass,
       )}
     >
@@ -88,11 +88,11 @@ export function GrzybeekCredits({ className }: { className?: string }) {
   const version = useAppVersion();
   return (
     <div className={cn("flex flex-wrap items-center justify-center gap-3", className)}>
-      <span className="text-xs text-white/35">
+      <span className="text-xs text-faint">
         {t("credits.inspiredBy")}{" "}
-        <span className="font-medium text-white/55">grzyClothTool</span>{" "}
+        <span className="font-medium text-grey">grzyClothTool</span>{" "}
         {t("credits.by")}{" "}
-        <span className="font-medium text-white/55">grzybeek</span>{" "}
+        <span className="font-medium text-grey">grzybeek</span>{" "}
         {t("credits.supportHim")}
       </span>
       <div className="flex items-center gap-2">
@@ -109,17 +109,17 @@ export function GrzybeekCredits({ className }: { className?: string }) {
           icon={<KofiMark className="h-4 w-4" />}
         />
       </div>
-      <span className="h-3.5 w-px bg-white/15" aria-hidden="true" />
+      <span className="h-3.5 w-px bg-fill-2" aria-hidden="true" />
       <SupportLink
-        label="feelgood Discord"
-        url={FEELGOOD_DISCORD_URL}
-        hoverClass="hover:text-[#7289DA]"
+        label="Roleplay+ Discord"
+        url={ROLEPLAYPLUS_DISCORD_URL}
+        hoverClass="hover:text-brand"
         icon={<DiscordMark className="h-4 w-4" />}
       />
       {version && (
         <>
-          <span className="h-3.5 w-px bg-white/15" aria-hidden="true" />
-          <span className="text-xs font-medium text-white/30" title={t("credits.version")}>
+          <span className="h-3.5 w-px bg-fill-2" aria-hidden="true" />
+          <span className="text-xs font-medium text-faint" title={t("credits.version")}>
             atelier v{version}
           </span>
         </>

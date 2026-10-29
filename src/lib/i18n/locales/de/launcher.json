@@ -45,5 +45,14 @@
     "inLauncher": "Im Launcher",
     "nobodyOnline": "Niemand online",
     "nobodyHint": "Teammitglieder erscheinen hier, sobald sie atelier öffnen."
+  },
+  "marketplace": {
+    "eyebrow": "atelier Marketplace",
+    "title": "Von Creators gemacht. Kostenlos für alle.",
+    "text": "Kleidung, Tattoos und Animationen von verifizierten Creators. Frei stöbern und mit einem Klick in atelier importieren.",
+    "cta": "Marketplace öffnen",
+    "clothing": "Kleidung",
+    "tattoos": "Tattoos",
+    "animations": "Animationen"
   }
 }

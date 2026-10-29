@@ -40,8 +40,8 @@ export function OverviewDoc() {
       <article>
         <DocH1>Dokumentation</DocH1>
         <DocLead>
-          atelier besteht aus zwei Teilen: der <strong className="text-white/80">Desktop-App</strong>,
-          mit der du Clothing-Packs baust, und dem <strong className="text-white/80">Backend</strong>,
+          atelier besteht aus zwei Teilen: der <strong className="text-foreground">Desktop-App</strong>,
+          mit der du Clothing-Packs baust, und dem <strong className="text-foreground">Backend</strong>,
           das Login und Team-Sync übernimmt. Hier findest du beide.
         </DocLead>
 
@@ -69,18 +69,18 @@ export function OverviewDoc() {
           </DocP>
           <DocUl>
             <DocLi>
-              <strong className="text-white/80">atelier (Desktop-App)</strong> — die App, die du
+              <strong className="text-foreground">atelier (Desktop-App)</strong> — die App, die du
               startest. Hier verwaltest du Drawables, siehst die 3D-Vorschau und baust das fertige
               Pack. Läuft unter Windows.
             </DocLi>
             <DocLi>
-              <strong className="text-white/80">Sidecar (.NET)</strong> — ein kleiner Helfer, der
+              <strong className="text-foreground">Sidecar (.NET)</strong> — ein kleiner Helfer, der
               zusammen mit der App startet. Er liest <Code>.ydd</Code>/<Code>.ytd</Code>-Dateien,
               rendert die Vorschau und schreibt die echten binären YMTs. Darum musst du dich nicht
               kümmern — er ist im Download enthalten.
             </DocLi>
             <DocLi>
-              <strong className="text-white/80">atelier-api (Backend)</strong> — der Server für
+              <strong className="text-foreground">atelier-api (Backend)</strong> — der Server für
               Login, Team-Cloud und das gemeinsame Bauen. Nur nötig, wenn ihr im Team arbeitet oder
               Packs in der Cloud teilen wollt. Eine Instanz fürs ganze Team genügt.
             </DocLi>
@@ -117,8 +117,8 @@ export function OverviewDoc() {
     <article>
       <DocH1>Documentation</DocH1>
       <DocLead>
-        atelier comes in two parts: the <strong className="text-white/80">desktop app</strong>, which
-        you use to build clothing packs, and the <strong className="text-white/80">backend</strong>,
+        atelier comes in two parts: the <strong className="text-foreground">desktop app</strong>, which
+        you use to build clothing packs, and the <strong className="text-foreground">backend</strong>,
         which handles login and team sync. You&apos;ll find both here.
       </DocLead>
 
@@ -146,18 +146,18 @@ export function OverviewDoc() {
         </DocP>
         <DocUl>
           <DocLi>
-            <strong className="text-white/80">atelier (desktop app)</strong> — the app you launch.
+            <strong className="text-foreground">atelier (desktop app)</strong> — the app you launch.
             Here you manage drawables, see the 3D preview and build the finished pack. Runs on
             Windows.
           </DocLi>
           <DocLi>
-            <strong className="text-white/80">Sidecar (.NET)</strong> — a small helper that starts
+            <strong className="text-foreground">Sidecar (.NET)</strong> — a small helper that starts
             alongside the app. It reads <Code>.ydd</Code>/<Code>.ytd</Code> files, renders the
             preview and writes the real binary YMTs. You don&apos;t have to worry about it — it ships
             with the download.
           </DocLi>
           <DocLi>
-            <strong className="text-white/80">atelier-api (backend)</strong> — the server for login,
+            <strong className="text-foreground">atelier-api (backend)</strong> — the server for login,
             team cloud and building together. Only needed if you work as a team or want to share
             packs in the cloud. One instance for the whole team is enough.
           </DocLi>

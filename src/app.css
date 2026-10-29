@@ -1,56 +1,129 @@
 @import "tailwindcss";
 
-/* The app is dark-only: <html class="dark"> is hardcoded in index.html so the
-   dark: variants of the ported shadcn components always apply. */
+/* Theme: <html data-theme="light|dark"> plus class "dark" (set by lib/theme.ts before first
+   paint). Light is the Roleplay+ default, dark follows the system / the stored choice. */
 @custom-variant dark (&:is(.dark *));
 
 /*
- * atelier by feelgood — design system
- * Ported from panel/app/globals.css, dark-only (no theme switch).
- * Background #0b0b0b, white text, Discord blurple #5865F2 / #7289DA.
+ * atelier by Roleplay+ - Roleplay+ design system (dark theme).
+ * Tokens follow roleplayplus-styles/tokens.css. The app is dark-only, so only the
+ * dark values are used. Paper #0e0e13, cards #1a1a22, Sora 500/600/700, amber -> coral
+ * gradient as the single brand idea, large radii, soft shadows, no glass.
  */
 
 :root {
-  /* Dark tokens only — the app never renders a light theme. */
-  --background: #0b0b0b;
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.16 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.16 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  /* Discord blurple #5865F2 */
-  --primary: oklch(0.5856 0.2037 277.12);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.235 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.235 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 14%);
-  --ring: oklch(0.5856 0.2037 277.12 / 60%);
-  --chart-1: oklch(0.5856 0.2037 277.12);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.145 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.5856 0.2037 277.12);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 12%);
-  --sidebar-ring: oklch(0.5856 0.2037 277.12 / 60%);
+  /* Roleplay+ tokens, light (same names as tokens.css) */
+  --ink: #17171a;
+  --ink-2: #3b3b42;
+  --grey: #6b6b73;
+  --faint: #a3a3ab;
+  --line: rgba(23, 23, 26, 0.09);
+  --paper: #fbfbfd;
+  --paper-2: #f3f3f7;
+  --white: #ffffff;
+  --fill: rgba(23, 23, 26, 0.06);
+  --fill-2: rgba(23, 23, 26, 0.1);
+  --key: #0d0d10;
+  --deck: #1c1c21;
+  --amber: #ffa233;
+  --g1: #ff8a1f;
+  --g2: #f4456b;
+  --grad: linear-gradient(90deg, var(--g1), var(--g2));
+  --alert: #ff4d5e;
+  --success: #38c172;
+  --shadow-s: 0 1px 2px rgba(29, 29, 58, 0.06), 0 8px 24px -12px rgba(29, 29, 58, 0.18);
+  --shadow-m: 0 2px 4px rgba(29, 29, 58, 0.05), 0 24px 48px -20px rgba(29, 29, 58, 0.28);
+  --shadow-l: 0 40px 80px -28px rgba(29, 29, 58, 0.45);
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --btn-bg: #17171a;
+  --btn-fg: #ffffff;
+  --header-bg: rgba(251, 251, 253, 0.82);
+  --popover-bg: #ffffff;
+  --blob-1: rgba(255, 138, 31, 0.3);
+  --blob-2: rgba(244, 69, 107, 0.22);
+  --blob-3: rgba(155, 107, 255, 0.18);
+  color-scheme: light;
 
-  /* Brand */
-  --blurple: #5865f2;
-  --blurple-hover: #4752c4;
-  --blurple-soft: #7289da;
+  /* shadcn semantic tokens mapped onto the Roleplay+ palette */
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--white);
+  --card-foreground: var(--ink);
+  --popover: var(--popover-bg);
+  --popover-foreground: var(--ink);
+  --primary: var(--g2);
+  --primary-foreground: #fff;
+  --secondary: var(--fill);
+  --secondary-foreground: var(--ink);
+  --muted: var(--fill);
+  --muted-foreground: var(--grey);
+  --accent: var(--fill-2);
+  --accent-foreground: var(--ink);
+  --destructive: var(--alert);
+  --destructive-foreground: #fff;
+  --border: var(--line);
+  --input: var(--fill-2);
+  --ring: var(--g2);
+  --chart-1: var(--g2);
+  --chart-2: var(--g1);
+  --chart-3: #9b6bff;
+  --chart-4: #4c8dff;
+  --chart-5: var(--success);
+  --radius: 22px;
+  --sidebar: var(--paper-2);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--g2);
+  --sidebar-primary-foreground: #fff;
+  --sidebar-accent: var(--fill-2);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--line);
+  --sidebar-ring: var(--g2);
+
+  /* Brand (formerly Discord blurple) */
+  --brand: var(--g2);
+  --brand-hover: #e0365b;
+  --brand-amber: var(--g1);
+}
+
+html[data-theme="dark"] {
+  --ink: #f4f4f5;
+  --ink-2: #d2d2da;
+  --grey: #a4a4b0;
+  --faint: #70707c;
+  --line: rgba(255, 255, 255, 0.1);
+  --paper: #0e0e13;
+  --paper-2: #15151b;
+  --white: #1a1a22;
+  --fill: rgba(255, 255, 255, 0.07);
+  --fill-2: rgba(255, 255, 255, 0.12);
+  --deck: #24242c;
+  --shadow-s: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -12px rgba(0, 0, 0, 0.6);
+  --shadow-m: 0 2px 4px rgba(0, 0, 0, 0.4), 0 24px 48px -20px rgba(0, 0, 0, 0.7);
+  --shadow-l: 0 40px 80px -28px rgba(0, 0, 0, 0.8);
+  --btn-bg: #f4f4f5;
+  --btn-fg: #17171a;
+  --header-bg: rgba(14, 14, 19, 0.8);
+  --popover-bg: #1f1f28;
+  --blob-1: rgba(255, 138, 31, 0.22);
+  --blob-2: rgba(244, 69, 107, 0.2);
+  --blob-3: rgba(155, 107, 255, 0.14);
+  color-scheme: dark;
+}
+
+/* Status colours were written for dark (300/200 shades). In light they get darker
+   values so text stays readable; utilities read these variables. */
+html[data-theme="light"] {
+  --color-amber-100: #8a5004;
+  --color-amber-200: #9a5b05;
+  --color-amber-300: #b56a06;
+  --color-amber-400: #d98a12;
+  --color-red-100: #a3202f;
+  --color-red-200: #b3263a;
+  --color-red-300: #c02a3f;
+  --color-red-400: #d63a4e;
+  --color-emerald-300: #1d8a4e;
+  --color-emerald-400: #2aa862;
+  --color-sky-300: #2a62c9;
 }
 
 @theme inline {
@@ -79,10 +152,10 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: var(--radius);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -91,9 +164,17 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --color-blurple: var(--blurple);
-  --color-blurple-hover: var(--blurple-hover);
-  --color-blurple-soft: var(--blurple-soft);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-amber: var(--brand-amber);
+  --color-ink: var(--ink);
+  --color-grey: var(--grey);
+  --color-faint: var(--faint);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-fill: var(--fill);
+  --color-fill-2: var(--fill-2);
+  --color-line: var(--line);
 }
 
 @layer base {
@@ -101,20 +182,32 @@
     @apply border-border outline-ring/50;
   }
 
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 600;
+    letter-spacing: -0.03em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--g2);
+    outline-offset: 3px;
+  }
+
   html {
     height: 100%;
     overflow: hidden;
     overscroll-behavior: none;
-    /* Transparent so the OS window effect (acrylic/mica blur, see
-       tauri.conf.json windowEffects) shines through the whole app. */
-    background: transparent;
+    background: var(--paper);
   }
 
   body {
     @apply text-foreground font-sans;
-    /* Translucent dark tint over the acrylic blur — the glassmorphism base.
-       (Solid #0b0b0b would kill the window transparency.) */
-    background: rgba(11, 11, 11, 0.55);
+    background: linear-gradient(180deg, var(--paper), var(--paper-2) 60%, var(--paper));
+    background-color: var(--paper);
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
     height: 100%;
     overflow: hidden;
     overscroll-behavior: none;
@@ -152,72 +245,54 @@
   animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Apple Site Header Glass Effects - Clean, Minimal, Crisp */
-.liquid-glass {
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.liquid-glass-enhanced {
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-/* Improved header glass background for better contrast */
-.liquid-glass-header {
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-/* Apple-style glass border utilities - Clean and minimal */
-.glass-border {
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(20px) saturate(180%);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-
+/* Surfaces. The old glass class names stay so every screen picks up the flat
+   Roleplay+ look: lifted card fill + soft shadow, no blur, no hairline frame. */
+.liquid-glass,
+.liquid-glass-enhanced,
 .glass-border-enhanced {
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(20px) saturate(180%);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  background: var(--white);
+  border: 0;
+  box-shadow: var(--shadow-m);
+}
+
+.liquid-glass-header {
+  background: var(--header-bg);
+  border: 0;
+  box-shadow: 0 1px 0 var(--line);
+  backdrop-filter: none;
+}
+
+.glass-border {
+  background: var(--white);
+  border: 0;
+  box-shadow: var(--shadow-s);
 }
 
 .glass-border-subtle {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(20px) saturate(180%);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: var(--fill);
+  border: 0;
+  box-shadow: none;
 }
 
-/* Enhanced glass border hover effects with chromatic aberration */
-.glass-border:hover {
-  filter: drop-shadow(0 0 2px rgba(255, 0, 0, 0.1)) drop-shadow(1px 0 2px rgba(0, 255, 0, 0.08))
-    drop-shadow(-1px 0 2px rgba(0, 0, 255, 0.06));
-}
-
-.glass-border-enhanced:hover {
-  filter: drop-shadow(0 0 3px rgba(255, 0, 0, 0.12)) drop-shadow(1px 0 3px rgba(0, 255, 0, 0.1))
-    drop-shadow(-1px 0 3px rgba(0, 0, 255, 0.08));
-}
-
-.glass-border-subtle:hover {
-  filter: drop-shadow(0 0 1px rgba(255, 0, 0, 0.06)) drop-shadow(0.5px 0 1px rgba(0, 255, 0, 0.05))
-    drop-shadow(-0.5px 0 1px rgba(0, 0, 255, 0.04));
-}
-
-/* Opt-out for LARGE panel surfaces: the chromatic hover fringe above is meant
-   for small chips/pills — on big containers (workbench panes) it reads as a
-   glitch when the cursor moves across rows. */
 .glass-hover-none:hover {
   filter: none;
+}
+
+/* Gradient text for numbers and the second half of a headline */
+.grad {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Small caps label */
+.caps {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--faint);
 }
 
 /* Grid Background Pattern */
@@ -229,10 +304,8 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
+  background-image: radial-gradient(circle at 20% 0%, rgba(255, 138, 31, 0.1), transparent 45%),
+    radial-gradient(circle at 85% 100%, rgba(244, 69, 107, 0.1), transparent 45%);
   pointer-events: none;
   z-index: 0;
 }
@@ -279,23 +352,23 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0b0b0b;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--fill-2);
   border-radius: 10px;
   transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #7289da;
+  background: var(--g2);
 }
 
 /* For Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.1) #0b0b0b;
+  scrollbar-color: var(--fill-2) transparent;
 }
 
 /* --- Login progress: indeterminate loading bar + auth success checkmark --- */
@@ -309,7 +382,7 @@
 }
 
 .atelier-indeterminate {
-  animation: atelier-indeterminate 1.15s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: atelier-indeterminate 1.15s var(--ease) infinite;
 }
 
 /* Stroke-draw used by the auth success check (mirrors the browser success
@@ -348,4 +421,56 @@
 
 .atelier-pop {
   animation: atelier-pop 0.4s ease-out both;
+}
+
+/* Primary button: ink fill, amber -> coral gradient fades in on hover */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s;
+}
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--grad);
+  opacity: 0;
+  transition: opacity 0.35s;
+  z-index: -1;
+}
+.btn-primary:hover:not(:disabled) {
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px -12px rgba(244, 69, 107, 0.55);
+}
+.btn-primary:hover:not(:disabled)::before {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Ambient blobs (backdrop) */
+.rp-blob {
+  position: absolute;
+  width: 46vw;
+  height: 46vw;
+  border-radius: 50%;
+  filter: blur(90px);
+  animation: rp-drift 22s ease-in-out infinite alternate;
+}
+.rp-blob-1 { top: -18%; right: -8%; background: var(--blob-1); }
+.rp-blob-2 { bottom: -22%; left: -10%; background: var(--blob-2); animation-delay: -8s; }
+.rp-blob-3 { top: 30%; left: 35%; width: 30vw; height: 30vw; background: var(--blob-3); animation-delay: -15s; }
+@keyframes rp-drift {
+  to { transform: translate(4vw, 3vh) scale(1.08); }
 }

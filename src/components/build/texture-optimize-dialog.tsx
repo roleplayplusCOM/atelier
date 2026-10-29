@@ -107,18 +107,18 @@ export function TextureOptimizeDialog({
   return (
     <Dialog open={texture !== null} onOpenChange={(o) => !o && !busy && onClose()}>
       <DialogContent
-        className="liquid-glass border-white/15 sm:max-w-sm"
+        className="liquid-glass border-line sm:max-w-sm"
         showCloseButton={!busy}
         onInteractOutside={(e) => {
           if (busy) e.preventDefault();
         }}
       >
         <DialogHeader className="min-w-0">
-          <DialogTitle className="flex items-center gap-2 text-white">
-            <Wand2 className="h-4 w-4 text-[#7289DA]" />
+          <DialogTitle className="flex items-center gap-2 text-foreground">
+            <Wand2 className="h-4 w-4 text-brand" />
             {t("texture.title")}
           </DialogTitle>
-          <DialogDescription className="min-w-0 [overflow-wrap:anywhere] text-white/50">
+          <DialogDescription className="min-w-0 [overflow-wrap:anywhere] text-grey">
             {texture
               ? t("texture.description", {
                   name: baseName(texture.path),
@@ -133,7 +133,7 @@ export function TextureOptimizeDialog({
         </p>
 
         {meta.length > 0 && (
-          <p className="-mt-2 text-[11px] text-white/35">
+          <p className="-mt-2 text-[11px] text-faint">
             {t("texture.current", {
               list: meta
                 .slice(0, 3)
@@ -147,12 +147,12 @@ export function TextureOptimizeDialog({
 
         <div className="flex flex-col gap-3">
           <div className="flex items-center justify-between gap-3">
-            <Label className="text-xs text-white/70">{t("texture.maxEdge")}</Label>
+            <Label className="text-xs text-grey">{t("texture.maxEdge")}</Label>
             <Select
               value={String(maxDimension)}
               onValueChange={(v) => setMaxDimension(Number.parseInt(v, 10))}
             >
-              <SelectTrigger className="h-8 w-28 border-white/15 bg-white/5 font-mono text-xs text-white">
+              <SelectTrigger className="h-8 w-28 border-line bg-fill font-mono text-xs text-foreground">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -166,9 +166,9 @@ export function TextureOptimizeDialog({
           </div>
 
           <div className="flex items-center justify-between gap-3">
-            <Label className="text-xs text-white/70">{t("texture.format")}</Label>
+            <Label className="text-xs text-grey">{t("texture.format")}</Label>
             <Select value={format} onValueChange={(v) => setFormat(v as FormatChoice)}>
-              <SelectTrigger className="h-8 w-28 border-white/15 bg-white/5 text-xs text-white">
+              <SelectTrigger className="h-8 w-28 border-line bg-fill text-xs text-foreground">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -188,7 +188,7 @@ export function TextureOptimizeDialog({
           )}
 
           <div className="flex items-center justify-between gap-3">
-            <Label className="text-xs text-white/70">{t("texture.regenerateMips")}</Label>
+            <Label className="text-xs text-grey">{t("texture.regenerateMips")}</Label>
             <Switch checked={regenerateMips} onCheckedChange={setRegenerateMips} />
           </div>
         </div>

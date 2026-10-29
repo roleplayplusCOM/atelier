@@ -24,9 +24,9 @@ import {
 } from "@/lib/stores/log-console-store";
 
 const LEVEL_STYLES: Record<string, string> = {
-  TRACE: "text-white/30",
-  DEBUG: "text-white/35",
-  INFO: "text-white/70",
+  TRACE: "text-faint",
+  DEBUG: "text-faint",
+  INFO: "text-grey",
   WARN: "text-amber-300",
   ERROR: "text-red-400",
 };
@@ -80,19 +80,19 @@ export function BuildLogPane({
   }, [rows]);
 
   return (
-    <div className={cn("flex min-h-0 flex-col rounded-[10px] border border-white/10 bg-black/30", className)}>
-      <div className="flex shrink-0 items-center gap-2 border-b border-white/10 px-3 py-1.5">
+    <div className={cn("flex min-h-0 flex-col rounded-[14px] border border-line bg-black/30", className)}>
+      <div className="flex shrink-0 items-center gap-2 border-b border-line px-3 py-1.5">
         <span className="relative flex h-1.5 w-1.5 shrink-0">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#7289DA] opacity-70" />
-          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#7289DA]" />
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-70" />
+          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
         </span>
-        <span className="text-[11px] font-medium text-white/60">{t("log.title")}</span>
+        <span className="text-[11px] font-medium text-grey">{t("log.title")}</span>
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
               variant="ghost"
               size="sm"
-              className="ml-auto h-6 w-6 shrink-0 p-0 text-white/40 hover:text-white"
+              className="ml-auto h-6 w-6 shrink-0 p-0 text-faint hover:text-foreground"
               onClick={() => openLogWindow()}
             >
               <ExternalLink className="h-3 w-3" />
@@ -104,14 +104,14 @@ export function BuildLogPane({
 
       <div ref={scrollRef} className="min-h-0 flex-1 select-text overflow-y-auto px-3 py-2">
         {rows.length === 0 ? (
-          <p className="py-6 text-center text-[11px] text-white/25">{t("log.waiting")}</p>
+          <p className="py-6 text-center text-[11px] text-faint">{t("log.waiting")}</p>
         ) : (
           <div className="flex flex-col gap-0.5">
             {rows.map(({ entry, human }, i) => (
               <div key={`${entry.ts}-${i}`} className="flex gap-2 text-[11px] leading-[1.45]">
-                <span className="shrink-0 font-mono text-white/20">{time(entry.ts)}</span>
+                <span className="shrink-0 font-mono text-faint">{time(entry.ts)}</span>
                 <span
-                  className={cn("min-w-0 break-words", LEVEL_STYLES[entry.level] ?? "text-white/60")}
+                  className={cn("min-w-0 break-words", LEVEL_STYLES[entry.level] ?? "text-grey")}
                   title={entry.message}
                 >
                   {human.text}

@@ -51,19 +51,19 @@ export function UpdatesCard() {
       : null;
 
   return (
-    <Card className="glass-border-subtle border-white/10 bg-transparent">
+    <Card className="glass-border-subtle border-line bg-transparent">
       <CardHeader>
-        <CardTitle className="text-white">{t("updates.title")}</CardTitle>
-        <CardDescription className="text-white/50">
+        <CardTitle className="text-foreground">{t("updates.title")}</CardTitle>
+        <CardDescription className="text-grey">
           {t("updates.description")}
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <div className="flex items-center justify-between gap-4">
           <div className="min-w-0 text-sm">
-            <p className="text-white/70">
+            <p className="text-grey">
               {t("updates.currentVersion")}{" "}
-              <span className="font-medium text-white">
+              <span className="font-medium text-foreground">
                 v{version ?? "—"}
               </span>
             </p>
@@ -97,16 +97,16 @@ export function UpdatesCard() {
         </div>
 
         {phase === "available" && available && (
-          <div className="flex flex-col gap-3 rounded-[10px] border border-white/10 bg-white/[0.035] px-4 py-3">
-            <div className="flex items-center gap-2 text-sm text-white/90">
-              <Sparkles className="h-4 w-4 text-[#7289DA]" />
+          <div className="flex flex-col gap-3 rounded-[14px] border border-line bg-fill px-4 py-3">
+            <div className="flex items-center gap-2 text-sm text-foreground">
+              <Sparkles className="h-4 w-4 text-brand" />
               <span className="font-medium">
                 {t("updates.available", { version: available.version })}
               </span>
             </div>
             {available.notes && (
               <div className="flex flex-col gap-1.5">
-                <p className="text-[11px] font-medium uppercase tracking-wide text-white/40">
+                <p className="text-[11px] font-medium uppercase tracking-wide text-faint">
                   {t("updates.whatsNew", { version: available.version })}
                 </p>
                 <div className="max-h-56 overflow-y-auto pr-1">
@@ -124,7 +124,7 @@ export function UpdatesCard() {
         {(phase === "downloading" || phase === "ready") && (
           <div className="flex flex-col gap-2">
             <Progress value={pct ?? undefined} className="h-2" />
-            <p className="text-xs text-white/50">
+            <p className="text-xs text-grey">
               {phase === "ready"
                 ? t("updates.restarting")
                 : pct !== null

@@ -28,14 +28,14 @@ export function ConfirmDeleteDialog({
   const { t } = useTranslation("workbench");
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="liquid-glass border-white/15 sm:max-w-sm">
+      <DialogContent className="liquid-glass border-line sm:max-w-sm">
         <DialogHeader>
-          <DialogTitle className="text-white">
+          <DialogTitle className="text-foreground">
             {count === 1
               ? t("confirmDelete.titleOne")
               : t("confirmDelete.titleMany", { count })}
           </DialogTitle>
-          <DialogDescription className="text-white/50">
+          <DialogDescription className="text-grey">
             {count === 1
               ? t("confirmDelete.descriptionOne")
               : t("confirmDelete.descriptionMany")}

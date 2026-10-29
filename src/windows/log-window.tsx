@@ -33,12 +33,12 @@ export function LogWindow() {
           data-tauri-drag-region
           className="liquid-glass-header relative z-20 flex h-11 shrink-0 items-center gap-2 border-x-0 border-t-0 px-3"
         >
-          <Terminal className="pointer-events-none h-4 w-4 text-[#7289DA]" />
+          <Terminal className="pointer-events-none h-4 w-4 text-brand" />
           <span className="pointer-events-none flex items-baseline gap-1.5">
-            <span className="text-sm font-semibold tracking-tight text-white">
+            <span className="text-sm font-semibold tracking-tight text-foreground">
               {title}
             </span>
-            <span className="text-[10px] font-medium text-[#7289DA]">atelier by feelgood</span>
+            <span className="text-[10px] font-medium text-brand">atelier by Roleplay+</span>
           </span>
           <div className="ml-auto">
             <WindowControls />

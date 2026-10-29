@@ -64,12 +64,12 @@ function TextureThumb({ texture, projectDir }: { texture: AssetRef; projectDir: 
   }, [texture.hash, texture.path, projectDir, ensurePreview]);
 
   if (!preview || preview.status === "loading") {
-    return <Skeleton className="h-10 w-10 shrink-0 rounded-[8px] bg-white/10" />;
+    return <Skeleton className="h-10 w-10 shrink-0 rounded-[8px] bg-fill-2" />;
   }
   if (preview.status === "error" || !preview.dataUrl) {
     return (
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[8px] bg-white/5">
-        <ImageOff className="h-4 w-4 text-white/25" />
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[8px] bg-fill">
+        <ImageOff className="h-4 w-4 text-faint" />
       </div>
     );
   }
@@ -89,19 +89,19 @@ function TextureMetaTooltip({ texture }: { texture: AssetRef }) {
   return (
     <div className="flex flex-col gap-0.5 text-xs [overflow-wrap:anywhere]">
       <span className="font-medium">{baseName(texture.path)}</span>
-      <span className="text-white/60">{formatBytes(texture.size)}</span>
+      <span className="text-grey">{formatBytes(texture.size)}</span>
       {meta.length === 0 && preview?.status === "ready" && (
-        <span className="text-white/60">
+        <span className="text-grey">
           {t("texturePanel.noTexturesInDictionary")}
         </span>
       )}
       {meta.slice(0, 4).map((tex) => (
-        <span key={tex.name} className="text-white/60">
+        <span key={tex.name} className="text-grey">
           {tex.name}: {tex.width}×{tex.height} · {tex.format} · {tex.mipCount} Mips
         </span>
       ))}
       {meta.length > 4 && (
-        <span className="text-white/40">
+        <span className="text-faint">
           {t("texturePanel.andMore", { count: meta.length - 4 })}
         </span>
       )}
@@ -156,9 +156,9 @@ function TextureRow({
           onClick={onSelect}
           title={t("texturePanel.clickToPreview")}
           className={cn(
-            "flex cursor-pointer items-center gap-2 rounded-[10px] px-1.5 py-1.5 transition-colors hover:bg-white/5",
-            active && "bg-[#5865F2]/10 ring-1 ring-inset ring-[#5865F2]/30",
-            isDragging && "z-10 bg-white/10 opacity-80",
+            "flex cursor-pointer items-center gap-2 rounded-[14px] px-1.5 py-1.5 transition-colors hover:bg-fill",
+            active && "bg-brand/10 ring-1 ring-inset ring-brand/30",
+            isDragging && "z-10 bg-fill-2 opacity-80",
           )}
         >
           <button
@@ -166,7 +166,7 @@ function TextureRow({
             {...attributes}
             {...listeners}
             tabIndex={-1}
-            className="flex h-6 w-4 shrink-0 cursor-grab items-center justify-center text-white/25 hover:text-white/60 active:cursor-grabbing"
+            className="flex h-6 w-4 shrink-0 cursor-grab items-center justify-center text-faint hover:text-grey active:cursor-grabbing"
             title={t("texturePanel.dragToSort")}
             onClick={(e) => e.stopPropagation()}
           >
@@ -175,7 +175,7 @@ function TextureRow({
           <span
             className={cn(
               "w-4 shrink-0 text-center font-mono text-xs font-semibold",
-              active ? "text-white" : "text-[#7289DA]",
+              active ? "text-foreground" : "text-brand",
             )}
           >
             {textureIndexToLetter(index)}
@@ -186,8 +186,8 @@ function TextureRow({
               <div className="min-w-0 flex-1">
                 {/* Name in the BUILT pack — derived from slot + number,
                     independent of label and source file name. */}
-                <p className="truncate text-xs text-white/70">{canonicalName}</p>
-                <p className="truncate text-[10px] text-white/30">
+                <p className="truncate text-xs text-grey">{canonicalName}</p>
+                <p className="truncate text-[10px] text-faint">
                   {t("inspector.source", { name: baseName(texture.path) })}
                 </p>
               </div>
@@ -202,7 +202,7 @@ function TextureRow({
               e.stopPropagation();
               onRemove();
             }}
-            className="flex h-6 w-6 shrink-0 items-center justify-center rounded-[6px] text-white/30 transition-colors hover:bg-red-500/15 hover:text-red-400"
+            className="flex h-6 w-6 shrink-0 items-center justify-center rounded-[6px] text-faint transition-colors hover:bg-red-500/15 hover:text-red-400"
             aria-label={t("texturePanel.removeTexture")}
           >
             <X className="h-3.5 w-3.5" />
@@ -347,14 +347,14 @@ export function TexturePanel({ drawable }: { drawable: ProjectDrawable }) {
   return (
     <div className="flex flex-col gap-1.5">
       <div className="flex items-center justify-between">
-        <span className="text-[10px] font-semibold uppercase tracking-wider text-white/40">
+        <span className="text-[10px] font-semibold uppercase tracking-wider text-faint">
           {t("texturePanel.textures", { count: drawable.textures.length })}
         </span>
         <Button
           size="sm"
           variant="ghost"
           disabled={adding || drawable.textures.length >= 26}
-          className="h-6 gap-1 px-2 text-[11px] text-white/55 hover:bg-white/10 hover:text-white"
+          className="h-6 gap-1 px-2 text-[11px] text-grey hover:bg-fill-2 hover:text-foreground"
           onClick={() => void addTextures()}
         >
           <Plus className="h-3 w-3" />
@@ -363,9 +363,9 @@ export function TexturePanel({ drawable }: { drawable: ProjectDrawable }) {
       </div>
 
       {drawable.textures.length === 0 ? (
-        <div className="glass-border-subtle flex flex-col items-center justify-center rounded-[10px] px-4 py-6 text-center">
-          <ImageOff className="h-5 w-5 text-white/25" />
-          <p className="mt-2 text-xs text-white/40">
+        <div className="glass-border-subtle flex flex-col items-center justify-center rounded-[14px] px-4 py-6 text-center">
+          <ImageOff className="h-5 w-5 text-faint" />
+          <p className="mt-2 text-xs text-faint">
             {t("texturePanel.noVariants")}
           </p>
         </div>

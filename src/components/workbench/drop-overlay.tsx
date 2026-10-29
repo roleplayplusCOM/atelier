@@ -42,13 +42,13 @@ export function DropOverlay() {
 
   return (
     <div className="pointer-events-none absolute inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-      <div className="flex flex-col items-center gap-4 rounded-[14px] border-2 border-dashed border-[#5865F2] bg-[#5865F2]/10 px-16 py-12">
-        <FileDown className="h-10 w-10 text-[#7289DA]" />
+      <div className="flex flex-col items-center gap-4 rounded-[14px] border-2 border-dashed border-brand bg-brand/10 px-16 py-12">
+        <FileDown className="h-10 w-10 text-brand" />
         <div className="text-center">
-          <p className="text-lg font-semibold text-white">
+          <p className="text-lg font-semibold text-foreground">
             {t("dropOverlay.title")}
           </p>
-          <p className="mt-1 text-sm text-white/50">
+          <p className="mt-1 text-sm text-grey">
             {t("dropOverlay.description")}
           </p>
         </div>

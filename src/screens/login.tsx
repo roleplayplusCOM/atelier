@@ -72,17 +72,17 @@ function LoginProgress({ phase }: { phase: Exclude<LoginPhase, "idle"> }) {
   }
   return (
     <div className="mt-8 flex flex-col gap-3">
-      <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/10">
-        <div className="atelier-indeterminate h-full w-1/3 rounded-full bg-gradient-to-r from-[#5865F2] to-[#7289DA]" />
+      <div className="h-1.5 w-full overflow-hidden rounded-full bg-fill-2">
+        <div className="atelier-indeterminate h-full w-1/3 rounded-full bg-gradient-to-r from-brand-amber to-brand" />
       </div>
-      <p className="text-center text-sm text-white/55">{t(LOGIN_PHASE_KEY[phase])}</p>
+      <p className="text-center text-sm text-grey">{t(LOGIN_PHASE_KEY[phase])}</p>
     </div>
   );
 }
 
 export function GateShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative flex h-full flex-col overflow-hidden bg-[#0b0b0b] text-foreground">
+    <div className="relative flex h-full flex-col overflow-hidden bg-background text-foreground">
       {/* Hero video + gradient veil + subtle grid (shared with launcher/settings). */}
       <HeroBackdrop />
 
@@ -94,8 +94,8 @@ export function GateShell({ children }: { children: React.ReactNode }) {
         <span className="pointer-events-none flex items-center gap-2">
           <img src={atelierLogo} alt="" className="h-6 w-6" draggable={false} />
           <span className="flex items-baseline gap-1.5">
-            <span className="text-base font-semibold tracking-tight text-white">atelier</span>
-            <span className="text-[11px] font-medium text-[#7289DA]">by feelgood</span>
+            <span className="text-base font-semibold tracking-tight text-foreground">atelier</span>
+            <span className="text-[11px] font-medium text-brand">by Roleplay+</span>
           </span>
         </span>
         <div className="ml-auto">
@@ -121,12 +121,12 @@ function ApiUrlAdvanced() {
 
   return (
     <Collapsible open={open} onOpenChange={setOpen} className="w-full">
-      <CollapsibleTrigger className="flex items-center gap-1 text-xs text-white/40 transition-colors hover:text-white/70">
+      <CollapsibleTrigger className="flex items-center gap-1 text-xs text-faint transition-colors hover:text-grey">
         <ChevronRight className={cn("h-3 w-3 transition-transform", open && "rotate-90")} />
         {t("advanced")}
       </CollapsibleTrigger>
       <CollapsibleContent className="pt-3">
-        <Label htmlFor="gate-api-url" className="text-xs text-white/50">
+        <Label htmlFor="gate-api-url" className="text-xs text-grey">
           {t("apiUrlLabel")}
         </Label>
         <div className="mt-1.5 flex gap-2">
@@ -161,14 +161,14 @@ function LoginCard() {
 
   return (
     <div className="liquid-glass w-full max-w-sm rounded-2xl p-8">
-      <h2 className="text-xl font-semibold text-white">{t("signIn")}</h2>
-      <p className="mt-1 text-sm text-white/50">{t("signInSubtitle")}</p>
+      <h2 className="text-xl font-semibold text-foreground">{t("signIn")}</h2>
+      <p className="mt-1 text-sm text-grey">{t("signInSubtitle")}</p>
 
       {busy ? (
         <LoginProgress phase={loginPhase} />
       ) : (
         <Button
-          className="mt-6 h-11 w-full bg-[#5865F2] text-white hover:bg-[#4752C4]"
+          className="mt-6 h-11 w-full bg-brand text-white hover:bg-brand-hover"
           onClick={() => {
             login().catch((e: unknown) => {
               toast.error(t("signInFailed"), {
@@ -181,7 +181,7 @@ function LoginCard() {
         </Button>
       )}
 
-      <div className="mt-6 border-t border-white/10 pt-4">
+      <div className="mt-6 border-t border-line pt-4">
         <ApiUrlAdvanced />
       </div>
 
@@ -189,12 +189,12 @@ function LoginCard() {
         <Button
           variant="ghost"
           size="sm"
-          className="text-white/50 hover:text-white/80"
+          className="text-grey hover:text-foreground"
           onClick={() => useAuthStore.getState().setAppMode("solo")}
         >
           {t("soloOption")}
         </Button>
-        <p className="text-xs text-white/35">{t("soloHint")}</p>
+        <p className="text-xs text-faint">{t("soloHint")}</p>
       </div>
     </div>
   );
@@ -219,8 +219,8 @@ function PendingCard() {
       <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-amber-500/15">
         <ShieldCheck className="h-6 w-6 text-amber-300" />
       </div>
-      <h2 className="mt-4 text-lg font-semibold text-white">{t("pending.title")}</h2>
-      <p className="mt-2 text-sm text-white/55">
+      <h2 className="mt-4 text-lg font-semibold text-foreground">{t("pending.title")}</h2>
+      <p className="mt-2 text-sm text-grey">
         {user?.username
           ? t("pending.bodyNamed", { name: user.username })
           : t("pending.body")}
@@ -256,8 +256,8 @@ function LockedCard() {
       <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-red-500/15">
         <Lock className="h-6 w-6 text-red-400" />
       </div>
-      <h2 className="mt-4 text-lg font-semibold text-white">{t("locked.title")}</h2>
-      <p className="mt-2 text-sm text-white/55">{t("locked.body")}</p>
+      <h2 className="mt-4 text-lg font-semibold text-foreground">{t("locked.title")}</h2>
+      <p className="mt-2 text-sm text-grey">{t("locked.body")}</p>
       <Button variant="ghost" size="sm" className="mt-6" onClick={() => void logout()}>
         {t("locked.logout")}
       </Button>
@@ -273,8 +273,8 @@ export function BootSplash() {
         <div className="flex animate-pulse flex-col items-center gap-4">
           <img src={atelierLogo} alt="" className="h-20 w-20" draggable={false} />
           <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-semibold tracking-tight text-white">atelier</span>
-            <span className="text-sm font-medium text-[#7289DA]">by feelgood</span>
+            <span className="text-3xl font-semibold tracking-tight text-foreground">atelier</span>
+            <span className="text-sm font-medium text-brand">by Roleplay+</span>
           </div>
         </div>
       </div>
@@ -300,12 +300,12 @@ export function LoginGate() {
           <img src={atelierLogo} alt="" className="h-28 w-28" draggable={false} />
           <div>
             <div className="flex items-baseline gap-3">
-              <span className="text-5xl font-semibold tracking-tight text-white">
+              <span className="text-5xl font-semibold tracking-tight text-foreground">
                 atelier
               </span>
-              <span className="text-lg font-medium text-[#7289DA]">by feelgood</span>
+              <span className="text-lg font-medium text-brand">by Roleplay+</span>
             </div>
-            <p className="mt-3 text-base text-white/55">
+            <p className="mt-3 text-base text-grey">
               {t("tagline")}
             </p>
           </div>

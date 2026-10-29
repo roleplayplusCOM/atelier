@@ -77,18 +77,18 @@ export function AtelierApiDoc() {
         <DocSection id="voraussetzungen" title="Voraussetzungen">
           <DocUl>
             <DocLi>
-              <strong className="text-white/80">Bun</strong> (1.x) — zum Starten des Servers.
+              <strong className="text-foreground">Bun</strong> (1.x) — zum Starten des Servers.
             </DocLi>
             <DocLi>
-              <strong className="text-white/80">MongoDB</strong> — eine eigene Instanz oder MongoDB
+              <strong className="text-foreground">MongoDB</strong> — eine eigene Instanz oder MongoDB
               Atlas.
             </DocLi>
             <DocLi>
-              <strong className="text-white/80">Eine Discord-Anwendung</strong> für den Login (kostenlos
+              <strong className="text-foreground">Eine Discord-Anwendung</strong> für den Login (kostenlos
               im Discord Developer Portal).
             </DocLi>
             <DocLi>
-              <strong className="text-white/80">Persistenter Speicher</strong> für die Assets — siehe{" "}
+              <strong className="text-foreground">Persistenter Speicher</strong> für die Assets — siehe{" "}
               <DocLink href="#storage">Storage &amp; Volume</DocLink>.
             </DocLi>
           </DocUl>
@@ -139,12 +139,12 @@ curl http://127.0.0.1:3095/health`}</DocCode>
               eine neue Application erstellen (Name z. B. „atelier").
             </DocStep>
             <DocStep n={2}>
-              Unter <strong className="text-white/80">OAuth2</strong> Client-ID und Client-Secret in
+              Unter <strong className="text-foreground">OAuth2</strong> Client-ID und Client-Secret in
               deine Env übernehmen (<Code>ATELIER_DISCORD_CLIENT_ID</Code> /{" "}
               <Code>ATELIER_DISCORD_CLIENT_SECRET</Code>).
             </DocStep>
             <DocStep n={3}>
-              Als <strong className="text-white/80">Redirects</strong> beide exakt eintragen — einen für
+              Als <strong className="text-foreground">Redirects</strong> beide exakt eintragen — einen für
               die Desktop-App, einen fürs Web-Admin-Dashboard:
               <div className="mt-3">
                 <DocCode>{`{ATELIER_PUBLIC_ORIGIN}/api/v1/auth/discord/callback
@@ -198,7 +198,7 @@ builds/   zwischengespeicherte Build-Artefakte`}</DocCode>
           </DocP>
           <DocSteps>
             <DocStep n={1}>
-              In Dokploy eine neue <strong className="text-white/80">Application</strong> aus dem
+              In Dokploy eine neue <strong className="text-foreground">Application</strong> aus dem
               atelier-api-Repository (oder dem Docker-Image) anlegen.
             </DocStep>
             <DocStep n={2}>
@@ -208,7 +208,7 @@ builds/   zwischengespeicherte Build-Artefakte`}</DocCode>
               <Code>HOST=0.0.0.0</Code>.
             </DocStep>
             <DocStep n={3}>
-              Ein <strong className="text-white/80">persistentes Volume</strong> an{" "}
+              Ein <strong className="text-foreground">persistentes Volume</strong> an{" "}
               <Code>ATELIER_STORAGE_ROOT</Code> mounten (z. B. <Code>/data</Code>). Das ist der
               wichtigste Schritt — ohne ihn verlierst du beim nächsten Deploy alle Assets.
             </DocStep>
@@ -235,24 +235,24 @@ builds/   zwischengespeicherte Build-Artefakte`}</DocCode>
           </DocP>
           <DocUl>
             <DocLi>
-              <strong className="text-white/80">Übersicht</strong> — Speichergröße (CAS/Builds/tmp) und
+              <strong className="text-foreground">Übersicht</strong> — Speichergröße (CAS/Builds/tmp) und
               Kennzahlen (Assets, Packs, Revisionen, Builds, Nutzer).
             </DocLi>
             <DocLi>
-              <strong className="text-white/80">Logs</strong> — Server-Logs live (SSE) plus
+              <strong className="text-foreground">Logs</strong> — Server-Logs live (SSE) plus
               Aktivitäts-Protokoll.
             </DocLi>
             <DocLi>
-              <strong className="text-white/80">Packs &amp; Builds</strong> — Server-Builds pro Revision
+              <strong className="text-foreground">Packs &amp; Builds</strong> — Server-Builds pro Revision
               erzeugen oder neu bauen und die fertigen Pakete als ZIP herunterladen.
             </DocLi>
             <DocLi>
-              <strong className="text-white/80">fxmanifest</strong> — pro Pack den Resource-Namen und ein{" "}
+              <strong className="text-foreground">fxmanifest</strong> — pro Pack den Resource-Namen und ein{" "}
               <Code>fxmanifest.lua</Code>-Template überschreiben. Greift beim nächsten Server-Build; ohne
               Override bleibt alles byte-identisch zum Desktop-Build.
             </DocLi>
             <DocLi>
-              <strong className="text-white/80">Nutzer</strong> — freischalten und sperren.
+              <strong className="text-foreground">Nutzer</strong> — freischalten und sperren.
             </DocLi>
           </DocUl>
           <DocCallout kind="info" title="Voraussetzung">
@@ -334,17 +334,17 @@ builds/   zwischengespeicherte Build-Artefakte`}</DocCode>
       <DocSection id="voraussetzungen" title="Requirements">
         <DocUl>
           <DocLi>
-            <strong className="text-white/80">Bun</strong> (1.x) — to run the server.
+            <strong className="text-foreground">Bun</strong> (1.x) — to run the server.
           </DocLi>
           <DocLi>
-            <strong className="text-white/80">MongoDB</strong> — your own instance or MongoDB Atlas.
+            <strong className="text-foreground">MongoDB</strong> — your own instance or MongoDB Atlas.
           </DocLi>
           <DocLi>
-            <strong className="text-white/80">A Discord application</strong> for login (free in the
+            <strong className="text-foreground">A Discord application</strong> for login (free in the
             Discord Developer Portal).
           </DocLi>
           <DocLi>
-            <strong className="text-white/80">Persistent storage</strong> for the assets — see{" "}
+            <strong className="text-foreground">Persistent storage</strong> for the assets — see{" "}
             <DocLink href="#storage">Storage &amp; volume</DocLink>.
           </DocLi>
         </DocUl>
@@ -396,12 +396,12 @@ curl http://127.0.0.1:3095/health`}</DocCode>
             create a new application (name it e.g. &quot;atelier&quot;).
           </DocStep>
           <DocStep n={2}>
-            Under <strong className="text-white/80">OAuth2</strong> copy the client ID and client
+            Under <strong className="text-foreground">OAuth2</strong> copy the client ID and client
             secret into your env (<Code>ATELIER_DISCORD_CLIENT_ID</Code> /{" "}
             <Code>ATELIER_DISCORD_CLIENT_SECRET</Code>).
           </DocStep>
           <DocStep n={3}>
-            Add both <strong className="text-white/80">redirects</strong> exactly — one for the
+            Add both <strong className="text-foreground">redirects</strong> exactly — one for the
             desktop app, one for the web admin dashboard:
             <div className="mt-3">
               <DocCode>{`{ATELIER_PUBLIC_ORIGIN}/api/v1/auth/discord/callback
@@ -454,7 +454,7 @@ builds/   cached build artifacts`}</DocCode>
         </DocP>
         <DocSteps>
           <DocStep n={1}>
-            In Dokploy, create a new <strong className="text-white/80">application</strong> from the
+            In Dokploy, create a new <strong className="text-foreground">application</strong> from the
             atelier-api repository (or the Docker image).
           </DocStep>
           <DocStep n={2}>
@@ -464,7 +464,7 @@ builds/   cached build artifacts`}</DocCode>
             <Code>HOST=0.0.0.0</Code>.
           </DocStep>
           <DocStep n={3}>
-            Mount a <strong className="text-white/80">persistent volume</strong> at{" "}
+            Mount a <strong className="text-foreground">persistent volume</strong> at{" "}
             <Code>ATELIER_STORAGE_ROOT</Code> (e.g. <Code>/data</Code>). This is the most important
             step — without it you lose all assets on the next deploy.
           </DocStep>
@@ -491,24 +491,24 @@ builds/   cached build artifacts`}</DocCode>
         </DocP>
         <DocUl>
           <DocLi>
-            <strong className="text-white/80">Overview</strong> — storage size (CAS/builds/tmp) and
+            <strong className="text-foreground">Overview</strong> — storage size (CAS/builds/tmp) and
             key figures (assets, packs, revisions, builds, users).
           </DocLi>
           <DocLi>
-            <strong className="text-white/80">Logs</strong> — server logs live (SSE) plus an activity
+            <strong className="text-foreground">Logs</strong> — server logs live (SSE) plus an activity
             log.
           </DocLi>
           <DocLi>
-            <strong className="text-white/80">Packs &amp; builds</strong> — generate or rebuild server
+            <strong className="text-foreground">Packs &amp; builds</strong> — generate or rebuild server
             builds per revision and download the finished packages as ZIP.
           </DocLi>
           <DocLi>
-            <strong className="text-white/80">fxmanifest</strong> — override the resource name and an{" "}
+            <strong className="text-foreground">fxmanifest</strong> — override the resource name and an{" "}
             <Code>fxmanifest.lua</Code> template per pack. It takes effect on the next server build;
             without an override everything stays byte-identical to the desktop build.
           </DocLi>
           <DocLi>
-            <strong className="text-white/80">Users</strong> — approve and lock.
+            <strong className="text-foreground">Users</strong> — approve and lock.
           </DocLi>
         </DocUl>
         <DocCallout kind="info" title="Prerequisite">

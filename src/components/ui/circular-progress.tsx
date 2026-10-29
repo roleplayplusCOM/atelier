@@ -63,7 +63,7 @@ export function CircularProgress({
           strokeWidth={strokeWidth}
           strokeLinecap="round"
           strokeDasharray={`${dash} ${circumference}`}
-          className="stroke-[#7289DA]"
+          className="stroke-brand"
           style={determinate ? { transition: "stroke-dasharray 220ms ease-out" } : undefined}
         />
       </svg>

@@ -160,7 +160,7 @@ function Stepper({
 }) {
   const { t } = useTranslation("preview");
   const stepButton =
-    "flex h-5 w-5 items-center justify-center rounded-[6px] text-white/45 transition-colors hover:bg-white/10 hover:text-white disabled:pointer-events-none disabled:opacity-30";
+    "flex h-5 w-5 items-center justify-center rounded-[6px] text-faint transition-colors hover:bg-fill-2 hover:text-foreground disabled:pointer-events-none disabled:opacity-30";
   return (
     <span className="inline-flex items-center gap-0.5">
       <button
@@ -172,7 +172,7 @@ function Stepper({
       >
         <Minus className="h-3 w-3" />
       </button>
-      <span className="w-7 text-center font-mono text-[11px] text-white/80">
+      <span className="w-7 text-center font-mono text-[11px] text-foreground">
         {value}
       </span>
       <button
@@ -424,7 +424,7 @@ export function CharacterPopover({
   ];
 
   const sectionLabel =
-    "text-[10px] font-semibold uppercase tracking-wider text-white/35";
+    "text-[10px] font-semibold uppercase tracking-wider text-faint";
 
   return (
     <DialogPrimitive.Root open={open} onOpenChange={setOpen} modal={false}>
@@ -439,9 +439,9 @@ export function CharacterPopover({
                 disabled={disabled}
                 aria-label={t("character.trigger")}
                 className={cn(
-                  "h-7 w-7 rounded-[8px] text-white/55 hover:bg-white/10 hover:text-white",
-                  appearance && "text-[#7289DA]",
-                  open && "bg-white/10",
+                  "h-7 w-7 rounded-[8px] text-grey hover:bg-fill-2 hover:text-foreground",
+                  appearance && "text-brand",
+                  open && "bg-fill-2",
                 )}
               >
                 <CircleUser className="h-4 w-4" />
@@ -463,16 +463,16 @@ export function CharacterPopover({
           // around — it only closes via trigger, X or Escape.
           onInteractOutside={(e) => e.preventDefault()}
           onOpenAutoFocus={(e) => e.preventDefault()}
-          className="liquid-glass fixed bottom-4 right-4 z-50 flex w-[22rem] flex-col gap-3 rounded-[12px] border border-white/15 p-4 shadow-xl"
+          className="liquid-glass fixed bottom-4 right-4 z-50 flex w-[22rem] flex-col gap-3 rounded-[12px] border border-line p-4 shadow-xl"
         >
           <div className="flex items-center gap-2">
-            <CircleUser className="h-4 w-4 shrink-0 text-white/40" />
-            <DialogPrimitive.Title className="text-sm font-semibold text-white">
+            <CircleUser className="h-4 w-4 shrink-0 text-faint" />
+            <DialogPrimitive.Title className="text-sm font-semibold text-foreground">
               {t("character.title")}
             </DialogPrimitive.Title>
             <DialogPrimitive.Close
               aria-label={t("character.close")}
-              className="ml-auto rounded-[6px] p-1 text-white/45 transition-colors hover:bg-white/10 hover:text-white"
+              className="ml-auto rounded-[6px] p-1 text-faint transition-colors hover:bg-fill-2 hover:text-foreground"
             >
               <X className="h-3.5 w-3.5" />
             </DialogPrimitive.Close>
@@ -480,7 +480,7 @@ export function CharacterPopover({
 
           {pendingImport ? (
             <>
-              <p className="text-xs text-white/50">
+              <p className="text-xs text-grey">
                 {t("character.pickPed")}
               </p>
               <div className="flex max-h-56 flex-col gap-1 overflow-y-auto">
@@ -489,10 +489,10 @@ export function CharacterPopover({
                     key={index}
                     type="button"
                     onClick={() => applyPed(ped, pendingImport.warnings)}
-                    className="flex items-center gap-2 rounded-[8px] border border-white/10 bg-white/5 px-3 py-2 text-left text-xs text-white/80 transition-colors hover:bg-white/10"
+                    className="flex items-center gap-2 rounded-[8px] border border-line bg-fill px-3 py-2 text-left text-xs text-foreground transition-colors hover:bg-fill-2"
                   >
                     <span className="truncate font-medium">{ped.name}</span>
-                    <span className="ml-auto shrink-0 font-mono text-[10px] text-white/40">
+                    <span className="ml-auto shrink-0 font-mono text-[10px] text-faint">
                       {ped.pedModel
                         ? genderLabel(t, ped.pedModel)
                         : t("character.notFreemode")}
@@ -511,11 +511,11 @@ export function CharacterPopover({
             </>
           ) : (
             <>
-              <p className="text-xs text-white/45">
+              <p className="text-xs text-faint">
                 {t("character.componentsHint")}
               </p>
 
-              <ScrollArea className="h-52 rounded-[8px] border border-white/8 bg-black/20">
+              <ScrollArea className="h-52 rounded-[8px] border border-line bg-black/20">
                 <div className="flex flex-col gap-0.5 p-2">
                   {COMPONENT_SLOT_IDS.map((slot) => {
                     const value = appearance?.components?.[slot] ?? {
@@ -526,10 +526,10 @@ export function CharacterPopover({
                     return (
                       <div
                         key={slot}
-                        className="flex items-center gap-2 rounded-[6px] px-1 py-0.5 hover:bg-white/4"
+                        className="flex items-center gap-2 rounded-[6px] px-1 py-0.5 hover:bg-fill"
                       >
                         <span
-                          className="min-w-0 flex-1 truncate text-[11px] text-white/60"
+                          className="min-w-0 flex-1 truncate text-[11px] text-grey"
                           title={`${t(`workbench:slot.${slot}`)} (${slot})`}
                         >
                           {t(`workbench:slot.${slot}`)}
@@ -589,7 +589,7 @@ export function CharacterPopover({
                           appearanceWarnings.length === 0
                         }
                         aria-label={t("character.reset")}
-                        className="h-7 w-7 p-0 text-white/55 hover:text-white"
+                        className="h-7 w-7 p-0 text-grey hover:text-foreground"
                         onClick={resetAppearance}
                       >
                         <RotateCcw className="h-3.5 w-3.5" />
@@ -602,7 +602,7 @@ export function CharacterPopover({
                 </Tooltip>
               </div>
 
-              <p className="text-[10px] leading-snug text-white/40">
+              <p className="text-[10px] leading-snug text-faint">
                 {t("character.faceOnlyHint")}
               </p>
 
@@ -612,7 +612,7 @@ export function CharacterPopover({
               {face && (
                 <div className="flex flex-col gap-1.5">
                   <div className="flex items-center gap-1.5">
-                    <Smile className="h-3 w-3 shrink-0 text-white/40" />
+                    <Smile className="h-3 w-3 shrink-0 text-faint" />
                     <span className={sectionLabel}>{t("character.face")}</span>
                     <Tooltip>
                       <TooltipTrigger asChild>
@@ -621,7 +621,7 @@ export function CharacterPopover({
                             size="sm"
                             variant="ghost"
                             aria-label={t("character.removeFace")}
-                            className="h-6 w-6 p-0 text-white/45 hover:text-white"
+                            className="h-6 w-6 p-0 text-faint hover:text-foreground"
                             onClick={removeFace}
                           >
                             <Eraser className="h-3.5 w-3.5" />
@@ -633,16 +633,16 @@ export function CharacterPopover({
                       </TooltipContent>
                     </Tooltip>
                   </div>
-                  <ul className="flex flex-col gap-0.5 rounded-[8px] border border-white/8 bg-black/20 px-2.5 py-1.5">
+                  <ul className="flex flex-col gap-0.5 rounded-[8px] border border-line bg-black/20 px-2.5 py-1.5">
                     {faceLines.map((line, index) => (
                       <li
                         key={index}
-                        className="text-[11px] leading-snug text-white/65"
+                        className="text-[11px] leading-snug text-grey"
                       >
                         {line}
                       </li>
                     ))}
-                    <li className="mt-0.5 text-[10px] leading-snug text-white/35">
+                    <li className="mt-0.5 text-[10px] leading-snug text-faint">
                       {t("character.faceFeaturesNote")}
                     </li>
                   </ul>
@@ -663,12 +663,12 @@ export function CharacterPopover({
                       return (
                         <div
                           key={preset.name}
-                          className="flex items-center gap-1 rounded-[6px] border border-white/8 bg-white/4 pl-1"
+                          className="flex items-center gap-1 rounded-[6px] border border-line bg-fill pl-1"
                         >
                           <button
                             type="button"
                             onClick={() => applyPreset(preset)}
-                            className="min-w-0 flex-1 truncate rounded-[5px] px-1.5 py-1 text-left text-[11px] text-white/75 transition-colors hover:bg-white/8 hover:text-white"
+                            className="min-w-0 flex-1 truncate rounded-[5px] px-1.5 py-1 text-left text-[11px] text-grey transition-colors hover:bg-fill hover:text-foreground"
                             title={t("character.applyPreset", {
                               name: displayName,
                             })}
@@ -682,7 +682,7 @@ export function CharacterPopover({
                                 name: displayName,
                               })}
                               onClick={() => deleteAppearancePreset(preset.name)}
-                              className="mr-1 rounded-[5px] p-1 text-white/35 transition-colors hover:bg-red-500/15 hover:text-red-300"
+                              className="mr-1 rounded-[5px] p-1 text-faint transition-colors hover:bg-red-500/15 hover:text-red-300"
                             >
                               <Trash2 className="h-3 w-3" />
                             </button>
@@ -697,7 +697,7 @@ export function CharacterPopover({
                     value={presetName}
                     onChange={(e) => setPresetName(e.target.value)}
                     placeholder={t("character.presetNamePlaceholder")}
-                    className="h-7 border-white/15 bg-white/5 text-xs text-white"
+                    className="h-7 border-line bg-fill text-xs text-foreground"
                     onKeyDown={(e) => {
                       if (e.key === "Enter") savePreset();
                     }}
@@ -733,7 +733,7 @@ export function CharacterPopover({
                     {hints.map((hint, index) => (
                       <li
                         key={index}
-                        className="flex items-start gap-1.5 text-[10px] leading-snug text-white/40"
+                        className="flex items-start gap-1.5 text-[10px] leading-snug text-faint"
                       >
                         <TriangleAlert className="mt-px h-3 w-3 shrink-0 text-amber-300/60" />
                         {hint}

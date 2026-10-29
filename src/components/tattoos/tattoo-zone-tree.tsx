@@ -52,18 +52,18 @@ function Row({
       type="button"
       onClick={onSelect}
       className={cn(
-        "flex w-full items-center gap-2.5 rounded-[10px] px-3 py-1.5 text-left text-sm transition-colors",
+        "flex w-full items-center gap-2.5 rounded-[14px] px-3 py-1.5 text-left text-sm transition-colors",
         active
-          ? "bg-[#5865F2]/20 text-white"
-          : "text-white/70 hover:bg-white/10 hover:text-white",
+          ? "bg-brand/20 text-foreground"
+          : "text-grey hover:bg-fill-2 hover:text-foreground",
       )}
     >
-      <Icon className={cn("h-4 w-4 shrink-0", active ? "text-[#7289DA]" : "text-white/45")} />
+      <Icon className={cn("h-4 w-4 shrink-0", active ? "text-brand" : "text-faint")} />
       <span className="flex-1 truncate">{label}</span>
       <span
         className={cn(
           "min-w-6 rounded-full px-1.5 py-0.5 text-center font-mono text-[10px]",
-          count > 0 ? "bg-white/10 text-white/60" : "text-white/25",
+          count > 0 ? "bg-fill-2 text-grey" : "text-faint",
         )}
       >
         {count}
@@ -90,8 +90,8 @@ export function TattooZoneTree() {
 
   return (
     <div className="flex h-full flex-col">
-      <div className="flex h-10 shrink-0 items-center border-b border-white/8 px-4">
-        <span className="text-xs font-semibold uppercase tracking-wider text-white/50">
+      <div className="flex h-10 shrink-0 items-center border-b border-line px-4">
+        <span className="text-xs font-semibold uppercase tracking-wider text-grey">
           {t("zoneTree.title")}
         </span>
       </div>
