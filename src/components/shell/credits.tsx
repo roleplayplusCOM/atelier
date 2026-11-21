@@ -13,8 +13,8 @@ import { cn } from "@/lib/utils";
 
 const PATREON_URL = "https://patreon.com/grzybeek";
 const KOFI_URL = "https://ko-fi.com/grzybeek";
-/** feelgood's own community Discord — shown in the footer next to grzybeek's links. */
-const ROLEPLAYPLUS_DISCORD_URL = "https://discord.gg/roleplayplus";
+/** Roleplay+'s own community Discord — shown in the footer next to grzybeek's links. */
+const ROLEPLAYPLUS_DISCORD_URL = "https://discord.gg/vjDdWHhtdd";
 
 export function PatreonMark({ className }: { className?: string }) {
   return (

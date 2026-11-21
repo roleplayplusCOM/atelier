@@ -1,6 +1,6 @@
 # atelier sidecar (Feelgood.Atelier.Sidecar)
 
-.NET 8 Minimal-API sidecar for **atelier by feelgood** (GTA V addon-clothing
+.NET 8 Minimal-API sidecar for **atelier by Roleplay+** (GTA V addon-clothing
 tool). The Tauri desktop app spawns this process and talks to it over loopback
 HTTP. It parses RAGE asset files (`.ydd` drawable dictionaries, `.ytd` texture
 dictionaries) via the vendored **CodeWalker.Core**.

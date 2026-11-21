@@ -94,8 +94,8 @@ const PEOPLE: Person[] = [
   },
 ];
 
-/** feelgood's own community Discord — distinct from the third-party credits above. */
-const ROLEPLAYPLUS_DISCORD_URL = "https://discord.gg/roleplayplus";
+/** Roleplay+'s own community Discord — distinct from the third-party credits above. */
+const ROLEPLAYPLUS_DISCORD_URL = "https://discord.gg/vjDdWHhtdd";
 
 const LINK_META: Record<
   LinkKind,

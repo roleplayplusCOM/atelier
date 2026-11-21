@@ -4,6 +4,55 @@ All notable changes to **atelier** are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project follows [Semantic Versioning](https://semver.org/).
 
+## [1.13.0] — 2026-11-21
+
+### Changed
+
+- **atelier by feelgood is now atelier by Roleplay+.** atelier has a new home:
+  it continues under [Roleplay+](https://roleplay.plus), the repositories live
+  in the [`roleplayplusCOM`](https://github.com/roleplayplusCOM) organization
+  ([atelier](https://github.com/roleplayplusCOM/atelier),
+  [atelier-api](https://github.com/roleplayplusCOM/atelier-api),
+  [atelier-fivem](https://github.com/roleplayplusCOM/atelier-fivem)) and the
+  community meets in the [Roleplay+ Discord](https://discord.gg/vjDdWHhtdd).
+  Old GitHub links keep redirecting.
+- **atelier stays free and open source**, under the same license as before.
+- **Self-hosting stays.** Running your own
+  [atelier-api](https://github.com/roleplayplusCOM/atelier-api) for the team
+  cloud remains fully supported, and solo mode still needs no account at all.
+- **Hosted Team Cloud is coming soon.** For teams who would rather not run a
+  server, Roleplay+ will soon offer a hosted Team Cloud as an optional
+  alternative to self-hosting.
+- **New look in the Roleplay+ design.** A light theme (the new default) and a
+  dark theme, switchable in the top bar and following your system until you
+  pick one. Redesigned dashboard, setup wizard, sign-in, workbench, tattoos,
+  build and settings screens.
+- The dashboard shows a first look at the **atelier Marketplace** (clothing,
+  tattoos and animations from verified creators). It is marked as coming soon
+  and not clickable yet.
+- Generated build output (alt:V resource headers, `tattoos.json`, the
+  `tool` field in `atelier-build.json`, the RageMP readme) now says
+  *atelier by Roleplay+*. The manifest schemas (`feelgood.atelier.pack/1`,
+  `feelgood.atelier.tattoos/1`) are unchanged, so atelier-fivem and existing
+  server scripts keep working.
+
+### Compatibility
+
+- Nothing to migrate. The app identifier (`com.feelgood.atelier`), the install
+  folder and executable name, the settings and log folder
+  (`%LOCALAPPDATA%\com.feelgood.atelier`), saved sign-ins and the sidecar
+  (`fg-atelier-sidecar`) keep their technical names, so the auto-updater
+  installs this version over your existing one and everything stays in place.
+- The updater now reads its release feed from `roleplayplusCOM/atelier`; older
+  builds reach it through GitHub's redirect.
+
+> **Auf Deutsch:** Aus *atelier by feelgood* wird *atelier by Roleplay+*.
+> atelier bleibt kostenlos und Open Source, die selbst gehostete Variante mit
+> atelier-api bleibt voll unterstützt, und zeitnah bieten wir zusätzlich eine
+> gehostete Team Cloud an. Dazu kommt das neue Roleplay+ Design mit hellem und
+> dunklem Theme. Für dich ändert sich sonst nichts: Das Update installiert sich
+> wie gewohnt über deine bestehende Version.
+
 ## [1.12.0] — 2026-09-07
 
 ### Added
@@ -76,7 +125,7 @@ and this project follows [Semantic Versioning](https://semver.org/).
   into the resource, carrying what the game itself does not need and therefore
   loses: the **label**, **group**, slot name, texture count, mode and flags of
   every item.
-  That file is what [atelier-fivem](https://github.com/grandTheftAtelier/atelier-fivem)
+  That file is what [atelier-fivem](https://github.com/roleplayplusCOM/atelier-fivem)
   looks for — a new companion resource that finds your packs on a running
   server and lets you browse them in-game on a mannequin. No checkbox, no file,
   and the pack stays invisible to it: nothing is guessed from folder contents.
@@ -292,7 +341,7 @@ and this project follows [Semantic Versioning](https://semver.org/).
 - **Calmer update card** — the "update available" panel uses a more subtle
   background so it no longer dominates the Settings page.
 - Release notes now render as proper **Markdown** (headings, bullet lists,
-  emphasis and [links](https://github.com/grandTheftAtelier/atelier)) instead of
+  emphasis and [links](https://github.com/roleplayplusCOM/atelier)) instead of
   raw text.
 
 ## [1.2.5] — 2026-06-23
@@ -324,7 +373,7 @@ and this project follows [Semantic Versioning](https://semver.org/).
 > ⚠️ **One-time manual update required.** Versions before 1.2.3 don't have the
 > updater yet, so you must download and install the **latest version manually
 > once** — grab the `*-setup.exe` from the
-> [releases page](https://github.com/grandTheftAtelier/atelier/releases/latest).
+> [releases page](https://github.com/roleplayplusCOM/atelier/releases/latest).
 > From then on, updates install themselves. (The portable ZIP does **not**
 > auto-update — use the `setup.exe` installer to get automatic updates.)
 
@@ -380,32 +429,33 @@ and this project follows [Semantic Versioning](https://semver.org/).
 
 > ⚠️ 1.0.0 shipped with a locale-loading regression — use 1.0.1 or newer.
 
-[1.12.0]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.12.0
-[1.11.1]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.11.1
-[1.11.0]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.11.0
-[1.10.0]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.10.0
-[1.9.1]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.9.1
-[1.9.0]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.9.0
-[1.8.1]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.8.1
-[1.8.0]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.8.0
-[1.7.0]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.7.0
-[#13]: https://github.com/grandTheftAtelier/atelier/pull/13
-[#14]: https://github.com/grandTheftAtelier/atelier/pull/14
+[1.13.0]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.13.0
+[1.12.0]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.12.0
+[1.11.1]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.11.1
+[1.11.0]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.11.0
+[1.10.0]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.10.0
+[1.9.1]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.9.1
+[1.9.0]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.9.0
+[1.8.1]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.8.1
+[1.8.0]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.8.0
+[1.7.0]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.7.0
+[#13]: https://github.com/roleplayplusCOM/atelier/pull/13
+[#14]: https://github.com/roleplayplusCOM/atelier/pull/14
 [WooAf]: https://github.com/WooAf
-[#12]: https://github.com/grandTheftAtelier/atelier/pull/12
-[1.6.1]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.6.1
-[1.6.0]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.6.0
-[1.5.0]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.5.0
-[1.4.0]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.4.0
-[1.3.0]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.3.0
-[#6]: https://github.com/grandTheftAtelier/atelier/pull/6
-[#10]: https://github.com/grandTheftAtelier/atelier/pull/10
-[#11]: https://github.com/grandTheftAtelier/atelier/pull/11
-[1.2.7]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.2.7
-[1.2.6]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.2.6
-[1.2.5]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.2.5
-[1.2.4]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.2.4
-[1.2.3]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.2.3
-[1.2.2]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.2.2
-[1.0.1]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.0.1
-[1.0.0]: https://github.com/grandTheftAtelier/atelier/releases/tag/v1.0.0
+[#12]: https://github.com/roleplayplusCOM/atelier/pull/12
+[1.6.1]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.6.1
+[1.6.0]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.6.0
+[1.5.0]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.5.0
+[1.4.0]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.4.0
+[1.3.0]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.3.0
+[#6]: https://github.com/roleplayplusCOM/atelier/pull/6
+[#10]: https://github.com/roleplayplusCOM/atelier/pull/10
+[#11]: https://github.com/roleplayplusCOM/atelier/pull/11
+[1.2.7]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.2.7
+[1.2.6]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.2.6
+[1.2.5]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.2.5
+[1.2.4]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.2.4
+[1.2.3]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.2.3
+[1.2.2]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.2.2
+[1.0.1]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.0.1
+[1.0.0]: https://github.com/roleplayplusCOM/atelier/releases/tag/v1.0.0

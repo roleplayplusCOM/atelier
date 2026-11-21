@@ -23,7 +23,7 @@ public static class RageMpBuilder
         report.Warnings.Add(LocalizedMessage.Of("ragemp_best_effort"));
 
         var readme = new StringBuilder();
-        readme.AppendLine("atelier by feelgood — RageMP add-on clothing");
+        readme.AppendLine("atelier by Roleplay+ — RageMP add-on clothing");
         readme.AppendLine();
         readme.AppendLine("Installation:");
         readme.AppendLine("  Copy (merge) the client_packages/ folder into your RageMP server.");

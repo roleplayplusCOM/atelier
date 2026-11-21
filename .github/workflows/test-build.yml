@@ -58,12 +58,12 @@ jobs:
         shell: pwsh
         run: |
           $releaseDir = "src-tauri/target/release"
-          $portableDir = "dist-test/atelier by feelgood"
+          $portableDir = "dist-test/atelier by Roleplay+"
           New-Item -ItemType Directory -Force $portableDir | Out-Null
           $main = @("$releaseDir/atelier by feelgood.exe", "$releaseDir/atelier.exe") |
             Where-Object { Test-Path $_ } | Select-Object -First 1
           if (-not $main) { throw "Main executable not found under $releaseDir" }
-          Copy-Item $main "$portableDir/atelier by feelgood.exe"
+          Copy-Item $main "$portableDir/atelier by Roleplay+.exe"
           Copy-Item `
             "src-tauri/binaries/fg-atelier-sidecar-x86_64-pc-windows-msvc.exe" `
             "$portableDir/fg-atelier-sidecar.exe"
@@ -71,9 +71,9 @@ jobs:
             Copy-Item "$releaseDir/WebView2Loader.dll" $portableDir
           }
           @(
-            "atelier by feelgood – unsigned test build",
+            "atelier by Roleplay+ – unsigned test build",
             "",
-            "Start 'atelier by feelgood.exe'. Keep fg-atelier-sidecar.exe in the same folder.",
+            "Start 'atelier by Roleplay+.exe'. Keep fg-atelier-sidecar.exe in the same folder.",
             "This package is for testing only and does not use the automatic updater."
           ) -join "`r`n" | Set-Content "$portableDir/README.txt" -Encoding utf8
           Compress-Archive -Path $portableDir -DestinationPath "atelier-test-portable.zip" -Force
