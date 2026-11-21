@@ -146,6 +146,12 @@ jobs:
           if (-not $sig) { throw "NSIS .sig not found — is TAURI_SIGNING_PRIVATE_KEY set?" }
           $asset = "atelier_$($env:VERSION)_x64-setup.exe"
           Move-Item $exe.FullName "$nsis/$asset" -Force
+          # Same for the MSI: the bundler names it after productName ("atelier by
+          # feelgood", kept for install/upgrade compatibility), GitHub would turn
+          # that into "atelier.by.feelgood_...". Ship it under the atelier name.
+          $msiDir = "src-tauri/target/release/bundle/msi"
+          $msi = Get-ChildItem "$msiDir/*.msi" | Select-Object -First 1
+          if ($msi) { Move-Item $msi.FullName "$msiDir/atelier_$($env:VERSION)_x64_en-US.msi" -Force }
           $signature = (Get-Content $sig.FullName -Raw).Trim()
           $url = "https://github.com/roleplayplusCOM/atelier/releases/download/v$($env:VERSION)/$asset"
           # Release notes shown in the in-app updater: the matching CHANGELOG
