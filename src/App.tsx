@@ -150,7 +150,7 @@ function App() {
         <LoginGate />
       ) : (
         <div className="relative flex h-full flex-col overflow-hidden text-foreground">
-          {/* Hero video backdrop on Home + Settings; the editing screens keep a
+          {/* Ambient backdrop on Home + Settings; the editing screens keep a
               plain grid so the previews stay distraction free. */}
           {screen === "workbench" ||
           screen === "tattoos" ||

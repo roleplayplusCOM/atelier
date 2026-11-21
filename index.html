@@ -1,19 +1,22 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>atelier by feelgood</title>
+    <title>atelier by Roleplay+</title>
+    <script>
+      /* Apply the stored / system theme before first paint (see src/lib/theme.ts). */
+      try {
+        var m = localStorage.getItem("atelier:theme") || "system";
+        var d = m === "dark" || (m === "system" && matchMedia("(prefers-color-scheme: dark)").matches);
+        var e = document.documentElement;
+        e.dataset.theme = d ? "dark" : "light";
+        e.classList.toggle("dark", d);
+      } catch (_) {}
+    </script>
     <style>
-      /* Unlayered styles — these BEAT the @layer base rules in app.css, so the
-         window transparency must be defined here, not (only) there. The body
-         carries the translucent dark tint over the OS acrylic blur. */
-      html {
-        background: transparent;
-      }
-      body {
-        background: rgba(11, 11, 11, 0.55);
-      }
+      html { background: #fbfbfd; }
+      html[data-theme="dark"] { background: #0e0e13; }
     </style>
   </head>
 

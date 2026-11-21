@@ -3,7 +3,7 @@
     "title": "New project",
     "description": "Creates a project folder with pack.atelier and assets/.",
     "nameLabel": "Project name",
-    "namePlaceholder": "e.g. Feelgood Summer Pack",
+    "namePlaceholder": "e.g. Summer Pack",
     "locationLabel": "Location",
     "locationPlaceholder": "No folder selected yet…",
     "browse": "Browse",

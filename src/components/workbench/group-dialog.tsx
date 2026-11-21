@@ -15,10 +15,10 @@ import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { useProjectStore } from "@/lib/stores/project-store";
 
-/** Feelgood-friendly default palette for group colors. */
+/** Roleplay+ default palette for group colors. */
 const GROUP_COLORS = [
-  "#5865F2",
-  "#7289DA",
+  "#f4456b",
+  "#ff8a1f",
   "#34D399",
   "#FBBF24",
   "#F87171",
@@ -55,17 +55,17 @@ export function GroupDialog({ open, onOpenChange, onCreated }: GroupDialogProps)
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="liquid-glass border-white/15 sm:max-w-sm">
+      <DialogContent className="liquid-glass border-line sm:max-w-sm">
         <DialogHeader>
-          <DialogTitle className="text-white">{t("groupDialog.title")}</DialogTitle>
-          <DialogDescription className="text-white/50">
+          <DialogTitle className="text-foreground">{t("groupDialog.title")}</DialogTitle>
+          <DialogDescription className="text-grey">
             {t("groupDialog.description")}
           </DialogDescription>
         </DialogHeader>
 
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <Label htmlFor="group-name" className="text-white/70">
+            <Label htmlFor="group-name" className="text-grey">
               {t("groupDialog.name")}
             </Label>
             <Input
@@ -74,7 +74,7 @@ export function GroupDialog({ open, onOpenChange, onCreated }: GroupDialogProps)
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder={t("groupDialog.namePlaceholder")}
-              className="border-white/15 bg-white/5 text-white"
+              className="border-line bg-fill text-foreground"
               onKeyDown={(e) => {
                 if (e.key === "Enter") create();
               }}
@@ -82,7 +82,7 @@ export function GroupDialog({ open, onOpenChange, onCreated }: GroupDialogProps)
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label className="text-white/70">{t("groupDialog.color")}</Label>
+            <Label className="text-grey">{t("groupDialog.color")}</Label>
             <div className="flex flex-wrap gap-2">
               {GROUP_COLORS.map((c) => (
                 <button

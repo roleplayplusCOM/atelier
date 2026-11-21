@@ -2,7 +2,7 @@
 
 <img src="src/assets/atelier-logo.png" width="116" alt="atelier" />
 
-# atelier
+# atelier by Roleplay+
 
 **The free, open-source GTA-V addon-clothing tool.**
 
@@ -13,12 +13,21 @@ Manage clothing, preview it in real-time 3D, and build it in one click for
 &nbsp;![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-1f1f1f)
 &nbsp;![Tauri 2 · React 19](https://img.shields.io/badge/Tauri%202%20·%20React%2019-1f1f1f)
 
-[**⬇ Download**](https://github.com/grandTheftAtelier/atelier/releases) ·
-[Backend](https://github.com/grandTheftAtelier/atelier-api) ·
-[In-game viewer](https://github.com/grandTheftAtelier/atelier-fivem) ·
+[**⬇ Download**](https://github.com/roleplayplusCOM/atelier/releases) ·
+[Backend](https://github.com/roleplayplusCOM/atelier-api) ·
+[In-game viewer](https://github.com/roleplayplusCOM/atelier-fivem) ·
 [In the spirit of grzyClothTool](https://github.com/grzybeek/grzyClothTool)
 
 </div>
+
+> **atelier is now atelier by Roleplay+.** The tool formerly known as
+> *atelier by feelgood* continues under [Roleplay+](https://roleplay.plus) and
+> the [`roleplayplusCOM`](https://github.com/roleplayplusCOM) GitHub organization.
+> Nothing changes for you: atelier stays **free and open source**, the
+> **self-hosted** setup with [atelier-api](https://github.com/roleplayplusCOM/atelier-api)
+> stays fully supported, and existing installs keep updating themselves.
+> **Hosted Team Cloud is coming soon** for teams who would rather not run their
+> own server. Details in the [changelog](CHANGELOG.md).
 
 ---
 
@@ -52,7 +61,7 @@ optionally collaborate as a team over a cloud.
   or as a batch across all oversized textures.
 - **In-game viewer** _(optional)_ — tick **Viewer metadata** when building for
   FiveM and the pack also gets an `atelier-pack.json`, so
-  [atelier-fivem](https://github.com/grandTheftAtelier/atelier-fivem) can find it on
+  [atelier-fivem](https://github.com/roleplayplusCOM/atelier-fivem) can find it on
   your server and let you browse it on a ped — with the labels and groups you
   gave your items, instead of bare index numbers. Off by default; without the
   tick the build output is unchanged and the pack stays invisible to the viewer.
@@ -61,14 +70,15 @@ optionally collaborate as a team over a cloud.
   asset hashes appear automatically on every connected client. Binary assets
   are uploaded content-addressed before the operation is published; reconnects
   recover from the durable server workspace and local operation queue (via
-  [atelier-api](https://github.com/grandTheftAtelier/atelier-api)).
+  [atelier-api](https://github.com/roleplayplusCOM/atelier-api)). Host the API
+  yourself, or use the hosted **Team Cloud** by Roleplay+ _(coming soon)_.
 - **Import wizard** — existing packs as well as `.ydd`/`.ytd`/`.yld` via drag &
   drop, with automatic classification.
 
 ## Installation
 
 Grab the latest version from the
-[**GitHub releases**](https://github.com/grandTheftAtelier/atelier/releases):
+[**GitHub releases**](https://github.com/roleplayplusCOM/atelier/releases):
 
 | Variant | File | When |
 | --- | --- | --- |
@@ -120,11 +130,11 @@ bun run tauri:build       # release bundle (installer + portable)
         └────────────────────┘
 ```
 
-- **App** — Tauri 2 (Rust) + React 19 + Vite + Tailwind (dark-only:
-  `#0b0b0b`, blurple `#5865F2`, Sora).
+- **App** — Tauri 2 (Rust) + React 19 + Vite + Tailwind, in the Roleplay+
+  design system (light and dark theme, amber-to-coral accent, Sora).
 - **Sidecar** — .NET 8 minimal API, spawned locally by the app; uses
   CodeWalker.Core for parsing, the 3D preview and real binary YMTs.
-- **API** _(optional)_ — [atelier-api](https://github.com/grandTheftAtelier/atelier-api),
+- **API** _(optional)_ — [atelier-api](https://github.com/roleplayplusCOM/atelier-api),
   only needed for login & the team cloud.
 
 ## License
@@ -159,7 +169,7 @@ Keep the copyright line (`Required Notice` in the license) intact.
 - **[Blaccii](https://github.com/Blaccii)** — community contributor: the
   256-drawable split limit.
 - **[DasEric](https://github.com/DasEric)** — community contributor: the
-  realtime team workspace ([#13](https://github.com/grandTheftAtelier/atelier/pull/13)).
+  realtime team workspace ([#13](https://github.com/roleplayplusCOM/atelier/pull/13)).
 - **[WooAf](https://github.com/WooAf)** — community contributor: full app-wide
-  localization ([#14](https://github.com/grandTheftAtelier/atelier/pull/14)).
-- Built by the **feelgood team** and **Claude Fable 5**.
+  localization ([#14](https://github.com/roleplayplusCOM/atelier/pull/14)).
+- Built by the **Roleplay+ team** (formerly the feelgood team) and **Claude Fable 5**.

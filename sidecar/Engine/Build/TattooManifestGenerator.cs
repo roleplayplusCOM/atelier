@@ -45,7 +45,7 @@ public static class TattooManifestGenerator
         var manifest = new
         {
             schema = "feelgood.atelier.tattoos/1",
-            tool = "atelier by feelgood",
+            tool = "atelier by Roleplay+",
             builtAt = DateTimeOffset.UtcNow.ToString("o"),
             collection = plan.Collection,
             resource = resourceName,

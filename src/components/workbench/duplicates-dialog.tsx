@@ -62,16 +62,16 @@ export function DuplicatesDialog({ open, onOpenChange }: DuplicatesDialogProps) 
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="liquid-glass max-h-[80vh] border-white/15 sm:max-w-xl">
+      <DialogContent className="liquid-glass max-h-[80vh] border-line sm:max-w-xl">
         <DialogHeader>
-          <DialogTitle className="text-white">{t("duplicatesDialog.title")}</DialogTitle>
-          <DialogDescription className="text-white/50">
+          <DialogTitle className="text-foreground">{t("duplicatesDialog.title")}</DialogTitle>
+          <DialogDescription className="text-grey">
             {t("duplicatesDialog.description")}
           </DialogDescription>
         </DialogHeader>
 
         {groups.length === 0 ? (
-          <p className="py-6 text-center text-sm text-white/40">
+          <p className="py-6 text-center text-sm text-faint">
             {t("duplicatesDialog.noDuplicates")}
           </p>
         ) : (
@@ -80,9 +80,9 @@ export function DuplicatesDialog({ open, onOpenChange }: DuplicatesDialogProps) 
               {groups.map((group) => (
                 <div
                   key={group.hash}
-                  className="glass-border-subtle rounded-[10px] p-3"
+                  className="glass-border-subtle rounded-[14px] p-3"
                 >
-                  <p className="mb-2 font-mono text-[10px] text-white/35">
+                  <p className="mb-2 font-mono text-[10px] text-faint">
                     sha256: {group.hash.slice(0, 16)}… ·{" "}
                     {t("duplicatesDialog.drawablesCount", {
                       count: group.drawables.length,
@@ -92,17 +92,17 @@ export function DuplicatesDialog({ open, onOpenChange }: DuplicatesDialogProps) 
                     {group.drawables.map(({ drawable, derivedId }) => (
                       <div
                         key={drawable.id}
-                        className="flex items-center gap-2 rounded-[8px] px-2 py-1.5 hover:bg-white/5"
+                        className="flex items-center gap-2 rounded-[8px] px-2 py-1.5 hover:bg-fill"
                       >
-                        <span className="font-mono text-xs text-[#7289DA]">
+                        <span className="font-mono text-xs text-brand">
                           {String(derivedId).padStart(3, "0")}
                         </span>
-                        <span className="min-w-0 flex-1 truncate text-sm text-white/85">
+                        <span className="min-w-0 flex-1 truncate text-sm text-foreground">
                           {drawable.label}
                         </span>
                         <Badge
                           variant="outline"
-                          className="border-white/15 font-mono text-[10px] text-white/50"
+                          className="border-line font-mono text-[10px] text-grey"
                         >
                           {drawable.gender === "male" ? "mp_m" : "mp_f"} ·{" "}
                           {getSlotById(drawable.type)
@@ -112,7 +112,7 @@ export function DuplicatesDialog({ open, onOpenChange }: DuplicatesDialogProps) 
                         <Button
                           size="sm"
                           variant="ghost"
-                          className="h-6 w-6 p-0 text-white/40 hover:text-white"
+                          className="h-6 w-6 p-0 text-faint hover:text-foreground"
                           title={t("duplicatesDialog.showInWorkbench")}
                           onClick={() => jumpTo(drawable.id)}
                         >
@@ -121,7 +121,7 @@ export function DuplicatesDialog({ open, onOpenChange }: DuplicatesDialogProps) 
                         <Button
                           size="sm"
                           variant="ghost"
-                          className="h-6 w-6 p-0 text-white/40 hover:text-red-400"
+                          className="h-6 w-6 p-0 text-faint hover:text-red-400"
                           title={t("duplicatesDialog.deleteDrawable")}
                           onClick={() => removeDrawables([drawable.id])}
                         >

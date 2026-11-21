@@ -93,7 +93,7 @@ function OverlayChip({
       ? "border-amber-500/30 bg-amber-500/15 text-amber-200"
       : tone === "error"
         ? "border-red-500/30 bg-red-500/15 text-red-200"
-        : "border-white/10 bg-black/55 text-white/70";
+        : "border-line bg-black/55 text-grey";
   const Tag = onClick ? "button" : "span";
   return (
     <Tag
@@ -115,7 +115,7 @@ function SidecarUnavailableHint() {
   const [restarting, setRestarting] = useState(false);
   return (
     <div className="flex h-full flex-col items-center justify-center px-6 text-center">
-      <div className="rounded-[10px] border border-red-500/25 bg-red-500/10 px-5 py-4">
+      <div className="rounded-[14px] border border-red-500/25 bg-red-500/10 px-5 py-4">
         <p className="text-sm font-medium text-red-300">
           {t("pane.sidecarUnavailable.heading")}
         </p>
@@ -151,13 +151,13 @@ function EmptySelectionHint({ withoutYdd }: { withoutYdd: number }) {
   const { t } = useTranslation("preview");
   return (
     <div className="flex h-full flex-col items-center justify-center px-6 text-center">
-      <div className="glass-border-subtle flex h-12 w-12 items-center justify-center rounded-[10px]">
-        <Rotate3d className="h-5 w-5 text-white/30" />
+      <div className="glass-border-subtle flex h-12 w-12 items-center justify-center rounded-[14px]">
+        <Rotate3d className="h-5 w-5 text-faint" />
       </div>
-      <p className="mt-3 text-sm font-medium text-white/60">
+      <p className="mt-3 text-sm font-medium text-grey">
         {withoutYdd > 0 ? t("pane.empty.noYdd") : t("pane.empty.nothing")}
       </p>
-      <p className="mt-1 max-w-64 text-xs text-white/35">
+      <p className="mt-1 max-w-64 text-xs text-faint">
         {withoutYdd > 0
           ? t("pane.empty.noYddHint")
           : t("pane.empty.nothingHint")}
@@ -566,18 +566,18 @@ export function PreviewPane() {
   );
 
   const iconButton =
-    "h-7 w-7 rounded-[8px] text-white/55 hover:bg-white/10 hover:text-white";
+    "h-7 w-7 rounded-[8px] text-grey hover:bg-fill-2 hover:text-foreground";
 
   return (
     <div className="flex h-full flex-col">
       {/* Header: title + viewport controls */}
-      <div className="flex h-10 shrink-0 items-center gap-2 border-b border-white/8 px-3">
-        <Rotate3d className="h-3.5 w-3.5 shrink-0 text-white/40" />
-        <span className="text-xs font-semibold uppercase tracking-wider text-white/50">
+      <div className="flex h-10 shrink-0 items-center gap-2 border-b border-line px-3">
+        <Rotate3d className="h-3.5 w-3.5 shrink-0 text-faint" />
+        <span className="text-xs font-semibold uppercase tracking-wider text-grey">
           {t("pane.title")}
         </span>
         {rendered.length > 0 && (
-          <span className="font-mono text-[10px] text-white/30">
+          <span className="font-mono text-[10px] text-faint">
             {rendered.length}/{PREVIEW_MAX_MODELS}
           </span>
         )}
@@ -587,7 +587,7 @@ export function PreviewPane() {
             value={cameraPreset}
             onValueChange={(v) => setCameraPreset(v as CameraPreset)}
           >
-            <SelectTrigger className="h-7 w-28 border-white/15 bg-white/5 text-xs text-white">
+            <SelectTrigger className="h-7 w-28 border-line bg-fill text-xs text-foreground">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -611,10 +611,10 @@ export function PreviewPane() {
                 >
                   <SelectTrigger
                     aria-label={t("pane.pose.ariaLabel")}
-                    className="h-7 w-44 border-white/15 bg-white/5 text-xs text-white"
+                    className="h-7 w-44 border-line bg-fill text-xs text-foreground"
                   >
                     <span className="flex min-w-0 items-center gap-1.5">
-                      <PersonStanding className="h-3.5 w-3.5 shrink-0 text-white/45" />
+                      <PersonStanding className="h-3.5 w-3.5 shrink-0 text-faint" />
                       <span className="truncate">
                         <SelectValue />
                       </span>
@@ -649,10 +649,10 @@ export function PreviewPane() {
                 >
                   <SelectTrigger
                     aria-label={t("pane.anim.ariaLabel")}
-                    className="h-7 w-36 border-white/15 bg-white/5 text-xs text-white"
+                    className="h-7 w-36 border-line bg-fill text-xs text-foreground"
                   >
                     <span className="flex min-w-0 items-center gap-1.5">
-                      <Play className="h-3.5 w-3.5 shrink-0 text-white/45" />
+                      <Play className="h-3.5 w-3.5 shrink-0 text-faint" />
                       <span className="truncate">
                         <SelectValue />
                       </span>
@@ -682,7 +682,7 @@ export function PreviewPane() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className={cn(iconButton, !playing && "text-[#7289DA]")}
+                  className={cn(iconButton, !playing && "text-brand")}
                   onClick={() => setPlaying(!playing)}
                   aria-label={playing ? t("pane.anim.pause") : t("pane.anim.play")}
                 >
@@ -719,7 +719,7 @@ export function PreviewPane() {
                 size="icon"
                 className={cn(
                   iconButton,
-                  autoRotate && "bg-white/10 text-[#7289DA]",
+                  autoRotate && "bg-fill-2 text-brand",
                 )}
                 onClick={() => setAutoRotate(!autoRotate)}
                 aria-label={t("pane.autoRotate")}
@@ -732,7 +732,7 @@ export function PreviewPane() {
             </TooltipContent>
           </Tooltip>
 
-          <div className="mx-1 h-5 w-px bg-white/10" />
+          <div className="mx-1 h-5 w-px bg-fill-2" />
 
           <Tooltip>
             <TooltipTrigger asChild>
@@ -746,7 +746,7 @@ export function PreviewPane() {
                 <span
                   className={cn(
                     "text-xs",
-                    gtaPathReady === true ? "text-white/55" : "text-white/30",
+                    gtaPathReady === true ? "text-grey" : "text-faint",
                   )}
                 >
                   {t("pane.pedBody")}
@@ -766,7 +766,7 @@ export function PreviewPane() {
             fallbackSlots={appearanceFallbacks}
           />
 
-          <div className="mx-1 h-5 w-px bg-white/10" />
+          <div className="mx-1 h-5 w-px bg-fill-2" />
 
           <Tooltip>
             <TooltipTrigger asChild>

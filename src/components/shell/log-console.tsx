@@ -32,8 +32,8 @@ import { humanizeEntry, sourceLabel, type HumanLine } from "@/lib/log-humanize";
 import { getLogPlainLanguage, setLogPlainLanguage } from "@/lib/settings";
 
 const LEVEL_STYLES: Record<string, string> = {
-  TRACE: "text-white/30",
-  DEBUG: "text-white/40",
+  TRACE: "text-faint",
+  DEBUG: "text-faint",
   INFO: "text-sky-300/80",
   WARN: "text-amber-300",
   ERROR: "text-red-400",
@@ -68,27 +68,27 @@ function LogRow({
   return (
     <div
       className={cn(
-        "flex gap-2 px-3 py-px text-[11px] leading-[1.5] hover:bg-white/5",
+        "flex gap-2 px-3 py-px text-[11px] leading-[1.5] hover:bg-fill",
         plain ? "font-sans" : "font-mono",
       )}
     >
-      <span className="shrink-0 font-mono text-white/25">{formatTime(entry.ts)}</span>
+      <span className="shrink-0 font-mono text-faint">{formatTime(entry.ts)}</span>
       <span
         className={cn(
           "shrink-0 font-semibold",
           plain ? "w-16" : "w-12",
-          LEVEL_STYLES[entry.level] ?? "text-white/50",
+          LEVEL_STYLES[entry.level] ?? "text-grey",
         )}
       >
         {plain ? t(`level.${entry.level.toUpperCase()}`, { defaultValue: entry.level }) : entry.level}
       </span>
-      <span className="max-w-40 shrink-0 truncate text-[#7289DA]/70" title={entry.target}>
+      <span className="max-w-40 shrink-0 truncate text-brand/70" title={entry.target}>
         {plain ? sourceLabel(entry.target, t) : entry.target}
       </span>
       <span
         className={cn(
           "min-w-0 whitespace-pre-wrap break-all",
-          untranslated ? "font-mono text-white/50" : "text-white/75",
+          untranslated ? "font-mono text-grey" : "text-grey",
         )}
         title={plain ? entry.message : undefined}
       >
@@ -169,14 +169,14 @@ export function LogConsolePanel() {
   return (
     <div className="flex min-h-0 flex-1 flex-col">
       {/* Toolbar */}
-      <div className="flex shrink-0 items-center gap-2 border-b border-white/10 px-3 py-2">
-        <span className="rounded-full bg-white/10 px-2 py-0.5 text-[10px] text-white/45">
+      <div className="flex shrink-0 items-center gap-2 border-b border-line px-3 py-2">
+        <span className="rounded-full bg-fill-2 px-2 py-0.5 text-[10px] text-faint">
           {filtered.length}/{entries.length}
         </span>
         {plainLanguage && hiddenCount > 0 && (
           <Tooltip>
             <TooltipTrigger asChild>
-              <span className="shrink-0 rounded-full bg-white/5 px-2 py-0.5 text-[10px] text-white/30">
+              <span className="shrink-0 rounded-full bg-fill px-2 py-0.5 text-[10px] text-faint">
                 −{hiddenCount}
               </span>
             </TooltipTrigger>
@@ -187,7 +187,7 @@ export function LogConsolePanel() {
         )}
 
         <Select value={minLevel} onValueChange={(v) => setMinLevel(v as LogLevel)}>
-          <SelectTrigger size="sm" className="h-7 w-28 border-white/15 bg-white/5 text-xs">
+          <SelectTrigger size="sm" className="h-7 w-28 border-line bg-fill text-xs">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -203,7 +203,7 @@ export function LogConsolePanel() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder={t("log.filterPlaceholder")}
-          className="h-7 max-w-72 border-white/15 bg-white/5 text-xs"
+          className="h-7 max-w-72 border-line bg-fill text-xs"
         />
 
         <div className="ml-auto flex items-center gap-1">
@@ -212,7 +212,7 @@ export function LogConsolePanel() {
               <Button
                 variant="ghost"
                 size="sm"
-                className={cn("h-7 w-7 p-0", plainLanguage && "text-[#7289DA]")}
+                className={cn("h-7 w-7 p-0", plainLanguage && "text-brand")}
                 onClick={() => {
                   const next = !plainLanguage;
                   setPlainLanguage(next);
@@ -313,7 +313,7 @@ export function LogConsolePanel() {
         style={{ userSelect: "text" }}
       >
         {filtered.length === 0 ? (
-          <p className="px-3 py-6 text-center text-xs text-white/35">
+          <p className="px-3 py-6 text-center text-xs text-faint">
             {t("log.noEntries")}{" "}
             {search || minLevel !== "TRACE" ? t("log.filterActive") : ""}
           </p>

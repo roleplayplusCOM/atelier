@@ -1,3 +1,4 @@
+import { initTheme } from "@/lib/theme";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { getCurrentWindow } from "@tauri-apps/api/window";
@@ -35,4 +36,5 @@ function render(): void {
 
 // Apply the persisted language before the first paint (defaults to English),
 // then render. `.finally` ensures rendering even without the Tauri bridge.
+initTheme();
 void loadStoredLanguage().finally(render);

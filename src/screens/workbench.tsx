@@ -63,13 +63,13 @@ function NoProject() {
   const setScreen = useUiStore((s) => s.setScreen);
   return (
     <div className="flex h-full flex-col items-center justify-center px-6 text-center">
-      <div className="glass-border-subtle flex h-14 w-14 items-center justify-center rounded-[10px]">
-        <Shirt className="h-6 w-6 text-white/30" />
+      <div className="glass-border-subtle flex h-14 w-14 items-center justify-center rounded-[14px]">
+        <Shirt className="h-6 w-6 text-faint" />
       </div>
-      <p className="mt-4 text-sm font-medium text-white/60">
+      <p className="mt-4 text-sm font-medium text-grey">
         {t("noProject.title")}
       </p>
-      <p className="mt-1 max-w-64 text-xs text-white/35">
+      <p className="mt-1 max-w-64 text-xs text-faint">
         {t("noProject.description")}
       </p>
       <Button
@@ -101,7 +101,7 @@ export function WorkbenchScreen() {
   if (!project) {
     return (
       <div className="screen-fade-in h-full p-3">
-        <div className="glass-border-subtle glass-hover-none h-full rounded-[10px]">
+        <div className="glass-border-subtle glass-hover-none h-full rounded-[14px]">
           <NoProject />
         </div>
       </div>
@@ -110,7 +110,7 @@ export function WorkbenchScreen() {
 
   return (
     <div className="screen-fade-in relative h-full p-3">
-      <div className="glass-border-subtle glass-hover-none flex h-full flex-col rounded-[10px]">
+      <div className="glass-border-subtle glass-hover-none flex h-full flex-col rounded-[14px]">
         <WorkbenchHeader onOpenDuplicates={() => setDuplicatesOpen(true)} />
 
         {/* autoSaveId persists panel sizes to localStorage (per panel-id set,
@@ -131,7 +131,7 @@ export function WorkbenchScreen() {
             <CategoryTree />
           </ResizablePanel>
 
-          <ResizableHandle withHandle className="bg-white/8" />
+          <ResizableHandle withHandle className="bg-fill" />
 
           {/* Center: drawables + dockable 3D preview */}
           <ResizablePanel id="center" order={2} defaultSize={52} minSize={30}>
@@ -145,7 +145,7 @@ export function WorkbenchScreen() {
               </ResizablePanel>
               {previewOpen && (
                 <>
-                  <ResizableHandle withHandle className="bg-white/8" />
+                  <ResizableHandle withHandle className="bg-fill" />
                   <ResizablePanel id="preview-3d" order={2} defaultSize={40} minSize={20}>
                     <PreviewPane />
                   </ResizablePanel>
@@ -154,7 +154,7 @@ export function WorkbenchScreen() {
             </ResizablePanelGroup>
           </ResizablePanel>
 
-          <ResizableHandle withHandle className="bg-white/8" />
+          <ResizableHandle withHandle className="bg-fill" />
 
           {/* Right: inspector */}
           <ResizablePanel id="inspector" order={3} defaultSize={28} minSize={18} maxSize={40}>

@@ -84,7 +84,7 @@ function renderInline(text: string): ReactNode[] {
     if (m.index > last) nodes.push(text.slice(last, m.index));
     if (m[1] !== undefined) {
       nodes.push(
-        <strong key={key++} className="font-semibold text-white/90">
+        <strong key={key++} className="font-semibold text-foreground">
           {m[1]}
         </strong>,
       );
@@ -92,7 +92,7 @@ function renderInline(text: string): ReactNode[] {
       nodes.push(
         <code
           key={key++}
-          className="rounded bg-white/10 px-1 py-0.5 text-[0.85em] text-white/80"
+          className="rounded bg-fill-2 px-1 py-0.5 text-[0.85em] text-foreground"
         >
           {m[2]}
         </code>,
@@ -102,7 +102,7 @@ function renderInline(text: string): ReactNode[] {
       nodes.push(
         <a
           key={key++}
-          className="cursor-pointer text-[#7289DA] underline underline-offset-2 hover:text-[#9bb0ff]"
+          className="cursor-pointer text-brand underline underline-offset-2 hover:text-[#9bb0ff]"
           onClick={() => void openInBrowser(url).catch(() => {})}
         >
           {m[3]}
@@ -118,11 +118,11 @@ function renderInline(text: string): ReactNode[] {
 export function ReleaseNotes({ markdown }: { markdown: string }) {
   const blocks = parseBlocks(markdown);
   return (
-    <div className="flex flex-col gap-1.5 text-xs leading-relaxed text-white/60">
+    <div className="flex flex-col gap-1.5 text-xs leading-relaxed text-grey">
       {blocks.map((b, i) => {
         if (b.type === "h")
           return (
-            <p key={i} className="mt-1 font-semibold text-white/85">
+            <p key={i} className="mt-1 font-semibold text-foreground">
               {renderInline(b.text)}
             </p>
           );
@@ -140,7 +140,7 @@ export function ReleaseNotes({ markdown }: { markdown: string }) {
             <ul key={i} className="ml-1 flex flex-col gap-1">
               {b.items.map((it, j) => (
                 <li key={j} className="flex gap-1.5">
-                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-white/30" />
+                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-faint" />
                   <span>{renderInline(it)}</span>
                 </li>
               ))}

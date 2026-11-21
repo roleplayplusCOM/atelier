@@ -145,14 +145,14 @@ export function TattooGrid() {
   return (
     <div className="flex h-full flex-col">
       {/* Toolbar */}
-      <div className="flex h-10 shrink-0 items-center gap-2 border-b border-white/8 px-3">
+      <div className="flex h-10 shrink-0 items-center gap-2 border-b border-line px-3">
         <div className="relative flex-1">
-          <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-white/35" />
+          <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-faint" />
           <Input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder={t("grid.searchPlaceholder")}
-            className="h-7 border-white/10 bg-white/5 pl-8 text-xs text-white"
+            className="h-7 border-line bg-fill pl-8 text-xs text-foreground"
           />
         </div>
         <Button size="sm" className="h-7" disabled={!projectDir || importing} onClick={() => void onImport()}>
@@ -168,13 +168,13 @@ export function TattooGrid() {
       {visible.length === 0 ? (
         <div className="min-h-0 flex-1 overflow-y-auto">
           <div className="flex h-full min-h-48 flex-col items-center justify-center px-6 py-12 text-center">
-            <div className="glass-border-subtle flex h-12 w-12 items-center justify-center rounded-[10px]">
-              <Stamp className="h-5 w-5 text-white/30" />
+            <div className="glass-border-subtle flex h-12 w-12 items-center justify-center rounded-[14px]">
+              <Stamp className="h-5 w-5 text-faint" />
             </div>
-            <p className="mt-3 text-sm font-medium text-white/60">
+            <p className="mt-3 text-sm font-medium text-grey">
               {project && project.tattoos.length > 0 ? t("grid.noMatches") : t("grid.empty")}
             </p>
-            <p className="mt-1 max-w-64 text-xs text-white/35">{t("grid.emptyHint")}</p>
+            <p className="mt-1 max-w-64 text-xs text-faint">{t("grid.emptyHint")}</p>
           </div>
         </div>
       ) : (

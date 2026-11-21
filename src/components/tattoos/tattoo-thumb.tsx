@@ -71,7 +71,7 @@ export function TattooThumb({
       {url ? (
         <img src={url} alt="" className="h-full w-full object-contain" draggable={false} />
       ) : (
-        <Stamp className="h-1/3 w-1/3 text-white/25" />
+        <Stamp className="h-1/3 w-1/3 text-faint" />
       )}
     </div>
   );

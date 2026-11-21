@@ -46,7 +46,7 @@ export function HelpSidebar({
 
   return (
     <nav aria-label={t(DOCS_UI.sidebarAria, locale)}>
-      <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+      <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-faint">
         {t(DOCS_UI.sidebarHeading, locale)}
       </p>
       <ul className="flex flex-col gap-1">
@@ -59,17 +59,17 @@ export function HelpSidebar({
                 onClick={() => navigate(p.href)}
                 aria-current={on ? "page" : undefined}
                 className={cn(
-                  "block w-full rounded-lg px-3 py-2 text-left text-sm transition-colors",
+                  "block w-full rounded-[16px] px-3 py-2 text-left text-sm transition-colors",
                   on
-                    ? "bg-white/[0.06] font-medium text-white"
-                    : "text-white/55 hover:bg-white/5 hover:text-white",
+                    ? "bg-fill font-medium text-foreground"
+                    : "text-grey hover:bg-fill hover:text-foreground",
                 )}
               >
                 {t(p.short, locale)}
               </button>
 
               {on && p.sections.length ? (
-                <ul className="mt-1 space-y-0.5 border-l border-white/10 pl-3">
+                <ul className="mt-1 space-y-0.5 border-l border-line pl-3">
                   {p.sections.map((s) => (
                     <li key={s.id}>
                       <button
@@ -78,8 +78,8 @@ export function HelpSidebar({
                         className={cn(
                           "block w-full py-1 text-left text-sm transition-colors",
                           activeSection === s.id
-                            ? "font-medium text-[#7289DA]"
-                            : "text-white/45 hover:text-white/80",
+                            ? "font-medium text-brand"
+                            : "text-faint hover:text-foreground",
                         )}
                       >
                         {t(s.label, locale)}

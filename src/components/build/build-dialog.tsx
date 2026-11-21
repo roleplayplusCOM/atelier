@@ -49,7 +49,7 @@ const TARGETS: TargetOption[] = [
 
 function FieldLabel({ children }: { children: React.ReactNode }) {
   return (
-    <Label className="text-[10px] font-semibold uppercase tracking-wider text-white/40">
+    <Label className="text-[10px] font-semibold uppercase tracking-wider text-faint">
       {children}
     </Label>
   );
@@ -132,13 +132,13 @@ export function BuildDialog({ open, onOpenChange }: BuildDialogProps) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="liquid-glass max-h-[85vh] border-white/15 sm:max-w-xl">
+      <DialogContent className="liquid-glass max-h-[85vh] border-line sm:max-w-xl">
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2 text-white">
-            <Hammer className="h-4 w-4 text-[#7289DA]" />
+          <DialogTitle className="flex items-center gap-2 text-foreground">
+            <Hammer className="h-4 w-4 text-brand" />
             {t("dialog.title")}
           </DialogTitle>
-          <DialogDescription className="text-white/50">
+          <DialogDescription className="text-grey">
             {t("dialog.description")}
           </DialogDescription>
         </DialogHeader>
@@ -153,16 +153,16 @@ export function BuildDialog({ open, onOpenChange }: BuildDialogProps) {
                   type="button"
                   onClick={() => setTarget(option.id)}
                   className={cn(
-                    "flex flex-col gap-0.5 rounded-[10px] border px-3 py-2 text-left transition-colors",
+                    "flex flex-col gap-0.5 rounded-[14px] border px-3 py-2 text-left transition-colors",
                     target === option.id
-                      ? "border-[#5865F2]/60 bg-[#5865F2]/10"
-                      : "border-white/10 bg-white/5 hover:border-white/25",
+                      ? "border-brand/60 bg-brand/10"
+                      : "border-line bg-fill hover:border-line",
                   )}
                 >
-                  <span className="text-sm font-semibold text-white">
+                  <span className="text-sm font-semibold text-foreground">
                     {t(`targets.${option.id}.label`)}
                   </span>
-                  <span className="text-[11px] leading-snug text-white/45">
+                  <span className="text-[11px] leading-snug text-faint">
                     {t(`targets.${option.id}.description`)}
                   </span>
                 </button>
@@ -178,7 +178,7 @@ export function BuildDialog({ open, onOpenChange }: BuildDialogProps) {
                 onChange={(e) => setDlcName(e.target.value)}
                 placeholder={t("setup.dlcPlaceholder")}
                 className={cn(
-                  "h-8 border-white/15 bg-white/5 font-mono text-xs text-white",
+                  "h-8 border-line bg-fill font-mono text-xs text-foreground",
                   dlcName.length > 0 && !dlcValid && "border-red-500/50",
                 )}
               />
@@ -193,7 +193,7 @@ export function BuildDialog({ open, onOpenChange }: BuildDialogProps) {
                 onChange={(e) => setResourceName(e.target.value)}
                 placeholder={normalizedDlc || t("setup.resourcePlaceholderFallback")}
                 className={cn(
-                  "h-8 border-white/15 bg-white/5 font-mono text-xs text-white",
+                  "h-8 border-line bg-fill font-mono text-xs text-foreground",
                   !resourceValid && "border-red-500/50",
                 )}
               />
@@ -210,7 +210,7 @@ export function BuildDialog({ open, onOpenChange }: BuildDialogProps) {
                 readOnly
                 value={outDir ?? ""}
                 placeholder={t("setup.outDirPlaceholder")}
-                className="h-8 border-white/15 bg-white/5 text-xs text-white"
+                className="h-8 border-line bg-fill text-xs text-foreground"
                 title={outDir ?? undefined}
               />
               <Button
@@ -227,18 +227,18 @@ export function BuildDialog({ open, onOpenChange }: BuildDialogProps) {
 
           {target === "fivem" && (
             <>
-              <div className="flex items-center justify-between rounded-[10px] border border-white/10 bg-white/5 px-3 py-2">
+              <div className="flex items-center justify-between rounded-[14px] border border-line bg-fill px-3 py-2">
                 <div className="flex flex-col">
-                  <span className="text-xs text-white/70">{t("setup.shopMeta")}</span>
-                  <span className="text-[10px] text-white/35">{t("setup.shopMetaHint")}</span>
+                  <span className="text-xs text-grey">{t("setup.shopMeta")}</span>
+                  <span className="text-[10px] text-faint">{t("setup.shopMetaHint")}</span>
                 </div>
                 <Switch checked={generateShopMeta} onCheckedChange={setGenerateShopMeta} />
               </div>
 
-              <div className="flex items-center justify-between rounded-[10px] border border-white/10 bg-white/5 px-3 py-2">
+              <div className="flex items-center justify-between rounded-[14px] border border-line bg-fill px-3 py-2">
                 <div className="flex flex-col">
-                  <span className="text-xs text-white/70">{t("setup.viewerManifest")}</span>
-                  <span className="text-[10px] text-white/35">
+                  <span className="text-xs text-grey">{t("setup.viewerManifest")}</span>
+                  <span className="text-[10px] text-faint">
                     {t("setup.viewerManifestHint")}
                   </span>
                 </div>

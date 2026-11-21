@@ -186,18 +186,18 @@ export function BulkOptimizeDialog({ open, onOpenChange }: BulkOptimizeDialogPro
   return (
     <Dialog open={open} onOpenChange={close}>
       <DialogContent
-        className="liquid-glass max-h-[80vh] border-white/15 sm:max-w-md"
+        className="liquid-glass max-h-[80vh] border-line sm:max-w-md"
         showCloseButton={!running}
         onInteractOutside={(e) => {
           if (running) e.preventDefault();
         }}
       >
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2 text-white">
-            <Images className="h-4 w-4 text-[#7289DA]" />
+          <DialogTitle className="flex items-center gap-2 text-foreground">
+            <Images className="h-4 w-4 text-brand" />
             {t("bulk.title")}
           </DialogTitle>
-          <DialogDescription className="text-white/50">
+          <DialogDescription className="text-grey">
             {t("bulk.description", { threshold: OVERSIZE_THRESHOLD })}
           </DialogDescription>
         </DialogHeader>
@@ -208,8 +208,8 @@ export function BulkOptimizeDialog({ open, onOpenChange }: BulkOptimizeDialogPro
 
         {running ? (
           <div className="flex flex-col gap-3 py-4">
-            <div className="flex items-center gap-2 text-sm text-white">
-              <Loader2 className="h-4 w-4 animate-spin text-[#7289DA]" />
+            <div className="flex items-center gap-2 text-sm text-foreground">
+              <Loader2 className="h-4 w-4 animate-spin text-brand" />
               {t("bulk.optimizing", {
                 done: Math.min(progress.done + 1, progress.total),
                 total: progress.total,
@@ -217,16 +217,16 @@ export function BulkOptimizeDialog({ open, onOpenChange }: BulkOptimizeDialogPro
             </div>
             <Progress
               value={progress.total > 0 ? (progress.done / progress.total) * 100 : 0}
-              className="h-1.5 bg-white/10"
+              className="h-1.5 bg-fill-2"
             />
-            <p className="min-h-4 truncate text-[11px] text-white/40">
+            <p className="min-h-4 truncate text-[11px] text-faint">
               {progress.label}
             </p>
           </div>
         ) : scan.pending > 0 ? (
           <div className="flex flex-col items-center gap-3 py-8">
-            <Loader2 className="h-6 w-6 animate-spin text-[#7289DA]" />
-            <p className="text-xs text-white/45">
+            <Loader2 className="h-6 w-6 animate-spin text-brand" />
+            <p className="text-xs text-faint">
               {t("bulk.analyzing", {
                 pending: scan.pending,
                 total: textures.length,
@@ -236,26 +236,26 @@ export function BulkOptimizeDialog({ open, onOpenChange }: BulkOptimizeDialogPro
         ) : scan.oversized.length === 0 ? (
           <div className="flex flex-col items-center gap-3 py-8">
             <CircleCheck className="h-7 w-7 text-emerald-400" />
-            <p className="text-sm text-white/60">
+            <p className="text-sm text-grey">
               {t("bulk.noOversized")}
             </p>
             {scan.unreadable > 0 && (
-              <p className="text-[11px] text-white/35">
+              <p className="text-[11px] text-faint">
                 {t("bulk.unreadable", { count: scan.unreadable })}
               </p>
             )}
           </div>
         ) : (
           <div className="flex min-h-0 flex-col gap-3">
-            <ScrollArea className="max-h-[38vh] rounded-[10px] border border-white/8">
+            <ScrollArea className="max-h-[38vh] rounded-[14px] border border-line">
               <div className="flex flex-col">
                 {scan.oversized.map(({ texture, maxEdge }) => (
                   <div
                     key={texture.path}
-                    className="flex items-center gap-2 border-b border-white/5 px-3 py-2 text-xs last:border-b-0"
+                    className="flex items-center gap-2 border-b border-line px-3 py-2 text-xs last:border-b-0"
                   >
                     <span
-                      className="min-w-0 flex-1 truncate text-white/80"
+                      className="min-w-0 flex-1 truncate text-foreground"
                       title={texture.path}
                     >
                       {baseName(texture.path)}
@@ -263,7 +263,7 @@ export function BulkOptimizeDialog({ open, onOpenChange }: BulkOptimizeDialogPro
                     <span className="shrink-0 font-mono text-[10px] text-amber-300">
                       {maxEdge} px
                     </span>
-                    <span className="w-16 shrink-0 text-right text-[10px] text-white/40">
+                    <span className="w-16 shrink-0 text-right text-[10px] text-faint">
                       {formatBytes(texture.size)}
                     </span>
                   </div>
@@ -272,12 +272,12 @@ export function BulkOptimizeDialog({ open, onOpenChange }: BulkOptimizeDialogPro
             </ScrollArea>
 
             <div className="flex items-center justify-between gap-3">
-              <Label className="text-xs text-white/70">{t("bulk.shrinkTo")}</Label>
+              <Label className="text-xs text-grey">{t("bulk.shrinkTo")}</Label>
               <Select
                 value={String(maxDimension)}
                 onValueChange={(v) => setMaxDimension(Number.parseInt(v, 10))}
               >
-                <SelectTrigger className="h-8 w-28 border-white/15 bg-white/5 font-mono text-xs text-white">
+                <SelectTrigger className="h-8 w-28 border-line bg-fill font-mono text-xs text-foreground">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -288,9 +288,9 @@ export function BulkOptimizeDialog({ open, onOpenChange }: BulkOptimizeDialogPro
             </div>
 
             <div className="flex items-center justify-between gap-3">
-              <Label className="text-xs text-white/70">{t("texture.format")}</Label>
+              <Label className="text-xs text-grey">{t("texture.format")}</Label>
               <Select value={format} onValueChange={(v) => setFormat(v as FormatChoice)}>
-                <SelectTrigger className="h-8 w-28 border-white/15 bg-white/5 text-xs text-white">
+                <SelectTrigger className="h-8 w-28 border-line bg-fill text-xs text-foreground">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -310,7 +310,7 @@ export function BulkOptimizeDialog({ open, onOpenChange }: BulkOptimizeDialogPro
             )}
 
             {scan.unreadable > 0 && (
-              <p className="text-[10px] text-white/35">
+              <p className="text-[10px] text-faint">
                 {t("bulk.skipped", { count: scan.unreadable })}
               </p>
             )}

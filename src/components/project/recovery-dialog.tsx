@@ -56,15 +56,15 @@ export function RecoveryDialog({ recovery, onClose }: RecoveryDialogProps) {
         if (!open && !busy) onClose();
       }}
     >
-      <DialogContent className="liquid-glass border-white/15 sm:max-w-md">
+      <DialogContent className="liquid-glass border-line sm:max-w-md">
         <DialogHeader>
-          <div className="mb-1 flex h-10 w-10 items-center justify-center rounded-[10px] bg-amber-500/15">
+          <div className="mb-1 flex h-10 w-10 items-center justify-center rounded-[14px] bg-amber-500/15">
             <History className="h-5 w-5 text-amber-300" />
           </div>
-          <DialogTitle className="text-white">
+          <DialogTitle className="text-foreground">
             {t("recovery.title")}
           </DialogTitle>
-          <DialogDescription className="text-white/50">
+          <DialogDescription className="text-grey">
             {recovery
               ? t("recovery.description", {
                   name: recovery.saved.name,

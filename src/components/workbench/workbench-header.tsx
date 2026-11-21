@@ -99,7 +99,7 @@ export function ProjectName() {
           if (e.key === "Enter") commit();
           if (e.key === "Escape") setEditing(false);
         }}
-        className="h-7 w-56 border-white/15 bg-white/5 text-sm text-white"
+        className="h-7 w-56 border-line bg-fill text-sm text-foreground"
       />
     );
   }
@@ -107,15 +107,15 @@ export function ProjectName() {
   return (
     <button
       type="button"
-      className="group flex min-w-0 items-center gap-1.5 rounded-[8px] px-2 py-1 text-left transition-colors hover:bg-white/10"
+      className="group flex min-w-0 items-center gap-1.5 rounded-[8px] px-2 py-1 text-left transition-colors hover:bg-fill-2"
       onClick={() => {
         setDraft(name);
         setEditing(true);
       }}
       title={t("header.renameProject")}
     >
-      <span className="truncate text-sm font-semibold text-white">{name}</span>
-      <Pencil className="h-3 w-3 shrink-0 text-white/0 transition-colors group-hover:text-white/40" />
+      <span className="truncate text-sm font-semibold text-foreground">{name}</span>
+      <Pencil className="h-3 w-3 shrink-0 text-foreground/0 transition-colors group-hover:text-faint" />
     </button>
   );
 }
@@ -159,9 +159,9 @@ export function SaveIndicator() {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <div className="flex h-7 cursor-default items-center gap-1.5 rounded-full px-2.5 text-xs text-white/55">
+        <div className="flex h-7 cursor-default items-center gap-1.5 rounded-full px-2.5 text-xs text-grey">
           {saving ? (
-            <Loader2 className="h-3 w-3 animate-spin text-[#7289DA]" />
+            <Loader2 className="h-3 w-3 animate-spin text-brand" />
           ) : dirty ? (
             <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
           ) : (
@@ -169,7 +169,7 @@ export function SaveIndicator() {
           )}
           <span>{label}</span>
           {relative && !saving && (
-            <span className="text-white/30">· {relative}</span>
+            <span className="text-faint">· {relative}</span>
           )}
         </div>
       </TooltipTrigger>
@@ -220,20 +220,20 @@ export function WorkbenchHeader({ onOpenDuplicates }: WorkbenchHeaderProps) {
   );
 
   const iconButton =
-    "h-7 w-7 rounded-[8px] text-white/55 hover:bg-white/10 hover:text-white";
+    "h-7 w-7 rounded-[8px] text-grey hover:bg-fill-2 hover:text-foreground";
 
   return (
-    <div className="flex h-11 shrink-0 items-center gap-2 border-b border-white/8 px-3">
+    <div className="flex h-11 shrink-0 items-center gap-2 border-b border-line px-3">
       <ProjectName />
 
-      <div className="mx-1 h-5 w-px bg-white/10" />
+      <div className="mx-1 h-5 w-px bg-fill-2" />
 
       {/* Gender view toggle — independent of settings.defaultGender. */}
       <Tabs
         value={viewGender}
         onValueChange={(v) => setViewGender(v as Gender)}
       >
-        <TabsList className="h-8 bg-white/5">
+        <TabsList className="h-8 bg-fill">
           <TabsTrigger value="male" className="h-6 px-3 font-mono text-xs">
             mp_m
           </TabsTrigger>
@@ -243,7 +243,7 @@ export function WorkbenchHeader({ onOpenDuplicates }: WorkbenchHeaderProps) {
         </TabsList>
       </Tabs>
 
-      <div className="mx-1 h-5 w-px bg-white/10" />
+      <div className="mx-1 h-5 w-px bg-fill-2" />
 
       <Tooltip>
         <TooltipTrigger asChild>
@@ -291,7 +291,7 @@ export function WorkbenchHeader({ onOpenDuplicates }: WorkbenchHeaderProps) {
         <TooltipContent side="bottom">{t("header.saveShortcut")}</TooltipContent>
       </Tooltip>
 
-      <div className="mx-1 h-5 w-px bg-white/10" />
+      <div className="mx-1 h-5 w-px bg-fill-2" />
 
       <Tooltip>
         <TooltipTrigger asChild>
@@ -300,7 +300,7 @@ export function WorkbenchHeader({ onOpenDuplicates }: WorkbenchHeaderProps) {
             size="icon"
             className={cn(
               iconButton,
-              previewOpen && "bg-white/10 text-[#7289DA] hover:text-[#7289DA]",
+              previewOpen && "bg-fill-2 text-brand hover:text-brand",
             )}
             onClick={() => setPreviewOpen(!previewOpen)}
             aria-label={t("header.preview3d")}
@@ -336,7 +336,7 @@ export function WorkbenchHeader({ onOpenDuplicates }: WorkbenchHeaderProps) {
 
       <div className="ml-auto flex items-center gap-2">
         <CloudSection />
-        <div className="h-5 w-px bg-white/10" />
+        <div className="h-5 w-px bg-fill-2" />
         <SaveIndicator />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

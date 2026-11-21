@@ -2,7 +2,7 @@
  * R3F viewport for the workbench 3D preview.
  *
  * Renders one GLB model per previewed drawable (each loaded independently via
- * GLTFLoader on a cached blob URL), on a Feelgood dark stage: hemisphere +
+ * GLTFLoader on a cached blob URL), on a Roleplay+ dark stage: hemisphere +
  * two directional lights and a dark grid floor — deliberately no bright HDRI.
  * The camera frames the combined bounds of all loaded models; presets pick a
  * target/position relative to those bounds.
@@ -308,7 +308,7 @@ export function Viewer3D({
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       camera={{ fov: 40, near: 0.01, far: 200, position: [1.4, 0.9, 2.4] }}
     >
-      {/* Feelgood dark stage — subtle hemisphere + key/rim, no bright HDRI.
+      {/* Roleplay+ dark stage — subtle hemisphere + key/rim, no bright HDRI.
           All lights stay color-neutral so the embedded textures (skin tones
           especially) read true instead of picking up a cool cast. */}
       <ambientLight intensity={0.25} />

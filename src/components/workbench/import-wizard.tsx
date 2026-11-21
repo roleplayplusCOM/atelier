@@ -134,11 +134,11 @@ function IncludeCheckbox({
       className={cn(
         "flex h-4.5 w-4.5 items-center justify-center rounded-[5px] border transition-colors",
         checked
-          ? "border-[#5865F2] bg-[#5865F2]"
-          : "border-white/25 bg-white/5 hover:border-white/40",
+          ? "border-brand bg-brand"
+          : "border-line bg-fill hover:border-line",
       )}
     >
-      {checked && <Check className="h-3 w-3 text-white" />}
+      {checked && <Check className="h-3 w-3 text-foreground" />}
     </button>
   );
 }
@@ -221,13 +221,13 @@ function ProjectStep({ onReady }: { onReady: () => void }) {
 
   return (
     <div className="flex flex-col gap-4">
-      <p className="text-sm text-white/60">
+      <p className="text-sm text-grey">
         {t("importWizard.projectStepIntro")}
       </p>
 
-      <div className="glass-border-subtle flex flex-col gap-3 rounded-[10px] p-4">
+      <div className="glass-border-subtle flex flex-col gap-3 rounded-[14px] p-4">
         <div className="flex flex-col gap-2">
-          <Label htmlFor="wizard-project-name" className="text-white/70">
+          <Label htmlFor="wizard-project-name" className="text-grey">
             {t("importWizard.projectName")}
           </Label>
           <Input
@@ -235,17 +235,17 @@ function ProjectStep({ onReady }: { onReady: () => void }) {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder={t("importWizard.projectNamePlaceholder")}
-            className="border-white/15 bg-white/5 text-white"
+            className="border-line bg-fill text-foreground"
           />
         </div>
         <div className="flex flex-col gap-2">
-          <Label className="text-white/70">{t("importWizard.location")}</Label>
+          <Label className="text-grey">{t("importWizard.location")}</Label>
           <div className="flex gap-2">
             <Input
               readOnly
               value={location ?? ""}
               placeholder={t("importWizard.noFolderChosen")}
-              className="border-white/15 bg-white/5 text-white"
+              className="border-line bg-fill text-foreground"
             />
             <Button variant="outline" onClick={() => void pickLocation()}>
               <FolderOpen className="h-4 w-4" />
@@ -253,7 +253,7 @@ function ProjectStep({ onReady }: { onReady: () => void }) {
             </Button>
           </div>
           {projectDir && (
-            <p className="break-all text-xs text-white/35">
+            <p className="break-all text-xs text-faint">
               {t("importWizard.willBeCreatedIn", { path: projectDir })}
             </p>
           )}
@@ -268,9 +268,9 @@ function ProjectStep({ onReady }: { onReady: () => void }) {
       </div>
 
       <div className="flex items-center gap-3">
-        <div className="h-px flex-1 bg-white/10" />
-        <span className="text-xs text-white/35">{t("importWizard.or")}</span>
-        <div className="h-px flex-1 bg-white/10" />
+        <div className="h-px flex-1 bg-fill-2" />
+        <span className="text-xs text-faint">{t("importWizard.or")}</span>
+        <div className="h-px flex-1 bg-fill-2" />
       </div>
 
       <Button variant="outline" disabled={busy} onClick={() => void openExisting()}>
@@ -470,17 +470,17 @@ export function ImportWizard() {
   return (
     <Dialog open={open} onOpenChange={close}>
       <DialogContent
-        className="liquid-glass max-h-[85vh] border-white/15 sm:max-w-3xl"
+        className="liquid-glass max-h-[85vh] border-line sm:max-w-3xl"
         onInteractOutside={(e) => {
           if (step === "importing") e.preventDefault();
         }}
       >
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2 text-white">
-            <PackageOpen className="h-4 w-4 text-[#7289DA]" />
+          <DialogTitle className="flex items-center gap-2 text-foreground">
+            <PackageOpen className="h-4 w-4 text-brand" />
             {t("importWizard.title")}
           </DialogTitle>
-          <DialogDescription className="text-white/50">
+          <DialogDescription className="text-grey">
             {t("importWizard.description")}
           </DialogDescription>
         </DialogHeader>
@@ -491,10 +491,10 @@ export function ImportWizard() {
 
         {effectiveStep === "folder" && (
           <div className="flex flex-col items-center gap-4 py-8">
-            <div className="glass-border-subtle flex h-14 w-14 items-center justify-center rounded-[10px]">
-              <FolderInput className="h-6 w-6 text-white/40" />
+            <div className="glass-border-subtle flex h-14 w-14 items-center justify-center rounded-[14px]">
+              <FolderInput className="h-6 w-6 text-faint" />
             </div>
-            <p className="max-w-sm text-center text-sm text-white/50">
+            <p className="max-w-sm text-center text-sm text-grey">
               {t("importWizard.folderIntro")}
             </p>
             <Button onClick={() => void pickFolderAndScan()}>
@@ -506,8 +506,8 @@ export function ImportWizard() {
 
         {effectiveStep === "scanning" && (
           <div className="flex flex-col items-center gap-4 py-12">
-            <Loader2 className="h-8 w-8 animate-spin text-[#7289DA]" />
-            <p className="text-sm text-white/50">
+            <Loader2 className="h-8 w-8 animate-spin text-brand" />
+            <p className="text-sm text-grey">
               {t("importWizard.scanning", {
                 name: folder
                   ? baseName(folder)
@@ -520,7 +520,7 @@ export function ImportWizard() {
         {effectiveStep === "review" && (
           <div className="flex min-h-0 flex-col gap-3">
             {warnings.length > 0 && (
-              <div className="flex items-start gap-2 rounded-[10px] border border-amber-500/25 bg-amber-500/10 px-3 py-2">
+              <div className="flex items-start gap-2 rounded-[14px] border border-amber-500/25 bg-amber-500/10 px-3 py-2">
                 <TriangleAlert className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-300" />
                 <div className="text-xs text-amber-200">
                   {warnings.slice(0, 3).map((w) => (
@@ -540,14 +540,14 @@ export function ImportWizard() {
             )}
 
             {rows.length === 0 ? (
-              <p className="py-8 text-center text-sm text-white/40">
+              <p className="py-8 text-center text-sm text-faint">
                 {t("importWizard.noYddFound")}
               </p>
             ) : (
-              <ScrollArea className="max-h-[45vh] rounded-[10px] border border-white/8">
+              <ScrollArea className="max-h-[45vh] rounded-[14px] border border-line">
                 <Table>
                   <TableHeader>
-                    <TableRow className="border-white/8 hover:bg-transparent">
+                    <TableRow className="border-line hover:bg-transparent">
                       <TableHead className="w-8">
                         <IncludeCheckbox
                           checked={included.length === rows.length}
@@ -558,22 +558,22 @@ export function ImportWizard() {
                           }
                         />
                       </TableHead>
-                      <TableHead className="text-white/50">
+                      <TableHead className="text-grey">
                         {t("importWizard.colFile")}
                       </TableHead>
-                      <TableHead className="w-24 text-white/50">
+                      <TableHead className="w-24 text-grey">
                         {t("importWizard.colGender")}
                       </TableHead>
-                      <TableHead className="w-36 text-white/50">
+                      <TableHead className="w-36 text-grey">
                         {t("importWizard.colSlot")}
                       </TableHead>
-                      <TableHead className="w-16 text-white/50">
+                      <TableHead className="w-16 text-grey">
                         {t("importWizard.colNumber")}
                       </TableHead>
-                      <TableHead className="w-14 text-center text-white/50">
+                      <TableHead className="w-14 text-center text-grey">
                         {t("importWizard.colTex")}
                       </TableHead>
-                      <TableHead className="w-20 text-white/50">
+                      <TableHead className="w-20 text-grey">
                         {t("importWizard.colQuality")}
                       </TableHead>
                     </TableRow>
@@ -583,7 +583,7 @@ export function ImportWizard() {
                       <TableRow
                         key={row.entry.yddPath}
                         className={cn(
-                          "border-white/8 hover:bg-white/5",
+                          "border-line hover:bg-fill",
                           !row.include && "opacity-40",
                         )}
                       >
@@ -595,7 +595,7 @@ export function ImportWizard() {
                         </TableCell>
                         <TableCell>
                           <span
-                            className="block max-w-44 truncate text-xs text-white/85"
+                            className="block max-w-44 truncate text-xs text-foreground"
                             title={row.entry.yddPath}
                           >
                             {baseName(row.entry.yddPath)}
@@ -613,7 +613,7 @@ export function ImportWizard() {
                               updateRow(i, { gender: v as Gender })
                             }
                           >
-                            <SelectTrigger className="h-7 w-20 border-white/15 bg-white/5 font-mono text-[11px] text-white">
+                            <SelectTrigger className="h-7 w-20 border-line bg-fill font-mono text-[11px] text-foreground">
                               <SelectValue />
                             </SelectTrigger>
                             <SelectContent>
@@ -631,7 +631,7 @@ export function ImportWizard() {
                           >
                             <SelectTrigger
                               className={cn(
-                                "h-7 w-32 border-white/15 bg-white/5 text-[11px] text-white",
+                                "h-7 w-32 border-line bg-fill text-[11px] text-foreground",
                                 row.type === null &&
                                   row.include &&
                                   "border-amber-500/50",
@@ -675,10 +675,10 @@ export function ImportWizard() {
                                   : Math.max(0, parsed),
                               });
                             }}
-                            className="h-7 w-14 border-white/15 bg-white/5 font-mono text-[11px] text-white"
+                            className="h-7 w-14 border-line bg-fill font-mono text-[11px] text-foreground"
                           />
                         </TableCell>
-                        <TableCell className="text-center font-mono text-xs text-white/60">
+                        <TableCell className="text-center font-mono text-xs text-grey">
                           {row.entry.textures.length}
                         </TableCell>
                         <TableCell>
@@ -687,7 +687,7 @@ export function ImportWizard() {
                             className={cn(
                               "text-[10px]",
                               CONFIDENCE_STYLE[row.entry.confidence] ??
-                                "border-white/15 text-white/50",
+                                "border-line text-grey",
                             )}
                           >
                             {confidenceLabel(row.entry.confidence)}
@@ -710,7 +710,7 @@ export function ImportWizard() {
 
         {effectiveStep === "importing" && (
           <div className="flex flex-col items-center gap-4 py-10">
-            <Loader2 className="h-8 w-8 animate-spin text-[#7289DA]" />
+            <Loader2 className="h-8 w-8 animate-spin text-brand" />
             <Progress
               value={
                 progress.total > 0
@@ -719,7 +719,7 @@ export function ImportWizard() {
               }
               className="w-72"
             />
-            <p className="text-sm text-white/50">
+            <p className="text-sm text-grey">
               {t("importWizard.importing", {
                 done: progress.done,
                 total: progress.total,
@@ -730,7 +730,7 @@ export function ImportWizard() {
 
         {effectiveStep === "review" && (
           <DialogFooter className="sm:justify-between">
-            <label className="mr-auto flex cursor-pointer select-none items-center gap-2 text-xs text-white/60">
+            <label className="mr-auto flex cursor-pointer select-none items-center gap-2 text-xs text-grey">
               <IncludeCheckbox
                 checked={skipDuplicates}
                 onChange={setSkipDuplicates}

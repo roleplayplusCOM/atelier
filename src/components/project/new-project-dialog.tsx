@@ -71,19 +71,19 @@ export function NewProjectDialog({ open, onOpenChange }: NewProjectDialogProps) 
 
   return (
     <Dialog open={open} onOpenChange={(o) => !creating && onOpenChange(o)}>
-      <DialogContent className="liquid-glass border-white/15 sm:max-w-md">
+      <DialogContent className="liquid-glass border-line sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-white">
+          <DialogTitle className="text-foreground">
             {t("newProject.title")}
           </DialogTitle>
-          <DialogDescription className="text-white/50">
+          <DialogDescription className="text-grey">
             {t("newProject.description")}
           </DialogDescription>
         </DialogHeader>
 
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <Label htmlFor="project-name" className="text-white/70">
+            <Label htmlFor="project-name" className="text-grey">
               {t("newProject.nameLabel")}
             </Label>
             <Input
@@ -92,7 +92,7 @@ export function NewProjectDialog({ open, onOpenChange }: NewProjectDialogProps) 
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder={t("newProject.namePlaceholder")}
-              className="border-white/15 bg-white/5 text-white"
+              className="border-line bg-fill text-foreground"
               onKeyDown={(e) => {
                 if (e.key === "Enter") void create();
               }}
@@ -100,7 +100,7 @@ export function NewProjectDialog({ open, onOpenChange }: NewProjectDialogProps) 
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label htmlFor="project-location" className="text-white/70">
+            <Label htmlFor="project-location" className="text-grey">
               {t("newProject.locationLabel")}
             </Label>
             <div className="flex gap-2">
@@ -109,7 +109,7 @@ export function NewProjectDialog({ open, onOpenChange }: NewProjectDialogProps) 
                 readOnly
                 value={location ?? ""}
                 placeholder={t("newProject.locationPlaceholder")}
-                className="border-white/15 bg-white/5 text-white"
+                className="border-line bg-fill text-foreground"
               />
               <Button variant="outline" onClick={() => void pickLocation()}>
                 <FolderOpen className="h-4 w-4" />
@@ -117,7 +117,7 @@ export function NewProjectDialog({ open, onOpenChange }: NewProjectDialogProps) 
               </Button>
             </div>
             {projectDir && (
-              <p className="break-all text-xs text-white/35">
+              <p className="break-all text-xs text-faint">
                 {t("newProject.willBeCreatedIn", { path: projectDir })}
               </p>
             )}

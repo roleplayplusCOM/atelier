@@ -89,16 +89,16 @@ function CategoryRow({
       type="button"
       onClick={onSelect}
       className={cn(
-        "flex w-full items-center gap-2.5 rounded-[10px] px-3 py-1.5 text-left text-sm transition-colors",
+        "flex w-full items-center gap-2.5 rounded-[14px] px-3 py-1.5 text-left text-sm transition-colors",
         active
-          ? "bg-[#5865F2]/20 text-white"
-          : "text-white/70 hover:bg-white/10 hover:text-white",
+          ? "bg-brand/20 text-foreground"
+          : "text-grey hover:bg-fill-2 hover:text-foreground",
       )}
     >
       <Icon
         className={cn(
           "h-4 w-4 shrink-0",
-          active ? "text-[#7289DA]" : "text-white/45",
+          active ? "text-brand" : "text-faint",
         )}
       />
       <span className="flex-1 truncate">{t(`slot.${slot.id}`)}</span>
@@ -118,7 +118,7 @@ function CategoryRow({
       <span
         className={cn(
           "min-w-6 rounded-full px-1.5 py-0.5 text-center font-mono text-[10px]",
-          stats.count > 0 ? "bg-white/10 text-white/60" : "text-white/25",
+          stats.count > 0 ? "bg-fill-2 text-grey" : "text-faint",
         )}
       >
         {stats.count}
@@ -155,7 +155,7 @@ function Section({
       <CollapsibleTrigger asChild>
         <button
           type="button"
-          className="flex w-full items-center gap-1.5 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-white/35 transition-colors hover:text-white/60"
+          className="flex w-full items-center gap-1.5 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-faint transition-colors hover:text-grey"
         >
           <ChevronRight
             className={cn(
@@ -164,7 +164,7 @@ function Section({
             )}
           />
           <span className="flex-1 text-left">{title}</span>
-          <span className="font-mono text-white/25">{total}</span>
+          <span className="font-mono text-faint">{total}</span>
         </button>
       </CollapsibleTrigger>
       <CollapsibleContent>
@@ -214,11 +214,11 @@ export function CategoryTree() {
 
   return (
     <div className="flex h-full flex-col">
-      <div className="flex h-10 shrink-0 items-center justify-between border-b border-white/8 px-4">
-        <span className="text-xs font-semibold uppercase tracking-wider text-white/50">
+      <div className="flex h-10 shrink-0 items-center justify-between border-b border-line px-4">
+        <span className="text-xs font-semibold uppercase tracking-wider text-grey">
           {t("categoryTree.title")}
         </span>
-        <span className="font-mono text-[10px] text-white/30">
+        <span className="font-mono text-[10px] text-faint">
           {viewGender === "male" ? "mp_m" : "mp_f"}
         </span>
       </div>
@@ -229,16 +229,16 @@ export function CategoryTree() {
             type="button"
             onClick={() => setCategory("all")}
             className={cn(
-              "mb-1 flex w-full items-center gap-2.5 rounded-[10px] px-3 py-1.5 text-left text-sm transition-colors",
+              "mb-1 flex w-full items-center gap-2.5 rounded-[14px] px-3 py-1.5 text-left text-sm transition-colors",
               category === "all"
-                ? "bg-[#5865F2]/20 text-white"
-                : "text-white/70 hover:bg-white/10 hover:text-white",
+                ? "bg-brand/20 text-foreground"
+                : "text-grey hover:bg-fill-2 hover:text-foreground",
             )}
           >
             <LayoutGrid
               className={cn(
                 "h-4 w-4 shrink-0",
-                category === "all" ? "text-[#7289DA]" : "text-white/45",
+                category === "all" ? "text-brand" : "text-faint",
               )}
             />
             <span className="flex-1">{t("categoryTree.all")}</span>
@@ -251,7 +251,7 @@ export function CategoryTree() {
             <span
               className={cn(
                 "min-w-6 rounded-full px-1.5 py-0.5 text-center font-mono text-[10px]",
-                totalCount > 0 ? "bg-white/10 text-white/60" : "text-white/25",
+                totalCount > 0 ? "bg-fill-2 text-grey" : "text-faint",
               )}
             >
               {totalCount}

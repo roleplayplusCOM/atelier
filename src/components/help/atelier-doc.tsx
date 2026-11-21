@@ -48,7 +48,7 @@ export function AtelierDoc() {
       <article>
         <DocH1>atelier — die Desktop-App</DocH1>
         <DocLead>
-          atelier ist das kostenlose Desktop-Tool der feelgood-Community, mit dem du GTA-V-Addon-
+          atelier ist das kostenlose Desktop-Tool der Roleplay+-Community, mit dem du GTA-V-Addon-
           Kleidung und Tattoos baust, prüfst und veröffentlichst. Diese Seite führt dich von der
           Installation bis zum fertigen Pack.
         </DocLead>
@@ -61,7 +61,7 @@ export function AtelierDoc() {
           </DocP>
           <DocUl>
             <DocLi>
-              <strong className="text-white/80">Solo-Modus:</strong> komplett lokal, ohne Konto oder
+              <strong className="text-foreground">Solo-Modus:</strong> komplett lokal, ohne Konto oder
               Server — voll offline nutzbar.
             </DocLi>
             <DocLi>Ziele: FiveM, Singleplayer, RageMP und alt:V.</DocLi>
@@ -81,15 +81,15 @@ export function AtelierDoc() {
           </DocP>
           <DocUl>
             <DocLi>
-              <strong className="text-white/80">Installer (.exe)</strong> — der Standardweg.
+              <strong className="text-foreground">Installer (.exe)</strong> — der Standardweg.
               Doppelklick, installieren, fertig.
             </DocLi>
             <DocLi>
-              <strong className="text-white/80">MSI</strong> — die Alternative, z. B. für verwaltete
+              <strong className="text-foreground">MSI</strong> — die Alternative, z. B. für verwaltete
               Umgebungen.
             </DocLi>
             <DocLi>
-              <strong className="text-white/80">Portable-ZIP</strong> — keine Installation: entpacken
+              <strong className="text-foreground">Portable-ZIP</strong> — keine Installation: entpacken
               und <Code>atelier.exe</Code> starten. App und Sidecar sind enthalten.
             </DocLi>
           </DocUl>
@@ -106,25 +106,25 @@ export function AtelierDoc() {
           </DocP>
           <DocSteps>
             <DocStep n={1}>
-              <strong className="text-white/80">Modus.</strong> Wähle, wie du atelier nutzt:{" "}
-              <strong className="text-white/80">Solo</strong> — komplett lokal, ohne Konto und ohne
-              Server (alles läuft offline) — oder <strong className="text-white/80">Team</strong>, um
+              <strong className="text-foreground">Modus.</strong> Wähle, wie du atelier nutzt:{" "}
+              <strong className="text-foreground">Solo</strong> — komplett lokal, ohne Konto und ohne
+              Server (alles läuft offline) — oder <strong className="text-foreground">Team</strong>, um
               dich anzumelden und Packs über die Cloud zu teilen. Den Modus kannst du später jederzeit
               in den Einstellungen wechseln.
             </DocStep>
             <DocStep n={2}>
-              <strong className="text-white/80">Server-Adresse (nur Team).</strong> Im Team-Modus
+              <strong className="text-foreground">Server-Adresse (nur Team).</strong> Im Team-Modus
               trägst du die Adresse deiner atelier-api ein. atelier prüft sie live und zeigt grün, wenn
               dort eine atelier-api läuft. Standard für lokale Tests ist{" "}
               <Code>http://127.0.0.1:3095</Code>. Im Solo-Modus wird dieser Schritt übersprungen.
             </DocStep>
             <DocStep n={3}>
-              <strong className="text-white/80">GTA-V-Verzeichnis.</strong> Wähle den Ordner deiner
+              <strong className="text-foreground">GTA-V-Verzeichnis.</strong> Wähle den Ordner deiner
               GTA-V-Installation. Damit kann die 3D-Vorschau den echten Ped-Body anzeigen. Optional —
               ohne GTA-Pfad funktioniert alles andere trotzdem.
             </DocStep>
             <DocStep n={4}>
-              <strong className="text-white/80">Logs.</strong> Optional kannst du eine
+              <strong className="text-foreground">Logs.</strong> Optional kannst du eine
               Live-Log-Konsole aktivieren, die App- und Sidecar-Ereignisse anzeigt. Praktisch bei
               Problemen, sonst kannst du es ausgelassen lassen.
             </DocStep>
@@ -191,25 +191,25 @@ export function AtelierDoc() {
 
         <DocSection id="vorschau" title="3D-Vorschau">
           <DocP>
-            Die andockbare Vorschau zeigt deine Drawables in Echtzeit — im dunklen feelgood-Look mit
+            Die andockbare Vorschau zeigt deine Drawables in Echtzeit — im dunklen Roleplay+-Look mit
             frei drehbarer Kamera.
           </DocP>
           <DocUl>
             <DocLi>
-              <strong className="text-white/80">Mehrere Drawables gleichzeitig</strong> als
+              <strong className="text-foreground">Mehrere Drawables gleichzeitig</strong> als
               komplettes Outfit, inklusive Textur-Varianten zum Durchschalten.
             </DocLi>
             <DocLi>
-              <strong className="text-white/80">Kamera-Presets</strong> für Gesamt, Kopf, Torso,
+              <strong className="text-foreground">Kamera-Presets</strong> für Gesamt, Kopf, Torso,
               Beine und Füße.
             </DocLi>
             <DocLi>
-              <strong className="text-white/80">Hair-Shrink &amp; Heel-Height</strong> live
+              <strong className="text-foreground">Hair-Shrink &amp; Heel-Height</strong> live
               verstellbar — so siehst du sofort, wie stark Haare schrumpfen oder wie hoch Absätze den
               Ped anheben.
             </DocLi>
             <DocLi>
-              <strong className="text-white/80">Ped-Body</strong> einblenden (mp_m/mp_f), sobald ein
+              <strong className="text-foreground">Ped-Body</strong> einblenden (mp_m/mp_f), sobald ein
               GTA-V-Pfad gesetzt ist. Overlays zeigen Poly-/Vertex-Zahlen und LOD-Warnungen.
             </DocLi>
           </DocUl>
@@ -221,27 +221,27 @@ export function AtelierDoc() {
 
         <DocSection id="tattoos" title="Tattoos">
           <DocP>
-            Neben Kleidung baust du in atelier auch <strong className="text-white/80">Tattoos</strong>{" "}
+            Neben Kleidung baust du in atelier auch <strong className="text-foreground">Tattoos</strong>{" "}
             — in einem eigenen Tattoo-Bereich (Icon oben in der Navigation). Tattoos sind
             Fixed-UV-Decals: du importierst ein Bild und legst Zone, Geschlecht und Typ fest, die
             genaue Platzierung steckt in der Textur.
           </DocP>
           <DocUl>
             <DocLi>
-              <strong className="text-white/80">Importieren</strong> — PNG, DDS oder YTD per Button;
+              <strong className="text-foreground">Importieren</strong> — PNG, DDS oder YTD per Button;
               läuft komplett offline (kein GTA-Pfad nötig).
             </DocLi>
             <DocLi>
-              <strong className="text-white/80">Organisieren</strong> — nach den sechs Körperzonen
+              <strong className="text-foreground">Organisieren</strong> — nach den sechs Körperzonen
               (Torso, Kopf, linker/rechter Arm, linkes/rechtes Bein), mit Suche, Grid und Inspector.
               Rechtsklick zum Duplizieren, Zone/Geschlecht ändern, Gruppieren und Löschen.
             </DocLi>
             <DocLi>
-              <strong className="text-white/80">Geschlecht</strong> — ein Decal kann beide
+              <strong className="text-foreground">Geschlecht</strong> — ein Decal kann beide
               Freemode-Peds bedienen (M/W); pro Geschlecht entsteht ein Overlay-Name.
             </DocLi>
             <DocLi>
-              <strong className="text-white/80">Bauen</strong> — ergibt ein streambares FiveM-Pack:
+              <strong className="text-foreground">Bauen</strong> — ergibt ein streambares FiveM-Pack:
               ein YTD je Decal, eine geteilte Overlay-Collection, optional eine{" "}
               <Code>shop_tattoo.meta</Code> und ein <Code>tattoos.json</Code>-Manifest, das dein
               Server zur Laufzeit liest.
@@ -261,16 +261,16 @@ export function AtelierDoc() {
           </DocP>
           <DocSteps>
             <DocStep n={1}>
-              <strong className="text-white/80">Setup.</strong> Ziel wählen, DLC-Namen festlegen (nur
+              <strong className="text-foreground">Setup.</strong> Ziel wählen, DLC-Namen festlegen (nur
               Kleinbuchstaben, Ziffern, Unterstrich) und Ausgabeordner bestimmen.
             </DocStep>
             <DocStep n={2}>
-              <strong className="text-white/80">Validierung.</strong> atelier prüft das Projekt und
+              <strong className="text-foreground">Validierung.</strong> atelier prüft das Projekt und
               listet Fehler, Warnungen und Hinweise — jeweils mit Sprung zum betroffenen Drawable.
               Fehler blockieren den Build, Warnungen nicht.
             </DocStep>
             <DocStep n={3}>
-              <strong className="text-white/80">Build.</strong> Der Fortschritt läuft live durch die
+              <strong className="text-foreground">Build.</strong> Der Fortschritt läuft live durch die
               Phasen (Dateien → YMT → Paketierung). Am Ende öffnest du den Ausgabeordner direkt.
             </DocStep>
           </DocSteps>
@@ -298,19 +298,19 @@ export function AtelierDoc() {
           </DocP>
           <DocUl>
             <DocLi>
-              <strong className="text-white/80">Hochladen (Push).</strong> Lädt nur die wirklich
+              <strong className="text-foreground">Hochladen (Push).</strong> Lädt nur die wirklich
               neuen Dateien hoch (Dedupe per Hash) und committet eine neue Revision.
             </DocLi>
             <DocLi>
-              <strong className="text-white/80">Laden (Pull).</strong> Holt den aktuellen Stand;
+              <strong className="text-foreground">Laden (Pull).</strong> Holt den aktuellen Stand;
               lokale Änderungen werden vorher abgesichert.
             </DocLi>
             <DocLi>
-              <strong className="text-white/80">Cloud-Projekte.</strong> Team-Packs erscheinen auf
+              <strong className="text-foreground">Cloud-Projekte.</strong> Team-Packs erscheinen auf
               der Startseite und lassen sich lokal klonen.
             </DocLi>
             <DocLi>
-              <strong className="text-white/80">Presence &amp; Locks.</strong> Avatare zeigen, wer
+              <strong className="text-foreground">Presence &amp; Locks.</strong> Avatare zeigen, wer
               online ist; sanfte Locks verhindern, dass ihr euch beim selben Drawable in die Quere
               kommt.
             </DocLi>
@@ -330,7 +330,7 @@ export function AtelierDoc() {
               Den Onboarding-Assistenten erneut ausführen, um die Ersteinrichtung neu durchzugehen.
             </DocLi>
             <DocLi>
-              Admins finden hier den <strong className="text-white/80">Admin-Tab</strong> mit der
+              Admins finden hier den <strong className="text-foreground">Admin-Tab</strong> mit der
               Liste wartender Mitglieder und Freischalten/Sperren.
             </DocLi>
           </DocUl>
@@ -362,7 +362,7 @@ export function AtelierDoc() {
     <article>
       <DocH1>atelier — the desktop app</DocH1>
       <DocLead>
-        atelier is the feelgood community&apos;s free desktop tool for building, checking and
+        atelier is the Roleplay+ community&apos;s free desktop tool for building, checking and
         publishing GTA V add-on clothing and tattoos. This page takes you all the way from
         installation to a finished pack.
       </DocLead>
@@ -376,7 +376,7 @@ export function AtelierDoc() {
         </DocP>
         <DocUl>
           <DocLi>
-            <strong className="text-white/80">Solo mode:</strong> fully local, no account or server —
+            <strong className="text-foreground">Solo mode:</strong> fully local, no account or server —
             works completely offline.
           </DocLi>
           <DocLi>Targets: FiveM, singleplayer, RageMP and alt:V.</DocLi>
@@ -396,15 +396,15 @@ export function AtelierDoc() {
         </DocP>
         <DocUl>
           <DocLi>
-            <strong className="text-white/80">Installer (.exe)</strong> — the standard route. Double-
+            <strong className="text-foreground">Installer (.exe)</strong> — the standard route. Double-
             click, install, done.
           </DocLi>
           <DocLi>
-            <strong className="text-white/80">MSI</strong> — the alternative, e.g. for managed
+            <strong className="text-foreground">MSI</strong> — the alternative, e.g. for managed
             environments.
           </DocLi>
           <DocLi>
-            <strong className="text-white/80">Portable ZIP</strong> — no installation: unzip and
+            <strong className="text-foreground">Portable ZIP</strong> — no installation: unzip and
             launch <Code>atelier.exe</Code>. The app and sidecar are both included.
           </DocLi>
         </DocUl>
@@ -421,24 +421,24 @@ export function AtelierDoc() {
         </DocP>
         <DocSteps>
           <DocStep n={1}>
-            <strong className="text-white/80">Mode.</strong> Choose how you use atelier:{" "}
-            <strong className="text-white/80">Solo</strong> — fully local, no account and no server
-            (everything runs offline) — or <strong className="text-white/80">Team</strong>, to sign in
+            <strong className="text-foreground">Mode.</strong> Choose how you use atelier:{" "}
+            <strong className="text-foreground">Solo</strong> — fully local, no account and no server
+            (everything runs offline) — or <strong className="text-foreground">Team</strong>, to sign in
             and share packs via the cloud. You can switch the mode any time later in the settings.
           </DocStep>
           <DocStep n={2}>
-            <strong className="text-white/80">Server address (team only).</strong> In team mode you
+            <strong className="text-foreground">Server address (team only).</strong> In team mode you
             enter the address of your atelier-api. atelier checks it live and turns green when an
             atelier-api is running there. The default for local testing is{" "}
             <Code>http://127.0.0.1:3095</Code>. In solo mode this step is skipped.
           </DocStep>
           <DocStep n={3}>
-            <strong className="text-white/80">GTA V directory.</strong> Choose the folder of your
+            <strong className="text-foreground">GTA V directory.</strong> Choose the folder of your
             GTA V installation. This lets the 3D preview show the real ped body. Optional — without a
             GTA path everything else still works.
           </DocStep>
           <DocStep n={4}>
-            <strong className="text-white/80">Logs.</strong> Optionally enable a live log console
+            <strong className="text-foreground">Logs.</strong> Optionally enable a live log console
             that shows app and sidecar events. Handy when something goes wrong; otherwise you can
             leave it off.
           </DocStep>
@@ -505,24 +505,24 @@ export function AtelierDoc() {
 
       <DocSection id="vorschau" title="3D preview">
         <DocP>
-          The dockable preview shows your drawables in real time — in the dark feelgood look with a
+          The dockable preview shows your drawables in real time — in the dark Roleplay+ look with a
           freely rotatable camera.
         </DocP>
         <DocUl>
           <DocLi>
-            <strong className="text-white/80">Several drawables at once</strong> as a complete outfit,
+            <strong className="text-foreground">Several drawables at once</strong> as a complete outfit,
             including texture variants to cycle through.
           </DocLi>
           <DocLi>
-            <strong className="text-white/80">Camera presets</strong> for full body, head, torso,
+            <strong className="text-foreground">Camera presets</strong> for full body, head, torso,
             legs and feet.
           </DocLi>
           <DocLi>
-            <strong className="text-white/80">Hair shrink &amp; heel height</strong> adjustable live —
+            <strong className="text-foreground">Hair shrink &amp; heel height</strong> adjustable live —
             so you can immediately see how much the hair shrinks or how high heels lift the ped.
           </DocLi>
           <DocLi>
-            <strong className="text-white/80">Ped body</strong> toggle (mp_m/mp_f) as soon as a GTA V
+            <strong className="text-foreground">Ped body</strong> toggle (mp_m/mp_f) as soon as a GTA V
             path is set. Overlays show poly/vertex counts and LOD warnings.
           </DocLi>
         </DocUl>
@@ -534,26 +534,26 @@ export function AtelierDoc() {
 
       <DocSection id="tattoos" title="Tattoos">
         <DocP>
-          Beyond clothing, atelier also builds <strong className="text-white/80">tattoos</strong> — in
+          Beyond clothing, atelier also builds <strong className="text-foreground">tattoos</strong> — in
           their own Tattoos area (the icon in the top navigation). Tattoos are fixed-UV decals: you
           import an image and set zone, gender and type; the exact placement lives in the texture.
         </DocP>
         <DocUl>
           <DocLi>
-            <strong className="text-white/80">Import</strong> — PNG, DDS or YTD via a button; works
+            <strong className="text-foreground">Import</strong> — PNG, DDS or YTD via a button; works
             fully offline (no GTA path needed).
           </DocLi>
           <DocLi>
-            <strong className="text-white/80">Organize</strong> — by the six body zones (torso, head,
+            <strong className="text-foreground">Organize</strong> — by the six body zones (torso, head,
             left/right arm, left/right leg), with search, a grid and an inspector. Right-click to
             duplicate, change zone/gender, group and delete.
           </DocLi>
           <DocLi>
-            <strong className="text-white/80">Gender</strong> — one decal can serve both freemode peds
+            <strong className="text-foreground">Gender</strong> — one decal can serve both freemode peds
             (M/F); each gender gets its own overlay name.
           </DocLi>
           <DocLi>
-            <strong className="text-white/80">Build</strong> — produces a streamable FiveM pack: a YTD
+            <strong className="text-foreground">Build</strong> — produces a streamable FiveM pack: a YTD
             per decal, one shared overlay collection, an optional <Code>shop_tattoo.meta</Code> and a{" "}
             <Code>tattoos.json</Code> manifest your server reads at runtime.
           </DocLi>
@@ -571,16 +571,16 @@ export function AtelierDoc() {
         </DocP>
         <DocSteps>
           <DocStep n={1}>
-            <strong className="text-white/80">Setup.</strong> Pick a target, set the DLC name
+            <strong className="text-foreground">Setup.</strong> Pick a target, set the DLC name
             (lowercase letters, digits and underscore only) and choose an output folder.
           </DocStep>
           <DocStep n={2}>
-            <strong className="text-white/80">Validation.</strong> atelier checks the project and
+            <strong className="text-foreground">Validation.</strong> atelier checks the project and
             lists errors, warnings and hints — each with a jump to the affected drawable. Errors
             block the build, warnings don&apos;t.
           </DocStep>
           <DocStep n={3}>
-            <strong className="text-white/80">Build.</strong> Progress runs live through the phases
+            <strong className="text-foreground">Build.</strong> Progress runs live through the phases
             (files → YMT → packaging). At the end you open the output folder directly.
           </DocStep>
         </DocSteps>
@@ -607,19 +607,19 @@ export function AtelierDoc() {
         </DocP>
         <DocUl>
           <DocLi>
-            <strong className="text-white/80">Upload (push).</strong> Uploads only the files that are
+            <strong className="text-foreground">Upload (push).</strong> Uploads only the files that are
             genuinely new (dedupe by hash) and commits a new revision.
           </DocLi>
           <DocLi>
-            <strong className="text-white/80">Download (pull).</strong> Fetches the current state;
+            <strong className="text-foreground">Download (pull).</strong> Fetches the current state;
             local changes are safeguarded beforehand.
           </DocLi>
           <DocLi>
-            <strong className="text-white/80">Cloud projects.</strong> Team packs appear on the home
+            <strong className="text-foreground">Cloud projects.</strong> Team packs appear on the home
             screen and can be cloned locally.
           </DocLi>
           <DocLi>
-            <strong className="text-white/80">Presence &amp; locks.</strong> Avatars show who&apos;s
+            <strong className="text-foreground">Presence &amp; locks.</strong> Avatars show who&apos;s
             online; soft locks keep you from getting in each other&apos;s way on the same drawable.
           </DocLi>
         </DocUl>
@@ -638,7 +638,7 @@ export function AtelierDoc() {
             Rerun the onboarding wizard to go through the initial setup again.
           </DocLi>
           <DocLi>
-            Admins find the <strong className="text-white/80">Admin tab</strong> here, with the list
+            Admins find the <strong className="text-foreground">Admin tab</strong> here, with the list
             of pending members and approve/lock actions.
           </DocLi>
         </DocUl>

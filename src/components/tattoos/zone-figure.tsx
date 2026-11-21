@@ -54,7 +54,7 @@ export function ZoneFigure({
               "transition-colors",
               interactive && "cursor-pointer",
               active
-                ? "fill-[#5865F2]/40 stroke-[#7289DA]"
+                ? "fill-brand/40 stroke-brand"
                 : "fill-white/5 stroke-white/15 hover:fill-white/10",
             )}
             strokeWidth={1.5}

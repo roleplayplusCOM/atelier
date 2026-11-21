@@ -113,18 +113,18 @@ jobs:
         shell: pwsh
         run: |
           $rel = "src-tauri/target/release"
-          $out = "dist-portable/atelier by feelgood"
+          $out = "dist-portable/atelier by Roleplay+"
           New-Item -ItemType Directory -Force $out | Out-Null
           $main = @("$rel/atelier by feelgood.exe", "$rel/atelier.exe") |
             Where-Object { Test-Path $_ } | Select-Object -First 1
           if (-not $main) { throw "main exe not found under $rel" }
-          Copy-Item $main "$out/atelier by feelgood.exe"
+          Copy-Item $main "$out/atelier by Roleplay+.exe"
           Copy-Item "src-tauri/binaries/fg-atelier-sidecar-x86_64-pc-windows-msvc.exe" "$out/fg-atelier-sidecar.exe"
           if (Test-Path "$rel/WebView2Loader.dll") { Copy-Item "$rel/WebView2Loader.dll" $out }
           $readme = @(
-            "atelier by feelgood (portable) v$env:VERSION",
+            "atelier by Roleplay+ (portable) v$env:VERSION",
             "",
-            "Starte 'atelier by feelgood.exe'. Die Datei fg-atelier-sidecar.exe muss",
+            "Starte 'atelier by Roleplay+.exe'. Die Datei fg-atelier-sidecar.exe muss",
             "im selben Ordner liegen.",
             "Benoetigt die Microsoft Edge WebView2 Runtime (auf Windows 10/11 i.d.R.",
             "bereits vorhanden)."
@@ -147,10 +147,10 @@ jobs:
           $asset = "atelier_$($env:VERSION)_x64-setup.exe"
           Move-Item $exe.FullName "$nsis/$asset" -Force
           $signature = (Get-Content $sig.FullName -Raw).Trim()
-          $url = "https://github.com/grandTheftAtelier/atelier/releases/download/v$($env:VERSION)/$asset"
+          $url = "https://github.com/roleplayplusCOM/atelier/releases/download/v$($env:VERSION)/$asset"
           # Release notes shown in the in-app updater: the matching CHANGELOG
           # section, falling back to a link if this version isn't documented.
-          $notes = "See https://github.com/grandTheftAtelier/atelier/releases/tag/v$($env:VERSION)"
+          $notes = "See https://github.com/roleplayplusCOM/atelier/releases/tag/v$($env:VERSION)"
           if (Test-Path "CHANGELOG.md") {
             $cl = Get-Content "CHANGELOG.md"
             $start = -1; $end = $cl.Count

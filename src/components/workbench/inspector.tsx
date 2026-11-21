@@ -63,7 +63,7 @@ const NEW_GROUP = "__new__";
 
 function FieldLabel({ children }: { children: React.ReactNode }) {
   return (
-    <Label className="text-[10px] font-semibold uppercase tracking-wider text-white/40">
+    <Label className="text-[10px] font-semibold uppercase tracking-wider text-faint">
       {children}
     </Label>
   );
@@ -73,13 +73,13 @@ function EmptyInspector() {
   const { t } = useTranslation("workbench");
   return (
     <div className="flex h-full flex-col items-center justify-center px-6 text-center">
-      <div className="glass-border-subtle flex h-14 w-14 items-center justify-center rounded-[10px]">
-        <Layers className="h-6 w-6 text-white/30" />
+      <div className="glass-border-subtle flex h-14 w-14 items-center justify-center rounded-[14px]">
+        <Layers className="h-6 w-6 text-faint" />
       </div>
-      <p className="mt-4 text-sm font-medium text-white/60">
+      <p className="mt-4 text-sm font-medium text-grey">
         {t("inspector.emptyTitle")}
       </p>
-      <p className="mt-1 max-w-60 text-xs text-white/35">
+      <p className="mt-1 max-w-60 text-xs text-faint">
         {t("inspector.emptyDescription")}
       </p>
     </div>
@@ -115,7 +115,7 @@ function BulkTextureSwitcher({ ids }: { ids: string[] }) {
           );
           return (
             <div key={drawable.id} className="flex flex-col gap-1">
-              <span className="truncate text-xs text-white/60">{drawable.label}</span>
+              <span className="truncate text-xs text-grey">{drawable.label}</span>
               <div className="flex flex-wrap gap-1">
                 {drawable.textures.map((texture, index) => (
                   <Tooltip key={`${index}:${texture.hash}`}>
@@ -126,8 +126,8 @@ function BulkTextureSwitcher({ ids }: { ids: string[] }) {
                         className={cn(
                           "h-6 w-6 rounded-[6px] font-mono text-[11px] transition-colors",
                           index === active
-                            ? "bg-[#5865F2]/30 text-white ring-1 ring-inset ring-[#5865F2]/50"
-                            : "bg-white/5 text-white/50 hover:bg-white/10 hover:text-white",
+                            ? "bg-brand/30 text-foreground ring-1 ring-inset ring-brand/50"
+                            : "bg-fill text-grey hover:bg-fill-2 hover:text-foreground",
                         )}
                       >
                         {textureIndexToLetter(index)}
@@ -143,7 +143,7 @@ function BulkTextureSwitcher({ ids }: { ids: string[] }) {
           );
         })}
       </div>
-      <Separator className="bg-white/8" />
+      <Separator className="bg-fill" />
     </>
   );
 }
@@ -169,15 +169,15 @@ function BulkPanel({ ids }: { ids: string[] }) {
   return (
     <div className="flex flex-col gap-4 p-4">
       <div>
-        <p className="text-sm font-semibold text-white">
+        <p className="text-sm font-semibold text-foreground">
           {t("inspector.bulkSelected", { count: ids.length })}
         </p>
-        <p className="mt-0.5 text-xs text-white/40">
+        <p className="mt-0.5 text-xs text-faint">
           {t("inspector.bulkHint")}
         </p>
       </div>
 
-      <Separator className="bg-white/8" />
+      <Separator className="bg-fill" />
 
       <BulkTextureSwitcher ids={ids} />
 
@@ -189,7 +189,7 @@ function BulkPanel({ ids }: { ids: string[] }) {
             else assignGroup(ids, v === NO_GROUP ? null : v);
           }}
         >
-          <SelectTrigger className="h-8 w-full border-white/15 bg-white/5 text-xs text-white">
+          <SelectTrigger className="h-8 w-full border-line bg-fill text-xs text-foreground">
             <SelectValue placeholder={t("inspector.selectGroup")} />
           </SelectTrigger>
           <SelectContent>
@@ -234,7 +234,7 @@ function BulkPanel({ ids }: { ids: string[] }) {
         </div>
       </div>
 
-      <Separator className="bg-white/8" />
+      <Separator className="bg-fill" />
 
       <Button
         size="sm"
@@ -359,7 +359,7 @@ function SingleInspector({ drawable }: { drawable: ProjectDrawable }) {
     <ScrollArea className="min-h-0 flex-1">
       <div className="flex flex-col gap-4 p-4">
         {foreignLock && (
-          <div className="flex items-start gap-2 rounded-[10px] border border-amber-500/25 bg-amber-500/10 px-2.5 py-2 text-xs text-amber-300">
+          <div className="flex items-start gap-2 rounded-[14px] border border-amber-500/25 bg-amber-500/10 px-2.5 py-2 text-xs text-amber-300">
             <Lock className="mt-0.5 h-3.5 w-3.5 shrink-0" />
             <span>{t("inspector.lockNotice", { name: foreignLock.username })}</span>
           </div>
@@ -376,7 +376,7 @@ function SingleInspector({ drawable }: { drawable: ProjectDrawable }) {
             onKeyDown={(e) => {
               if (e.key === "Enter") commitLabel();
             }}
-            className="h-8 border-white/15 bg-white/5 text-sm text-white"
+            className="h-8 border-line bg-fill text-sm text-foreground"
           />
         </div>
 
@@ -390,7 +390,7 @@ function SingleInspector({ drawable }: { drawable: ProjectDrawable }) {
                 updateDrawable(drawable.id, { gender: v as Gender })
               }
             >
-              <SelectTrigger className="h-8 w-full border-white/15 bg-white/5 font-mono text-xs text-white">
+              <SelectTrigger className="h-8 w-full border-line bg-fill font-mono text-xs text-foreground">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -405,7 +405,7 @@ function SingleInspector({ drawable }: { drawable: ProjectDrawable }) {
               value={drawable.type}
               onValueChange={(v) => handleTypeChange(v as SlotId)}
             >
-              <SelectTrigger className="h-8 w-full border-white/15 bg-white/5 text-xs text-white">
+              <SelectTrigger className="h-8 w-full border-line bg-fill text-xs text-foreground">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -438,7 +438,7 @@ function SingleInspector({ drawable }: { drawable: ProjectDrawable }) {
               value={drawable.mode}
               onValueChange={(v) => handleModeChange(v as "addon" | "replace")}
             >
-              <SelectTrigger className="h-8 w-full border-white/15 bg-white/5 text-xs text-white">
+              <SelectTrigger className="h-8 w-full border-line bg-fill text-xs text-foreground">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -459,7 +459,7 @@ function SingleInspector({ drawable }: { drawable: ProjectDrawable }) {
                   });
                 }}
                 placeholder={t("inspector.targetId")}
-                className="h-8 border-white/15 bg-white/5 font-mono text-xs text-white"
+                className="h-8 border-line bg-fill font-mono text-xs text-foreground"
                 title={t("inspector.targetIdTooltip")}
               />
             )}
@@ -480,7 +480,7 @@ function SingleInspector({ drawable }: { drawable: ProjectDrawable }) {
               }
             }}
           >
-            <SelectTrigger className="h-8 w-full border-white/15 bg-white/5 text-xs text-white">
+            <SelectTrigger className="h-8 w-full border-line bg-fill text-xs text-foreground">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -510,7 +510,7 @@ function SingleInspector({ drawable }: { drawable: ProjectDrawable }) {
           drawable.type === "hair" ||
           drawable.type === "p_head") && (
           <>
-        <Separator className="bg-white/8" />
+        <Separator className="bg-fill" />
 
         {/* Flags — only the ones that apply to this slot. High heels are
             meaningful for feet only; hair-scale for hair/hats only. */}
@@ -518,7 +518,7 @@ function SingleInspector({ drawable }: { drawable: ProjectDrawable }) {
           <FieldLabel>{t("inspector.flags")}</FieldLabel>
           {drawable.type === "feet" && (
             <div className="flex items-center justify-between">
-              <span className="text-xs text-white/70">{t("inspector.highHeels")}</span>
+              <span className="text-xs text-grey">{t("inspector.highHeels")}</span>
               <Switch
                 checked={drawable.flags.highHeels}
                 onCheckedChange={(checked) =>
@@ -532,10 +532,10 @@ function SingleInspector({ drawable }: { drawable: ProjectDrawable }) {
           {(drawable.type === "hair" || drawable.type === "p_head") && (
             <div className="flex flex-col gap-1.5">
               <div className="flex items-center justify-between">
-                <span className="text-xs text-white/70">
+                <span className="text-xs text-grey">
                   {t("inspector.hairScale")}
                   {drawable.type === "p_head" && (
-                    <span className="ml-1 text-white/35">
+                    <span className="ml-1 text-faint">
                       {t("inspector.hairScaleHatHint")}
                     </span>
                   )}
@@ -568,15 +568,15 @@ function SingleInspector({ drawable }: { drawable: ProjectDrawable }) {
                         },
                       })
                     }
-                    className="h-1.5 flex-1 cursor-pointer appearance-none rounded-full bg-white/10 accent-[#5865F2]"
+                    className="h-1.5 flex-1 cursor-pointer appearance-none rounded-full bg-fill-2 accent-brand"
                   />
-                  <span className="w-10 text-right font-mono text-xs text-white/60">
+                  <span className="w-10 text-right font-mono text-xs text-grey">
                     {hairScale.toFixed(2)}
                   </span>
                 </div>
               )}
               {hairScale !== null && drawable.type === "hair" && (
-                <p className="text-[10px] leading-relaxed text-white/30">
+                <p className="text-[10px] leading-relaxed text-faint">
                   {t("inspector.hairScalePreviewOnly")}
                 </p>
               )}
@@ -586,35 +586,35 @@ function SingleInspector({ drawable }: { drawable: ProjectDrawable }) {
           </>
         )}
 
-        <Separator className="bg-white/8" />
+        <Separator className="bg-fill" />
 
         {/* Mesh / files */}
         <div className="flex flex-col gap-2">
           <FieldLabel>{t("inspector.files")}</FieldLabel>
           {drawable.ydd ? (
-            <div className="flex items-center gap-2 rounded-[10px] bg-white/5 px-2.5 py-2">
-              <FileBox className="h-4 w-4 shrink-0 text-[#7289DA]" />
+            <div className="flex items-center gap-2 rounded-[14px] bg-fill px-2.5 py-2">
+              <FileBox className="h-4 w-4 shrink-0 text-brand" />
               <div className="min-w-0 flex-1" title={drawable.ydd.path}>
                 {/* Name in the BUILT pack — derived from slot + number. */}
-                <p className="truncate text-xs text-white/75">
+                <p className="truncate text-xs text-grey">
                   {canonicalYddName(drawable, derivedId)}
                 </p>
-                <p className="truncate text-[10px] text-white/30">
+                <p className="truncate text-[10px] text-faint">
                   {t("inspector.source", {
                     name: baseName(drawable.ydd.path),
                   })}
                 </p>
               </div>
-              <span className="shrink-0 text-[10px] text-white/35">
+              <span className="shrink-0 text-[10px] text-faint">
                 {formatBytes(drawable.ydd.size)}
               </span>
             </div>
           ) : (
-            <div className="rounded-[10px] border border-amber-500/25 bg-amber-500/10 px-2.5 py-2 text-xs text-amber-300">
+            <div className="rounded-[14px] border border-amber-500/25 bg-amber-500/10 px-2.5 py-2 text-xs text-amber-300">
               {t("inspector.noYddMesh")}
             </div>
           )}
-          <p className="text-[10px] leading-relaxed text-white/30">
+          <p className="text-[10px] leading-relaxed text-faint">
             {t("inspector.filesHint")}
           </p>
           {drawable.physics && (
@@ -632,22 +632,22 @@ function SingleInspector({ drawable }: { drawable: ProjectDrawable }) {
           {/* First-person alternate model — auto-detected on import ({base}_1.ydd),
               assignable/removable by hand for packs that name it otherwise. */}
           {drawable.kind === "component" && (
-            <div className="flex items-center gap-2 rounded-[10px] bg-white/5 px-2.5 py-2">
-              <User className="h-4 w-4 shrink-0 text-[#7289DA]" />
+            <div className="flex items-center gap-2 rounded-[14px] bg-fill px-2.5 py-2">
+              <User className="h-4 w-4 shrink-0 text-brand" />
               {drawable.firstPerson ? (
                 <>
                   <div className="min-w-0 flex-1" title={drawable.firstPerson.path}>
-                    <p className="truncate text-xs text-white/75">
+                    <p className="truncate text-xs text-grey">
                       {t("inspector.firstPerson")}
                     </p>
-                    <p className="truncate text-[10px] text-white/30">
+                    <p className="truncate text-[10px] text-faint">
                       {baseName(drawable.firstPerson.path)}
                     </p>
                   </div>
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="h-6 w-6 shrink-0 text-white/40 hover:text-white"
+                    className="h-6 w-6 shrink-0 text-faint hover:text-foreground"
                     title={t("inspector.firstPersonRemove")}
                     onClick={removeFirstPerson}
                   >
@@ -656,7 +656,7 @@ function SingleInspector({ drawable }: { drawable: ProjectDrawable }) {
                 </>
               ) : (
                 <>
-                  <span className="min-w-0 flex-1 truncate text-xs text-white/40">
+                  <span className="min-w-0 flex-1 truncate text-xs text-faint">
                     {t("inspector.firstPersonNone")}
                   </span>
                   <Button
@@ -675,7 +675,7 @@ function SingleInspector({ drawable }: { drawable: ProjectDrawable }) {
           )}
         </div>
 
-        <Separator className="bg-white/8" />
+        <Separator className="bg-fill" />
 
         <TexturePanel drawable={drawable} />
         </fieldset>
@@ -704,12 +704,12 @@ export function Inspector() {
 
   return (
     <div className="flex h-full flex-col">
-      <div className="flex h-10 shrink-0 items-center justify-between border-b border-white/8 px-4">
-        <span className="text-xs font-semibold uppercase tracking-wider text-white/50">
+      <div className="flex h-10 shrink-0 items-center justify-between border-b border-line px-4">
+        <span className="text-xs font-semibold uppercase tracking-wider text-grey">
           {t("inspector.title")}
         </span>
         {selected.length > 0 && (
-          <span className="font-mono text-[10px] text-white/30">
+          <span className="font-mono text-[10px] text-faint">
             {t("inspector.selected", { count: selected.length })}
           </span>
         )}

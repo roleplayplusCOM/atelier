@@ -60,30 +60,6 @@ function errorMessage(e: unknown): string {
   return e instanceof Error ? e.message : String(e);
 }
 
-function StepDots({ steps, index }: { steps: readonly Step[]; index: number }) {
-  return (
-    <div className="flex items-center gap-2">
-      {steps.map((step, i) => (
-        <div key={step.id} className="flex items-center gap-2">
-          <span
-            className={cn(
-              "flex h-6 w-6 items-center justify-center rounded-full text-xs font-medium transition-colors",
-              i < index && "bg-emerald-500/20 text-emerald-300",
-              i === index && "bg-[#5865F2] text-white",
-              i > index && "bg-white/8 text-white/40",
-            )}
-          >
-            {i < index ? <Check className="h-3.5 w-3.5" /> : i + 1}
-          </span>
-          {i < steps.length - 1 && (
-            <span className={cn("h-px w-6", i < index ? "bg-emerald-500/40" : "bg-white/10")} />
-          )}
-        </div>
-      ))}
-    </div>
-  );
-}
-
 export function OnboardingWizard({
   onDone,
   onCancel,
@@ -186,31 +162,55 @@ export function OnboardingWizard({
   };
 
   const step = steps[stepIdx];
+  const welcomeWords = t("welcomeTitle").split(" ");
+  const welcomeTail = welcomeWords.length > 1 ? (welcomeWords.pop() as string) : "";
+  const welcomeHead = welcomeWords.join(" ");
   const isLast = stepIdx === steps.length - 1;
 
   return (
     <GateShell>
       <div className="flex h-full items-center justify-center px-8">
-        <div className="liquid-glass w-full max-w-lg rounded-2xl p-8">
-          <div className="flex items-center gap-3">
-            <img src={atelierLogo} alt="" className="h-9 w-9" draggable={false} />
-            <div>
-              <h1 className="text-lg font-semibold text-white">{t("welcomeTitle")}</h1>
-              <p className="text-xs text-white/45">{t("welcomeSubtitle")}</p>
-            </div>
-            <div className="ml-auto">
-              <StepDots steps={steps} index={stepIdx} />
-            </div>
-          </div>
+        <div className="animate-fade-in-up grid w-full max-w-[860px] grid-cols-[280px_minmax(0,1fr)] overflow-hidden rounded-[28px] bg-card shadow-[var(--shadow-l)]">
+          {/* Brand panel: always dark, like the device in the Roleplay+ look. */}
+          <aside className="relative flex flex-col overflow-hidden bg-[#0d0d10] p-8 text-white">
+            <span aria-hidden className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-[#ff8a1f]/40 blur-3xl" />
+            <span aria-hidden className="pointer-events-none absolute -bottom-28 -left-16 h-64 w-64 rounded-full bg-[#f4456b]/35 blur-3xl" />
+            <img src={atelierLogo} alt="" className="relative h-11 w-11" draggable={false} />
+            <h1 className="relative mt-6 text-[28px] font-semibold leading-[1.1] tracking-[-0.03em]">
+              {welcomeHead}
+              {welcomeTail && <> <span className="grad">{welcomeTail}</span></>}
+            </h1>
+            <p className="relative mt-2 text-sm text-white/60">{t("welcomeSubtitle")}</p>
+            <ol className="relative mt-auto flex flex-col gap-3 pt-10">
+              {steps.map((st, i) => (
+                <li key={st.id} className="flex items-center gap-3 text-sm">
+                  <span
+                    className={cn(
+                      "flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-semibold transition-colors",
+                      i < stepIdx && "bg-white/15 text-white",
+                      i === stepIdx && "bg-[image:var(--grad)] text-white",
+                      i > stepIdx && "bg-white/8 text-white/40",
+                    )}
+                  >
+                    {i < stepIdx ? <Check className="h-3.5 w-3.5" /> : i + 1}
+                  </span>
+                  <span className={cn(i === stepIdx ? "font-semibold text-white" : "text-white/45")}>
+                    {t(`steps.${st.id}`, st.title)}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </aside>
 
-          <div className="mt-7 min-h-[184px]">
+          <div className="flex min-h-[460px] flex-col p-9">
+          <div className="min-h-[184px] flex-1">
             {step.id === "language" && (
               <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-2 text-white">
-                  <Globe className="h-4 w-4 text-[#7289DA]" />
+                <div className="flex items-center gap-2 text-foreground">
+                  <Globe className="h-4 w-4 text-brand" />
                   <span className="text-sm font-medium">{t("language.title")}</span>
                 </div>
-                <p className="text-sm text-white/50">{t("language.description")}</p>
+                <p className="text-sm text-grey">{t("language.description")}</p>
                 <div className="grid grid-cols-2 gap-2">
                   {SUPPORTED_LANGUAGES.map((lang) => {
                     const active = currentLang === lang.code;
@@ -224,14 +224,14 @@ export function OnboardingWizard({
                           );
                         }}
                         className={cn(
-                          "flex items-center justify-between rounded-[10px] border px-3 py-2.5 text-sm transition-colors",
+                          "flex items-center justify-between rounded-[14px] border px-3 py-2.5 text-sm transition-colors",
                           active
-                            ? "border-[#5865F2] bg-[#5865F2]/15 text-white"
-                            : "border-white/10 bg-white/5 text-white/70 hover:bg-white/10",
+                            ? "border-brand bg-brand/15 text-foreground"
+                            : "border-line bg-fill text-grey hover:bg-fill-2",
                         )}
                       >
                         <span>{lang.label}</span>
-                        {active && <Check className="h-4 w-4 shrink-0 text-[#7289DA]" />}
+                        {active && <Check className="h-4 w-4 shrink-0 text-brand" />}
                       </button>
                     );
                   })}
@@ -241,11 +241,11 @@ export function OnboardingWizard({
 
             {step.id === "mode" && (
               <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-2 text-white">
-                  <Cloud className="h-4 w-4 text-[#7289DA]" />
+                <div className="flex items-center gap-2 text-foreground">
+                  <Cloud className="h-4 w-4 text-brand" />
                   <span className="text-sm font-medium">{t("mode.title")}</span>
                 </div>
-                <p className="text-sm text-white/50">{t("mode.description")}</p>
+                <p className="text-sm text-grey">{t("mode.description")}</p>
                 <div className="flex flex-col gap-2">
                   {(["solo", "cloud"] as const).map((m) => {
                     const active = appMode === m;
@@ -256,22 +256,22 @@ export function OnboardingWizard({
                         type="button"
                         onClick={() => void setAppMode(m)}
                         className={cn(
-                          "flex items-start gap-3 rounded-[10px] border px-3 py-3 text-left transition-colors",
+                          "flex items-start gap-3 rounded-[14px] border px-3 py-3 text-left transition-colors",
                           active
-                            ? "border-[#5865F2] bg-[#5865F2]/15"
-                            : "border-white/10 bg-white/5 hover:bg-white/10",
+                            ? "border-brand bg-brand/15"
+                            : "border-line bg-fill hover:bg-fill-2",
                         )}
                       >
-                        <Icon className="mt-0.5 h-4 w-4 shrink-0 text-[#7289DA]" />
+                        <Icon className="mt-0.5 h-4 w-4 shrink-0 text-brand" />
                         <span className="min-w-0 flex-1">
-                          <span className="block text-sm font-medium text-white">
+                          <span className="block text-sm font-medium text-foreground">
                             {t(`mode.${m}.title`)}
                           </span>
-                          <span className="mt-0.5 block text-xs text-white/50">
+                          <span className="mt-0.5 block text-xs text-grey">
                             {t(`mode.${m}.description`)}
                           </span>
                         </span>
-                        {active && <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#7289DA]" />}
+                        {active && <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand" />}
                       </button>
                     );
                   })}
@@ -281,11 +281,11 @@ export function OnboardingWizard({
 
             {step.id === "server" && (
               <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-2 text-white">
-                  <ServerCog className="h-4 w-4 text-[#7289DA]" />
+                <div className="flex items-center gap-2 text-foreground">
+                  <ServerCog className="h-4 w-4 text-brand" />
                   <span className="text-sm font-medium">{t("server.title")}</span>
                 </div>
-                <p className="text-sm text-white/50">{t("server.description")}</p>
+                <p className="text-sm text-grey">{t("server.description")}</p>
                 <div className="flex gap-2">
                   <Input
                     value={apiDraft}
@@ -295,7 +295,7 @@ export function OnboardingWizard({
                       setHealthMsg(null);
                     }}
                     placeholder={DEFAULT_API_URL}
-                    className="border-white/15 bg-white/5 text-white"
+                    className="border-line bg-fill text-foreground"
                   />
                   <Button
                     variant="outline"
@@ -312,7 +312,7 @@ export function OnboardingWizard({
                 {healthMsg && (
                   <div
                     className={cn(
-                      "flex items-center gap-2 rounded-lg px-3 py-2 text-sm",
+                      "flex items-center gap-2 rounded-[16px] px-3 py-2 text-sm",
                       health === "ok" && "bg-emerald-500/10 text-emerald-300",
                       health === "fail" && "bg-red-500/10 text-red-300",
                     )}
@@ -330,17 +330,17 @@ export function OnboardingWizard({
 
             {step.id === "gta" && (
               <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-2 text-white">
-                  <FolderOpen className="h-4 w-4 text-[#7289DA]" />
+                <div className="flex items-center gap-2 text-foreground">
+                  <FolderOpen className="h-4 w-4 text-brand" />
                   <span className="text-sm font-medium">{t("gta.title")}</span>
                 </div>
-                <p className="text-sm text-white/50">{t("gta.description")}</p>
+                <p className="text-sm text-grey">{t("gta.description")}</p>
                 <div className="flex gap-2">
                   <Input
                     readOnly
                     value={gtaPath ?? ""}
                     placeholder={t("gta.noPathYet")}
-                    className="border-white/15 bg-white/5 text-white"
+                    className="border-line bg-fill text-foreground"
                   />
                   <Button variant="outline" disabled={picking} onClick={() => void pickGtaPath()}>
                     <FolderOpen className="h-4 w-4" />
@@ -348,7 +348,7 @@ export function OnboardingWizard({
                   </Button>
                 </div>
                 {gtaPath && (
-                  <div className="flex items-center gap-2 rounded-lg bg-emerald-500/10 px-3 py-2 text-sm text-emerald-300">
+                  <div className="flex items-center gap-2 rounded-[16px] bg-emerald-500/10 px-3 py-2 text-sm text-emerald-300">
                     <Check className="h-4 w-4 shrink-0" />
                     <span>{t("gta.directorySet")}</span>
                   </div>
@@ -358,20 +358,20 @@ export function OnboardingWizard({
 
             {step.id === "logs" && (
               <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-2 text-white">
-                  <ScrollText className="h-4 w-4 text-[#7289DA]" />
+                <div className="flex items-center gap-2 text-foreground">
+                  <ScrollText className="h-4 w-4 text-brand" />
                   <span className="text-sm font-medium">{t("logs.title")}</span>
                 </div>
-                <p className="text-sm text-white/50">{t("logs.description")}</p>
-                <div className="flex items-center justify-between gap-4 rounded-[10px] bg-white/5 px-3 py-2.5">
-                  <span className="text-sm text-white/85">{t("logs.enableWindow")}</span>
+                <p className="text-sm text-grey">{t("logs.description")}</p>
+                <div className="flex items-center justify-between gap-4 rounded-[14px] bg-fill px-3 py-2.5">
+                  <span className="text-sm text-foreground">{t("logs.enableWindow")}</span>
                   <Switch checked={logEnabled} onCheckedChange={setLogEnabled} />
                 </div>
               </div>
             )}
           </div>
 
-          <div className="mt-7 flex items-center justify-between border-t border-white/10 pt-5">
+          <div className="mt-8 flex items-center justify-between pt-2">
             {stepIdx > 0 ? (
               <Button
                 variant="ghost"
@@ -392,14 +392,14 @@ export function OnboardingWizard({
             {isLast ? (
               <Button
                 disabled={finishing}
-                className="bg-[#5865F2] text-white hover:bg-[#4752C4]"
+                size="lg"
                 onClick={() => void finish()}
               >
                 {finishing ? <Loader2 className="h-4 w-4 animate-spin" /> : t("finish")}
               </Button>
             ) : (
               <Button
-                className="bg-[#5865F2] text-white hover:bg-[#4752C4]"
+                size="lg"
                 onClick={() => void next()}
               >
                 {t("common:next")}
@@ -407,6 +407,7 @@ export function OnboardingWizard({
             )}
           </div>
         </div>
+          </div>
       </div>
     </GateShell>
   );

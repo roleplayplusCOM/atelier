@@ -34,10 +34,10 @@ export const TattooCard = forwardRef<HTMLButtonElement, TattooCardProps>(
         ref={ref}
         type="button"
         className={cn(
-          "group flex flex-col gap-1.5 rounded-[10px] border p-2 text-left transition-colors",
+          "group flex flex-col gap-1.5 rounded-[14px] border p-2 text-left transition-colors",
           selected
-            ? "border-[#5865F2]/60 bg-[#5865F2]/15"
-            : "border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.06]",
+            ? "border-brand/60 bg-brand/15"
+            : "border-line bg-fill hover:border-line hover:bg-fill",
         )}
         {...rest}
         onClick={(e) => onSelect(e.ctrlKey || e.metaKey || e.shiftKey)}
@@ -50,12 +50,12 @@ export const TattooCard = forwardRef<HTMLButtonElement, TattooCardProps>(
         )}
       />
       <div className="min-w-0">
-        <p className="truncate text-xs font-medium text-white/85">
+        <p className="truncate text-xs font-medium text-foreground">
           {tattoo.label || t("card.untitled")}
         </p>
-        <div className="mt-0.5 flex items-center gap-1.5 text-[10px] text-white/40">
+        <div className="mt-0.5 flex items-center gap-1.5 text-[10px] text-faint">
           <span className="truncate">{zone ? t(`zone.${zone.id}`) : tattoo.zone}</span>
-          <span className="text-white/20">·</span>
+          <span className="text-faint">·</span>
           <span className="font-mono">{GENDER_LABEL[tattoo.gender]}</span>
         </div>
       </div>

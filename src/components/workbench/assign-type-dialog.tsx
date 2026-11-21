@@ -81,13 +81,13 @@ export function AssignTypeDialog() {
 
   return (
     <Dialog open onOpenChange={(open) => !open && cancel()}>
-      <DialogContent className="liquid-glass max-h-[80vh] border-white/15 sm:max-w-lg">
+      <DialogContent className="liquid-glass max-h-[80vh] border-line sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2 text-white">
-            <CircleHelp className="h-4 w-4 text-[#7289DA]" />
+          <DialogTitle className="flex items-center gap-2 text-foreground">
+            <CircleHelp className="h-4 w-4 text-brand" />
             {t("assignType.title")}
           </DialogTitle>
-          <DialogDescription className="text-white/50">
+          <DialogDescription className="text-grey">
             {pendingDrafts.length === 1
               ? t("assignType.descriptionOne")
               : t("assignType.descriptionMany", {
@@ -102,10 +102,10 @@ export function AssignTypeDialog() {
             {pendingDrafts.map((imported, i) => (
               <div
                 key={imported.draft.id}
-                className="glass-border-subtle flex items-center gap-2 rounded-[10px] p-2.5"
+                className="glass-border-subtle flex items-center gap-2 rounded-[14px] p-2.5"
               >
                 <span
-                  className="min-w-0 flex-1 truncate text-sm text-white/85"
+                  className="min-w-0 flex-1 truncate text-sm text-foreground"
                   title={imported.draft.ydd?.path ?? imported.draft.label}
                 >
                   {imported.draft.ydd
@@ -122,7 +122,7 @@ export function AssignTypeDialog() {
                     )
                   }
                 >
-                  <SelectTrigger className="h-8 w-24 border-white/15 bg-white/5 font-mono text-xs text-white">
+                  <SelectTrigger className="h-8 w-24 border-line bg-fill font-mono text-xs text-foreground">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -140,7 +140,7 @@ export function AssignTypeDialog() {
                     )
                   }
                 >
-                  <SelectTrigger className="h-8 w-40 border-white/15 bg-white/5 text-xs text-white">
+                  <SelectTrigger className="h-8 w-40 border-line bg-fill text-xs text-foreground">
                     <SelectValue placeholder={t("assignType.selectSlot")} />
                   </SelectTrigger>
                   <SelectContent>

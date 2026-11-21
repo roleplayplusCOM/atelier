@@ -60,10 +60,10 @@ const SEVERITY_META: Record<
   },
   info: {
     icon: Info,
-    row: "border-white/10 bg-white/5 text-white/70",
-    iconColor: "text-white/40",
-    stat: "border-white/10 bg-white/5",
-    dot: "bg-white/40",
+    row: "border-line bg-fill text-grey",
+    iconColor: "text-faint",
+    stat: "border-line bg-fill",
+    dot: "bg-faint",
   },
 };
 
@@ -84,7 +84,7 @@ function FindingRow({
   const Icon = meta.icon;
 
   return (
-    <div className={cn("flex items-start gap-3 rounded-[10px] border px-3 py-2.5", meta.row)}>
+    <div className={cn("flex items-start gap-3 rounded-[14px] border px-3 py-2.5", meta.row)}>
       <Icon className={cn("mt-0.5 h-4 w-4 shrink-0", meta.iconColor)} />
       <div className="min-w-0 flex-1">
         {drawable && (
@@ -157,27 +157,27 @@ function CheckProgress() {
       <CircularProgress value={determinate ? percent : null}>
         {determinate ? (
           <>
-            <span className="font-mono text-lg font-semibold text-white">
+            <span className="font-mono text-lg font-semibold text-foreground">
               {current}
-              <span className="text-white/40">/{total}</span>
+              <span className="text-faint">/{total}</span>
             </span>
-            <span className="text-[10px] text-white/35">{percent}%</span>
+            <span className="text-[10px] text-faint">{percent}%</span>
           </>
         ) : (
-          <Hammer className="h-5 w-5 text-white/25" />
+          <Hammer className="h-5 w-5 text-faint" />
         )}
       </CircularProgress>
 
       <div className="flex min-h-[2.5rem] flex-col items-center gap-1">
-        <p className="text-sm text-white/60">
+        <p className="text-sm text-grey">
           {finishing ? t("validating.finishing") : t("validating")}
         </p>
         {determinate && progress?.label && (
-          <p className="max-w-md truncate text-xs text-white/35">{progress.label}</p>
+          <p className="max-w-md truncate text-xs text-faint">{progress.label}</p>
         )}
       </div>
 
-      <p className="max-w-md text-center text-xs text-white/25">{t("validating.hint")}</p>
+      <p className="max-w-md text-center text-xs text-faint">{t("validating.hint")}</p>
     </div>
   );
 }
@@ -256,11 +256,11 @@ export function BuildScreen() {
   return (
     <div className="flex h-full min-h-0 flex-col">
       {/* Header ------------------------------------------------------- */}
-      <div className="flex shrink-0 items-center gap-3 border-b border-white/10 px-5 py-3">
+      <div className="flex shrink-0 items-center gap-3 border-b border-line px-5 py-3">
         <Button
           variant="ghost"
           size="sm"
-          className="h-8 shrink-0 px-2 text-white/60 hover:text-white"
+          className="h-8 shrink-0 px-2 text-grey hover:text-foreground"
           disabled={running}
           onClick={end}
         >
@@ -268,13 +268,13 @@ export function BuildScreen() {
           {t("common:back")}
         </Button>
         <div className="min-w-0">
-          <h1 className="flex items-center gap-2 text-sm font-semibold text-white">
-            <Hammer className="h-4 w-4 text-[#7289DA]" />
+          <h1 className="flex items-center gap-2 text-sm font-semibold text-foreground">
+            <Hammer className="h-4 w-4 text-brand" />
             {t("screen.title")}
-            <span className="truncate text-white/40">— {project?.name}</span>
+            <span className="truncate text-faint">— {project?.name}</span>
           </h1>
           {options && (
-            <p className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 font-mono text-[10px] text-white/35">
+            <p className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 font-mono text-[10px] text-faint">
               <span>{t(`targets.${options.target}.label`)}</span>
               <span>·</span>
               <span>{options.dlcName}</span>
@@ -325,19 +325,19 @@ export function BuildScreen() {
           {step === "building" && (
             <div className="flex flex-1 flex-col items-center justify-center gap-4">
               <div className="w-full max-w-md">
-                <div className="mb-2 flex items-center gap-2 text-sm text-white">
-                  <Loader2 className="h-4 w-4 animate-spin text-[#7289DA]" />
+                <div className="mb-2 flex items-center gap-2 text-sm text-foreground">
+                  <Loader2 className="h-4 w-4 animate-spin text-brand" />
                   {progress
                     ? t(`phase.${progress.phase}`, { defaultValue: progress.phase })
                     : t("building.starting")}
                   {progress && progress.total > 1 && (
-                    <span className="ml-auto font-mono text-[10px] text-white/35">
+                    <span className="ml-auto font-mono text-[10px] text-faint">
                       {Math.min(progress.current, progress.total)}/{progress.total}
                     </span>
                   )}
                 </div>
-                <Progress value={percent} className="h-1.5 bg-white/10" />
-                <p className="mt-2 min-h-4 truncate text-[11px] text-white/40">
+                <Progress value={percent} className="h-1.5 bg-fill-2" />
+                <p className="mt-2 min-h-4 truncate text-[11px] text-faint">
                   {progress ? localizeProgress(progress) : ""}
                 </p>
               </div>
@@ -357,21 +357,21 @@ export function BuildScreen() {
                       type="button"
                       onClick={() => setFilter(active ? null : severity)}
                       className={cn(
-                        "flex items-center gap-2 rounded-[10px] border px-3 py-1.5 text-xs transition-colors",
+                        "flex items-center gap-2 rounded-[14px] border px-3 py-1.5 text-xs transition-colors",
                         meta.stat,
-                        active ? "ring-1 ring-white/40" : "hover:border-white/25",
+                        active ? "ring-1 ring-foreground/40" : "hover:border-line",
                         counts[severity] === 0 && "opacity-40",
                       )}
                     >
                       <span className={cn("h-1.5 w-1.5 rounded-full", meta.dot)} />
-                      <span className="font-semibold text-white">{counts[severity]}</span>
-                      <span className="text-white/60">{t(`severity.${severity}`)}</span>
+                      <span className="font-semibold text-foreground">{counts[severity]}</span>
+                      <span className="text-grey">{t(`severity.${severity}`)}</span>
                     </button>
                   );
                 })}
                 <div className="ml-auto flex items-center gap-2">
-                  <div className="flex items-center gap-1.5 rounded-[10px] border border-white/15 bg-white/5 px-2">
-                    <Search className="h-3.5 w-3.5 text-white/30" />
+                  <div className="flex items-center gap-1.5 rounded-[14px] border border-line bg-fill px-2">
+                    <Search className="h-3.5 w-3.5 text-faint" />
                     <Input
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}
@@ -383,7 +383,7 @@ export function BuildScreen() {
               </div>
 
               {counts.error > 0 && (
-                <p className="shrink-0 rounded-[10px] border border-red-500/25 bg-red-500/10 px-3 py-2 text-xs text-red-200">
+                <p className="shrink-0 rounded-[14px] border border-red-500/25 bg-red-500/10 px-3 py-2 text-xs text-red-200">
                   {t("findings.errorsBlock", { count: counts.error })}
                 </p>
               )}
@@ -391,14 +391,14 @@ export function BuildScreen() {
               {findings.length === 0 ? (
                 <div className="flex flex-1 flex-col items-center justify-center gap-3">
                   <CircleCheck className="h-10 w-10 text-emerald-400" />
-                  <p className="text-sm text-white/60">{t("findings.noIssues")}</p>
+                  <p className="text-sm text-grey">{t("findings.noIssues")}</p>
                   <Button onClick={() => void runBuild()}>
                     <Hammer className="h-4 w-4" />
                     {t("findings.build")}
                   </Button>
                 </div>
               ) : visibleCount === 0 ? (
-                <p className="flex-1 pt-10 text-center text-xs text-white/35">
+                <p className="flex-1 pt-10 text-center text-xs text-faint">
                   {t("screen.noMatches")}
                 </p>
               ) : (
@@ -409,7 +409,7 @@ export function BuildScreen() {
                       if (list.length === 0) return null;
                       return (
                         <div key={severity} className="flex flex-col gap-1.5">
-                          <p className="sticky top-0 z-10 bg-[#0b0b0b]/80 py-1 text-[10px] font-semibold uppercase tracking-wider text-white/40 backdrop-blur-sm">
+                          <p className="sticky top-0 z-10 bg-background/80 py-1 text-[10px] font-semibold uppercase tracking-wider text-faint backdrop-blur-sm">
                             {t(`severity.${severity}`)} ({list.length})
                           </p>
                           {list.map((finding, i) => (
@@ -432,26 +432,26 @@ export function BuildScreen() {
             <div className="flex min-h-0 flex-1 flex-col gap-3">
               <div className="flex shrink-0 items-center gap-2">
                 <CircleCheck className="h-6 w-6 shrink-0 text-emerald-400" />
-                <p className="text-sm text-white">
+                <p className="text-sm text-foreground">
                   {t("done.title", { count: report.resources.length })}
                 </p>
               </div>
               <ScrollArea className="min-h-0 flex-1 pr-2">
-                <div className="rounded-[10px] border border-white/10">
+                <div className="rounded-[14px] border border-line">
                   {report.resources.map((resource) => (
                     <div
                       key={resource.folder}
-                      className="flex items-center justify-between border-b border-white/5 px-3 py-2 text-xs last:border-b-0"
+                      className="flex items-center justify-between border-b border-line px-3 py-2 text-xs last:border-b-0"
                     >
-                      <span className="truncate font-mono text-white/80">{resource.folder}</span>
-                      <span className="shrink-0 text-white/40">
+                      <span className="truncate font-mono text-foreground">{resource.folder}</span>
+                      <span className="shrink-0 text-faint">
                         {t("done.drawables", { count: resource.drawables })}
                       </span>
                     </div>
                   ))}
                 </div>
                 {report.warnings.length > 0 && (
-                  <div className="mt-3 flex items-start gap-2 rounded-[10px] border border-amber-500/25 bg-amber-500/10 px-3 py-2">
+                  <div className="mt-3 flex items-start gap-2 rounded-[14px] border border-amber-500/25 bg-amber-500/10 px-3 py-2">
                     <TriangleAlert className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-300" />
                     <div className="min-w-0 text-xs text-amber-200">
                       {report.warnings.map((warning) => (

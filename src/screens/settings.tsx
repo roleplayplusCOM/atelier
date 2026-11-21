@@ -97,10 +97,10 @@ function LanguageCard() {
   const [current, setCurrent] = useState(i18n.language);
 
   return (
-    <Card className="glass-border-subtle border-white/10 bg-transparent">
+    <Card className="glass-border-subtle border-line bg-transparent">
       <CardHeader>
-        <CardTitle className="text-white">{t("general.language.title")}</CardTitle>
-        <CardDescription className="text-white/50">
+        <CardTitle className="text-foreground">{t("general.language.title")}</CardTitle>
+        <CardDescription className="text-grey">
           {t("general.language.description")}
         </CardDescription>
       </CardHeader>
@@ -116,7 +116,7 @@ function LanguageCard() {
                 aria-pressed={active}
                 className={cn(
                   active &&
-                    "border-[#5865F2] bg-[#5865F2]/15 text-white hover:bg-[#5865F2]/20",
+                    "border-brand bg-brand/15 text-foreground hover:bg-brand/20",
                 )}
                 onClick={() => {
                   void changeLanguage(lang.code).then(() => setCurrent(lang.code));
@@ -155,25 +155,25 @@ function TextureOptimizeCard() {
   const setImportMaxDimension = usePreferencesStore((s) => s.setImportMaxDimension);
 
   return (
-    <Card className="glass-border-subtle border-white/10 bg-transparent">
+    <Card className="glass-border-subtle border-line bg-transparent">
       <CardHeader>
-        <CardTitle className="text-white">
+        <CardTitle className="text-foreground">
           {t("general.textureOptimize.title")}
         </CardTitle>
-        <CardDescription className="text-white/50">
+        <CardDescription className="text-grey">
           {t("general.textureOptimize.description")}
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">
-          <Label className="text-white/70">
+          <Label className="text-grey">
             {t("general.textureOptimize.formatLabel")}
           </Label>
           <Select
             value={defaultTextureFormat}
             onValueChange={(v) => setDefaultTextureFormat(v as FormatChoice)}
           >
-            <SelectTrigger className="w-full border-white/15 bg-white/5 text-white sm:w-72">
+            <SelectTrigger className="w-full border-line bg-fill text-foreground sm:w-72">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -186,12 +186,12 @@ function TextureOptimizeCard() {
           </Select>
         </div>
 
-        <div className="flex items-center justify-between gap-4 rounded-[10px] bg-white/5 px-3 py-2.5">
+        <div className="flex items-center justify-between gap-4 rounded-[14px] bg-fill px-3 py-2.5">
           <div className="min-w-0">
-            <p className="text-sm text-white/85">
+            <p className="text-sm text-foreground">
               {t("general.textureOptimize.onImportTitle")}
             </p>
-            <p className="text-xs text-white/45">
+            <p className="text-xs text-faint">
               {t("general.textureOptimize.onImportDescription")}
             </p>
           </div>
@@ -200,7 +200,7 @@ function TextureOptimizeCard() {
 
         {optimizeOnImport && (
           <div className="flex flex-col gap-2">
-            <Label className="text-white/70">
+            <Label className="text-grey">
               {t("general.textureOptimize.maxSizeLabel")}
             </Label>
             <Select
@@ -209,7 +209,7 @@ function TextureOptimizeCard() {
                 setImportMaxDimension(Number(v) as ImportMaxDimension)
               }
             >
-              <SelectTrigger className="w-full border-white/15 bg-white/5 text-white sm:w-72">
+              <SelectTrigger className="w-full border-line bg-fill text-foreground sm:w-72">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -240,10 +240,10 @@ function PrefToggleRow({
   onCheckedChange: (value: boolean) => void;
 }) {
   return (
-    <div className="flex items-center justify-between gap-4 rounded-[10px] bg-white/5 px-3 py-2.5">
+    <div className="flex items-center justify-between gap-4 rounded-[14px] bg-fill px-3 py-2.5">
       <div className="min-w-0">
-        <p className="text-sm text-white/85">{title}</p>
-        <p className="text-xs text-white/45">{description}</p>
+        <p className="text-sm text-foreground">{title}</p>
+        <p className="text-xs text-faint">{description}</p>
       </div>
       <Switch checked={checked} onCheckedChange={onCheckedChange} />
     </div>
@@ -282,23 +282,23 @@ function BuildProjectsCard() {
   };
 
   return (
-    <Card className="glass-border-subtle border-white/10 bg-transparent">
+    <Card className="glass-border-subtle border-line bg-transparent">
       <CardHeader>
-        <CardTitle className="text-white">{t("preferences.projects.title")}</CardTitle>
-        <CardDescription className="text-white/50">
+        <CardTitle className="text-foreground">{t("preferences.projects.title")}</CardTitle>
+        <CardDescription className="text-grey">
           {t("preferences.projects.description")}
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">
-          <Label className="text-white/70">
+          <Label className="text-grey">
             {t("preferences.projects.exportTargetLabel")}
           </Label>
           <Select
             value={defaultExportTarget}
             onValueChange={(v) => setDefaultExportTarget(v as BuildTarget)}
           >
-            <SelectTrigger className="w-full border-white/15 bg-white/5 text-white sm:w-72">
+            <SelectTrigger className="w-full border-line bg-fill text-foreground sm:w-72">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -312,7 +312,7 @@ function BuildProjectsCard() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <Label className="text-white/70">
+          <Label className="text-grey">
             {t("preferences.projects.folderLabel")}
           </Label>
           <div className="flex gap-2">
@@ -320,7 +320,7 @@ function BuildProjectsCard() {
               readOnly
               value={defaultProjectFolder ?? ""}
               placeholder={t("preferences.projects.folderPlaceholder")}
-              className="border-white/15 bg-white/5 text-white"
+              className="border-line bg-fill text-foreground"
             />
             <Button variant="outline" onClick={() => void pickFolder()}>
               <FolderOpen className="h-4 w-4" />
@@ -357,10 +357,10 @@ function EditorPreferencesCard() {
   const setIncludePedBody = usePreview3dStore((s) => s.setIncludePedBody);
 
   return (
-    <Card className="glass-border-subtle border-white/10 bg-transparent">
+    <Card className="glass-border-subtle border-line bg-transparent">
       <CardHeader>
-        <CardTitle className="text-white">{t("preferences.editor.title")}</CardTitle>
-        <CardDescription className="text-white/50">
+        <CardTitle className="text-foreground">{t("preferences.editor.title")}</CardTitle>
+        <CardDescription className="text-grey">
           {t("preferences.editor.description")}
         </CardDescription>
       </CardHeader>
@@ -397,7 +397,7 @@ function EditorPreferencesCard() {
         />
         {autosaveEnabled && (
           <div className="flex flex-col gap-2">
-            <Label className="text-white/70">
+            <Label className="text-grey">
               {t("preferences.editor.autosaveIntervalLabel")}
             </Label>
             <Select
@@ -406,7 +406,7 @@ function EditorPreferencesCard() {
                 setAutosaveInterval(Number(v) as AutosaveInterval)
               }
             >
-              <SelectTrigger className="w-full border-white/15 bg-white/5 text-white sm:w-72">
+              <SelectTrigger className="w-full border-line bg-fill text-foreground sm:w-72">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -433,12 +433,12 @@ function UpdatePreferencesCard() {
   const setAutoInstallUpdates = usePreferencesStore((s) => s.setAutoInstallUpdates);
 
   return (
-    <Card className="glass-border-subtle border-white/10 bg-transparent">
+    <Card className="glass-border-subtle border-line bg-transparent">
       <CardHeader>
-        <CardTitle className="text-white">
+        <CardTitle className="text-foreground">
           {t("preferences.updates.title")}
         </CardTitle>
-        <CardDescription className="text-white/50">
+        <CardDescription className="text-grey">
           {t("preferences.updates.description")}
         </CardDescription>
       </CardHeader>
@@ -564,15 +564,15 @@ function GeneralTab() {
 
       <ModeCard />
 
-      <Card className="glass-border-subtle border-white/10 bg-transparent">
+      <Card className="glass-border-subtle border-line bg-transparent">
         <CardHeader>
-          <CardTitle className="text-white">{t("general.gta.title")}</CardTitle>
-          <CardDescription className="text-white/50">
+          <CardTitle className="text-foreground">{t("general.gta.title")}</CardTitle>
+          <CardDescription className="text-grey">
             {t("general.gta.description")}
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-2">
-          <Label htmlFor="gta-path" className="text-white/70">
+          <Label htmlFor="gta-path" className="text-grey">
             {t("general.gta.installFolder")}
           </Label>
           <div className="flex gap-2">
@@ -581,7 +581,7 @@ function GeneralTab() {
               readOnly
               value={gtaPath ?? ""}
               placeholder={t("general.gta.noPathYet")}
-              className="border-white/15 bg-white/5 text-white"
+              className="border-line bg-fill text-foreground"
             />
             <Button variant="outline" onClick={() => void pickGtaPath()}>
               <FolderOpen className="h-4 w-4" />
@@ -592,15 +592,15 @@ function GeneralTab() {
       </Card>
 
       {cloudEnabled && (
-        <Card className="glass-border-subtle border-white/10 bg-transparent">
+        <Card className="glass-border-subtle border-line bg-transparent">
           <CardHeader>
-            <CardTitle className="text-white">{t("general.backend.title")}</CardTitle>
-            <CardDescription className="text-white/50">
+            <CardTitle className="text-foreground">{t("general.backend.title")}</CardTitle>
+            <CardDescription className="text-grey">
               {t("general.backend.description")}
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col gap-2">
-            <Label htmlFor="api-url" className="text-white/70">
+            <Label htmlFor="api-url" className="text-grey">
               {t("general.backend.apiUrlLabel")}
             </Label>
             <div className="flex gap-2">
@@ -609,7 +609,7 @@ function GeneralTab() {
                 value={apiUrlDraft}
                 onChange={(e) => setApiUrlDraft(e.target.value)}
                 placeholder="http://127.0.0.1:3095"
-                className="border-white/15 bg-white/5 text-white"
+                className="border-line bg-fill text-foreground"
               />
               <Button
                 variant="outline"
@@ -628,7 +628,7 @@ function GeneralTab() {
                     serverHealth.updateAvailable ? "bg-amber-400" : "bg-emerald-400",
                   )}
                 />
-                <span className="text-white/70">
+                <span className="text-grey">
                   {t("general.backend.serverVersion", {
                     version: serverHealth.version ?? "?",
                   })}
@@ -648,15 +648,15 @@ function GeneralTab() {
         </Card>
       )}
 
-      <Card className="glass-border-subtle border-white/10 bg-transparent">
+      <Card className="glass-border-subtle border-line bg-transparent">
         <CardHeader>
-          <CardTitle className="text-white">{t("general.sidecar.title")}</CardTitle>
-          <CardDescription className="text-white/50">
+          <CardTitle className="text-foreground">{t("general.sidecar.title")}</CardTitle>
+          <CardDescription className="text-grey">
             {t("general.sidecar.description")}
           </CardDescription>
         </CardHeader>
         <CardContent className="flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2 text-sm text-white/70">
+          <div className="flex items-center gap-2 text-sm text-grey">
             <span className={cn("h-2 w-2 rounded-full", sidecarDot)} />
             <span>
               {sidecarInfo.detailCode
@@ -699,10 +699,10 @@ function ModeCard() {
   const setAppMode = useAuthStore((s) => s.setAppMode);
 
   return (
-    <Card className="glass-border-subtle border-white/10 bg-transparent">
+    <Card className="glass-border-subtle border-line bg-transparent">
       <CardHeader>
-        <CardTitle className="text-white">{t("general.mode.title")}</CardTitle>
-        <CardDescription className="text-white/50">
+        <CardTitle className="text-foreground">{t("general.mode.title")}</CardTitle>
+        <CardDescription className="text-grey">
           {cloudEnabled
             ? t("general.mode.descriptionCloud")
             : t("general.mode.descriptionSolo")}
@@ -712,8 +712,8 @@ function ModeCard() {
         <Badge
           variant="outline"
           className={cn(
-            "border-white/15 text-white/60",
-            cloudEnabled && "border-[#5865F2]/50 text-[#7289DA]",
+            "border-line text-grey",
+            cloudEnabled && "border-brand/50 text-brand",
           )}
         >
           {cloudEnabled ? t("general.mode.cloud") : t("general.mode.solo")}
@@ -737,10 +737,10 @@ function SetupCard() {
   const { t } = useTranslation("settings");
   const setRerunOnboarding = useUiStore((s) => s.setRerunOnboarding);
   return (
-    <Card className="glass-border-subtle border-white/10 bg-transparent">
+    <Card className="glass-border-subtle border-line bg-transparent">
       <CardHeader>
-        <CardTitle className="text-white">{t("general.setup.title")}</CardTitle>
-        <CardDescription className="text-white/50">
+        <CardTitle className="text-foreground">{t("general.setup.title")}</CardTitle>
+        <CardDescription className="text-grey">
           {t("general.setup.description")}
         </CardDescription>
       </CardHeader>
@@ -766,10 +766,10 @@ function LogsCard() {
   }, []);
 
   return (
-    <Card className="glass-border-subtle border-white/10 bg-transparent">
+    <Card className="glass-border-subtle border-line bg-transparent">
       <CardHeader>
-        <CardTitle className="text-white">{t("general.logs.title")}</CardTitle>
-        <CardDescription className="text-white/50">
+        <CardTitle className="text-foreground">{t("general.logs.title")}</CardTitle>
+        <CardDescription className="text-grey">
           {t("general.logs.description")}
         </CardDescription>
       </CardHeader>
@@ -778,7 +778,7 @@ function LogsCard() {
           <Input
             readOnly
             value={logDir ?? t("general.logs.dirUnavailable")}
-            className="border-white/15 bg-white/5 text-white"
+            className="border-line bg-fill text-foreground"
           />
           <Button
             variant="outline"
@@ -792,10 +792,10 @@ function LogsCard() {
           </Button>
         </div>
 
-        <div className="flex items-center justify-between gap-4 rounded-[10px] bg-white/5 px-3 py-2.5">
+        <div className="flex items-center justify-between gap-4 rounded-[14px] bg-fill px-3 py-2.5">
           <div className="min-w-0">
-            <p className="text-sm text-white/85">{t("general.logs.consoleTitle")}</p>
-            <p className="text-xs text-white/45">
+            <p className="text-sm text-foreground">{t("general.logs.consoleTitle")}</p>
+            <p className="text-xs text-faint">
               {t("general.logs.consoleDescription")}
             </p>
           </div>
@@ -842,10 +842,10 @@ function AccountTab() {
 
   if (!cloudEnabled) {
     return (
-      <Card className="glass-border-subtle border-white/10 bg-transparent">
+      <Card className="glass-border-subtle border-line bg-transparent">
         <CardHeader>
-          <CardTitle className="text-white">{t("account.soloTitle")}</CardTitle>
-          <CardDescription className="text-white/50">
+          <CardTitle className="text-foreground">{t("account.soloTitle")}</CardTitle>
+          <CardDescription className="text-grey">
             {t("account.soloDescription")}
           </CardDescription>
         </CardHeader>
@@ -860,10 +860,10 @@ function AccountTab() {
 
   if (status !== "loggedIn" || !user) {
     return (
-      <Card className="glass-border-subtle border-white/10 bg-transparent">
+      <Card className="glass-border-subtle border-line bg-transparent">
         <CardHeader>
-          <CardTitle className="text-white">{t("account.notSignedIn")}</CardTitle>
-          <CardDescription className="text-white/50">
+          <CardTitle className="text-foreground">{t("account.notSignedIn")}</CardTitle>
+          <CardDescription className="text-grey">
             {t("account.notSignedInDescription")}
           </CardDescription>
         </CardHeader>
@@ -892,7 +892,7 @@ function AccountTab() {
   return (
     <div className="flex flex-col gap-4">
       {user.status === "pending" && (
-        <div className="flex items-center gap-3 rounded-[10px] border border-amber-500/30 bg-amber-500/10 px-4 py-3">
+        <div className="flex items-center gap-3 rounded-[14px] border border-amber-500/30 bg-amber-500/10 px-4 py-3">
           <Hourglass className="h-4 w-4 shrink-0 text-amber-300" />
           <div className="text-sm text-amber-200">
             <span className="font-medium">{t("account.pendingTitle")}</span>{" "}
@@ -901,9 +901,9 @@ function AccountTab() {
         </div>
       )}
 
-      <Card className="glass-border-subtle border-white/10 bg-transparent">
+      <Card className="glass-border-subtle border-line bg-transparent">
         <CardHeader>
-          <CardTitle className="text-white">{t("account.title")}</CardTitle>
+          <CardTitle className="text-foreground">{t("account.title")}</CardTitle>
         </CardHeader>
         <CardContent className="flex items-center gap-4">
           {user.avatar ? (
@@ -913,19 +913,19 @@ function AccountTab() {
               className="h-12 w-12 rounded-full object-cover"
             />
           ) : (
-            <CircleUser className="h-12 w-12 text-white/40" />
+            <CircleUser className="h-12 w-12 text-faint" />
           )}
           <div className="flex-1">
-            <p className="font-medium text-white">{name}</p>
-            <p className="text-xs text-white/45">
+            <p className="font-medium text-foreground">{name}</p>
+            <p className="text-xs text-faint">
               {t("account.discordId", { id: user.discordId })}
             </p>
             <div className="mt-1.5 flex gap-1.5">
               <Badge
                 variant="outline"
                 className={cn(
-                  "border-white/15 text-white/60",
-                  user.role === "admin" && "border-[#5865F2]/50 text-[#7289DA]",
+                  "border-line text-grey",
+                  user.role === "admin" && "border-brand/50 text-brand",
                 )}
               >
                 {user.role === "admin"
@@ -935,7 +935,7 @@ function AccountTab() {
               <Badge
                 variant="outline"
                 className={cn(
-                  "border-white/15 text-white/60",
+                  "border-line text-grey",
                   user.status === "approved" && "border-emerald-500/40 text-emerald-300",
                   user.status === "pending" && "border-amber-500/40 text-amber-300",
                   user.status === "locked" && "border-red-500/40 text-red-300",
@@ -961,38 +961,38 @@ function AccountTab() {
         </CardContent>
       </Card>
 
-      <Card className="glass-border-subtle border-white/10 bg-transparent">
+      <Card className="glass-border-subtle border-line bg-transparent">
         <CardHeader>
-          <CardTitle className="text-white">{t("account.devices.title")}</CardTitle>
-          <CardDescription className="text-white/50">
+          <CardTitle className="text-foreground">{t("account.devices.title")}</CardTitle>
+          <CardDescription className="text-grey">
             {t("account.devices.description")}
           </CardDescription>
         </CardHeader>
         <CardContent>
           {devices === null ? (
             <div className="flex flex-col gap-2">
-              <Skeleton className="h-10 w-full bg-white/5" />
-              <Skeleton className="h-10 w-full bg-white/5" />
+              <Skeleton className="h-10 w-full bg-fill" />
+              <Skeleton className="h-10 w-full bg-fill" />
             </div>
           ) : devices.length === 0 ? (
-            <p className="text-sm text-white/40">{t("account.devices.empty")}</p>
+            <p className="text-sm text-faint">{t("account.devices.empty")}</p>
           ) : (
             <div className="flex flex-col">
               {devices.map((device, i) => (
                 <div key={device.deviceId}>
-                  {i > 0 && <Separator className="bg-white/8" />}
+                  {i > 0 && <Separator className="bg-fill" />}
                   <div className="flex items-center gap-3 py-2.5">
-                    <Laptop className="h-4 w-4 text-white/40" />
+                    <Laptop className="h-4 w-4 text-faint" />
                     <div className="flex-1">
-                      <p className="text-sm text-white/85">
+                      <p className="text-sm text-foreground">
                         {device.name}
                         {device.current && (
-                          <span className="ml-2 text-xs text-[#7289DA]">
+                          <span className="ml-2 text-xs text-brand">
                             {t("account.devices.thisDevice")}
                           </span>
                         )}
                       </p>
-                      <p className="text-xs text-white/40">
+                      <p className="text-xs text-faint">
                         {device.platform}
                         {device.appVersion && device.appVersion !== "0.0.0"
                           ? ` · v${device.appVersion}`
@@ -1002,7 +1002,7 @@ function AccountTab() {
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="text-white/40 hover:text-red-400"
+                      className="text-faint hover:text-red-400"
                       onClick={() => {
                         revokeDevice(device.deviceId)
                           .then(() => {
@@ -1074,16 +1074,16 @@ function AdminTab() {
   };
 
   return (
-    <Card className="glass-border-subtle border-white/10 bg-transparent">
+    <Card className="glass-border-subtle border-line bg-transparent">
       <CardHeader className="flex flex-row items-center justify-between">
         <div>
-          <CardTitle className="text-white">{t("admin.title")}</CardTitle>
-          <CardDescription className="text-white/50">
+          <CardTitle className="text-foreground">{t("admin.title")}</CardTitle>
+          <CardDescription className="text-grey">
             {t("admin.description")}
           </CardDescription>
         </div>
         <Select value={filter} onValueChange={(v) => setFilter(v as StatusFilter)}>
-          <SelectTrigger className="w-44 border-white/15 bg-white/5 text-white">
+          <SelectTrigger className="w-44 border-line bg-fill text-foreground">
             <SelectValue placeholder={t("admin.statusPlaceholder")} />
           </SelectTrigger>
           <SelectContent>
@@ -1097,29 +1097,29 @@ function AdminTab() {
       <CardContent>
         {users === null ? (
           <div className="flex flex-col gap-2">
-            <Skeleton className="h-10 w-full bg-white/5" />
-            <Skeleton className="h-10 w-full bg-white/5" />
-            <Skeleton className="h-10 w-full bg-white/5" />
+            <Skeleton className="h-10 w-full bg-fill" />
+            <Skeleton className="h-10 w-full bg-fill" />
+            <Skeleton className="h-10 w-full bg-fill" />
           </div>
         ) : users.length === 0 ? (
-          <p className="py-6 text-center text-sm text-white/40">
+          <p className="py-6 text-center text-sm text-faint">
             {t("admin.empty")}
           </p>
         ) : (
           <Table>
             <TableHeader>
-              <TableRow className="border-white/8 hover:bg-transparent">
-                <TableHead className="text-white/50">{t("admin.columns.user")}</TableHead>
-                <TableHead className="text-white/50">{t("admin.columns.role")}</TableHead>
-                <TableHead className="text-white/50">{t("admin.columns.status")}</TableHead>
-                <TableHead className="text-right text-white/50">
+              <TableRow className="border-line hover:bg-transparent">
+                <TableHead className="text-grey">{t("admin.columns.user")}</TableHead>
+                <TableHead className="text-grey">{t("admin.columns.role")}</TableHead>
+                <TableHead className="text-grey">{t("admin.columns.status")}</TableHead>
+                <TableHead className="text-right text-grey">
                   {t("admin.columns.actions")}
                 </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {users.map((u) => (
-                <TableRow key={u.discordId} className="border-white/8 hover:bg-white/5">
+                <TableRow key={u.discordId} className="border-line hover:bg-fill">
                   <TableCell>
                     <div className="flex items-center gap-2">
                       {u.avatar ? (
@@ -1129,19 +1129,19 @@ function AdminTab() {
                           className="h-6 w-6 rounded-full object-cover"
                         />
                       ) : (
-                        <CircleUser className="h-6 w-6 text-white/40" />
+                        <CircleUser className="h-6 w-6 text-faint" />
                       )}
-                      <span className="text-white/85">{u.username}</span>
+                      <span className="text-foreground">{u.username}</span>
                     </div>
                   </TableCell>
-                  <TableCell className="text-white/60">
+                  <TableCell className="text-grey">
                     {u.role === "admin" ? t("admin.roleAdmin") : t("admin.roleMember")}
                   </TableCell>
                   <TableCell>
                     <Badge
                       variant="outline"
                       className={cn(
-                        "border-white/15 text-white/60",
+                        "border-line text-grey",
                         u.status === "approved" &&
                           "border-emerald-500/40 text-emerald-300",
                         u.status === "pending" && "border-amber-500/40 text-amber-300",
@@ -1208,7 +1208,7 @@ export function SettingsScreen() {
       {/* Narrower content column + a credits/thanks sidebar on the right. */}
       <div className="mx-auto flex w-full max-w-5xl gap-8">
         <div className="min-w-0 flex-1">
-          <h1 className="text-2xl font-semibold tracking-tight text-white">
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground">
             {t("title")}
           </h1>
           <Tabs defaultValue="general" className="mt-6">

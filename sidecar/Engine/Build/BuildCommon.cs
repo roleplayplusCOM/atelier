@@ -42,7 +42,7 @@ public static class BuildCommon
             target,
             dlcName,
             drawables,
-            tool = "atelier by feelgood",
+            tool = "atelier by Roleplay+",
         };
         File.WriteAllText(
             Path.Combine(partFolder, "atelier-build.json"),

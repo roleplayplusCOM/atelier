@@ -63,11 +63,11 @@ function NoProject() {
   const setScreen = useUiStore((s) => s.setScreen);
   return (
     <div className="flex h-full flex-col items-center justify-center px-6 text-center">
-      <div className="glass-border-subtle flex h-14 w-14 items-center justify-center rounded-[10px]">
-        <Stamp className="h-6 w-6 text-white/30" />
+      <div className="glass-border-subtle flex h-14 w-14 items-center justify-center rounded-[14px]">
+        <Stamp className="h-6 w-6 text-faint" />
       </div>
-      <p className="mt-4 text-sm font-medium text-white/60">{t("noProject.title")}</p>
-      <p className="mt-1 max-w-64 text-xs text-white/35">{t("noProject.description")}</p>
+      <p className="mt-4 text-sm font-medium text-grey">{t("noProject.title")}</p>
+      <p className="mt-1 max-w-64 text-xs text-faint">{t("noProject.description")}</p>
       <Button size="sm" variant="outline" className="mt-4" onClick={() => setScreen("launcher")}>
         <FolderOpen className="h-4 w-4" />
         {t("noProject.toStart")}
@@ -89,7 +89,7 @@ export function TattoosScreen() {
   if (!project) {
     return (
       <div className="screen-fade-in h-full p-3">
-        <div className="glass-border-subtle glass-hover-none h-full rounded-[10px]">
+        <div className="glass-border-subtle glass-hover-none h-full rounded-[14px]">
           <NoProject />
         </div>
       </div>
@@ -98,7 +98,7 @@ export function TattoosScreen() {
 
   return (
     <div className="screen-fade-in relative h-full p-3">
-      <div className="glass-border-subtle glass-hover-none flex h-full flex-col rounded-[10px]">
+      <div className="glass-border-subtle glass-hover-none flex h-full flex-col rounded-[14px]">
         <TattooHeader />
         <ResizablePanelGroup
           direction="horizontal"
@@ -108,11 +108,11 @@ export function TattoosScreen() {
           <ResizablePanel id="zones" order={1} defaultSize={20} minSize={14} maxSize={30}>
             <TattooZoneTree />
           </ResizablePanel>
-          <ResizableHandle withHandle className="bg-white/8" />
+          <ResizableHandle withHandle className="bg-fill" />
           <ResizablePanel id="grid" order={2} defaultSize={52} minSize={30}>
             <TattooGrid />
           </ResizablePanel>
-          <ResizableHandle withHandle className="bg-white/8" />
+          <ResizableHandle withHandle className="bg-fill" />
           <ResizablePanel id="inspector" order={3} defaultSize={28} minSize={18} maxSize={40}>
             <TattooInspector />
           </ResizablePanel>
