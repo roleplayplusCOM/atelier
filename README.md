@@ -82,8 +82,8 @@ Grab the latest version from the
 
 | Variant | File | When |
 | --- | --- | --- |
-| Installer | `atelier-*-setup.exe` | the default |
-| MSI | `atelier-*.msi` | managed environments |
+| Installer | `atelier_*_x64-setup.exe` | the default |
+| MSI | `atelier_*_x64_en-US.msi` | managed environments |
 | Portable | `atelier-*-portable.zip` | unzip & run (app + sidecar included) |
 
 On first launch a short wizard lets you pick a mode — **solo** (fully local, no
